@@ -1,0 +1,25 @@
+NAV Icon - https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.4.3_the_position_property/icon.png
+
+SpaceCat - https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.4.3_the_position_property/spacecat.png
+
+SpaceDog - 
+https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.4.3_the_position_property/spacedog.png
+
+SpaceLandscape -
+https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.4.3_the_position_property/outerspace_landscape.jpeg
+
+-------------------------
+
+Make sure to link to the following images using <img src="https://link-goes-here.placeholder" alt="description of image"> for each one that you need to put in. 
+
+First do the nav bar, which is fixed. We've given you the HTML you need, you just need to write and add classes as necessary.
+
+To implement the dotted white box, you can use border: 10px white dotted. Note: your browser may render rounded dots instead of square ones; that's fine!
+
+Next do the dotted white box with the space cat and space dog images. To complete this part of the challenge, you'll have to use position:relative and position:absolute, along with offsets. But that's as much of a hint as we're giving you!
+
+Finally, try to implement the background image. It should scale to the width of the browser window. For guidance on full page backgrounds, you can look at this tutorial. If you don't get this one, don't worry — the main point of this exercise is to get you working with the position property. But do make sure to have a look at how we've implemented it in our solution, once you've finished your attempt.
+
+Submit a link below to your repl.it when you're ready. When you submit your project link, your mentor will be notified to check out your work.
+
+Limit yourself to one hour for this exercise. If you can't complete it by then have a look at the solution below, and even if you do complete it within one hour, still have a look and compare your code to the solution below.

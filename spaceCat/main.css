@@ -1,0 +1,72 @@
+body * {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+
+body{
+    background-image: url(https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.4.3_the_position_property/outerspace_landscape.jpeg);
+    background-size: 100%
+}
+  
+a {
+    text-decoration: none;
+  }
+
+nav {
+    padding-left:60px;
+    padding-right:60px;
+    position: fixed;
+    height: 75px;
+    width: 100%;
+    background-color:grey;
+    z-index: 1000;
+}
+
+.nav ul {
+    margin-top:25px;
+    margin-left: 10%;
+}
+
+.nav  li {
+    display: inline-block
+}
+
+.nav li::after{
+    content:" |";
+}
+
+.nav  img { 
+    border-color: black;
+    left: 10px;
+    position: absolute;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: solid black 1px;
+    border-radius: 100%;
+    transform: scale(.4) translate(-30px, -95px);  
+    top:0;
+}
+
+.container {
+    padding: 200px;
+}
+
+.box {
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    width: 600px;
+    border: 10px white dotted;
+}
+
+img[src*=cat]{
+    position:relative;
+    left:-100px;
+    top:-100px;
+}
+
+img[src*=dog]{
+    position:relative;
+    right:-150px;
+    bottom:-150px;
+}
