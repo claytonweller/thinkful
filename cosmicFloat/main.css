@@ -1,0 +1,41 @@
+body * {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+  }
+
+a {
+text-decoration: none;
+}
+
+
+body {
+    background-color: black;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1000px;
+    padding: 10px;
+}
+
+.nebula-1{
+    float: left;
+    width: 25vw;
+    min-width: 250px;
+    height: auto;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.nebula-2{
+    float: right;
+    width: 25vw;
+    min-width: 250px;
+    height: auto;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px; 
+}

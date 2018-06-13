@@ -5,7 +5,7 @@ body * {
 
 body{
     background-image: url(https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.4.3_the_position_property/outerspace_landscape.jpeg);
-    background-size: 100%
+    background-size: 100%;
 }
   
 a {
