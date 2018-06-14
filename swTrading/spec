@@ -1,0 +1,24 @@
+Implement and use a 960px twelve column grid system using the float: left; approach. Code for your grid should go in a separate stylesheet.
+
+Modify the existing index.html as necessary to achieve the layout.
+
+Add a main.css file for any styles you need to achieve the layout. The CSS for your grid, however, should not go in this file.
+
+When the screen width is less than 640px, columns should take up 100% of their parent container's width, but there should continue to be padding between the card and the edge of the viewport.
+
+When the screen is 640px or wider, the columns should take up the correct width.
+When the screen is wider than 1000px, the grid should stop expanding, and it should be centered in the browser window.
+
+The page should be SEO- and accessibility-friendly. From now on, these should be default requirements for every page you create.
+
+When you're done, save your work and submit a link to your project below to let your mentor know it's time to review your code.
+
+Be sure to discuss this project with your mentor when you're finished.
+
+Use these image files: 
+    Rey, https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.6.3_challenge_responsive_layout/rey_square.png
+    Finn, https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.6.3_challenge_responsive_layout/finn_square.png
+    Kylo Ren, https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.6.3_challenge_responsive_layout/kylo_square.png
+    Poe, https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.6.3_challenge_responsive_layout/poe_square.png
+    Chewie, https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.6.3_challenge_responsive_layout/chewbacca_square.png
+    Yoda https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.6.3_challenge_responsive_layout/yoda_square.png

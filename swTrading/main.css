@@ -1,0 +1,33 @@
+body * {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: orange;
+    width: 100%;
+    position: fixed;
+}
+
+.header {
+    max-width:1000px;
+    margin: 0px auto;
+    padding: 0px 20px;
+}
+
+main {
+    padding-top:150px;
+}
+
+.card {
+    border: 1px lightgrey solid;
+    margin-bottom: 15px
+}
+
+.card h3, .card p {
+    padding-left: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
