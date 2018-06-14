@@ -1,0 +1,132 @@
+body{   
+}
+
+.nav {
+    background-color: lightgray;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+}
+
+.nav h1 {
+    position: absolute;
+    left: 20px;
+    top: -15px;
+}
+
+.nav ul{
+    position: absolute;
+    right: 20px;
+    top: -5px;
+}
+
+.nav a {
+    color: purple;
+    text-decoration: none;
+}
+
+.nav li{
+    display: inline-block;
+    padding-left: 20px;
+    
+    /* font-weight: bold; */
+    font-size: 1.4em;
+}
+
+
+main {
+    position: absolute;
+    top:50px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90vw;
+    max-width: 1000px;
+}
+
+.title-text {
+    font-weight: bold;
+}
+
+.search-interface{
+    position: relative;
+    top: -25px;
+
+}
+
+.search-input {
+    font-weight: bold;
+    font-size: 2em;
+    padding-left: 10px;
+    width: 75%;
+    min-width: 200px;
+}
+
+.search-interface button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    position: relative;
+    top: 15px
+}
+
+button img {
+    height: 55px;
+    width: auto;
+}
+
+.pages-buttons {
+    display: flex;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    width:fit-content;
+}
+
+.pages-buttons button {
+    padding: 10px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.pages-buttons .middle-button {
+    border-right: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;
+}
+
+.all-listings {
+    margin-top: 20px;
+}
+
+.listing {
+ padding-bottom:10px;
+}
+
+.listing span {
+    font-size: 1.2em;
+    padding-right: 10px;
+}
+
+.listing-date {
+    color: grey
+}
+
+.listing-position {
+    color: royalblue;
+    font-weight: bold;
+}
+
+.listing-location {
+    color: grey;
+}

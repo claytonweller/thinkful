@@ -1,0 +1,6 @@
+Reasonable but not pixel perfect implementation of the designs provided below.
+For each result item, use the same element structure and classes. In other words, you should only have to write style rules once for a search result item, and then use the same class on each individual search item. Feel free to repeat the text between search items, but try to get titles of different lengths so you can see how it impacts your layout.
+The design calls for a magnifying glass icon. Use this image file (whose URL you can copy by right-clicking and selecting "Copy Image Address"): 
+Include a page title (aka, use a <title> element) and meta description in the head.
+Put the <input> and the element with the magnifying glass in a common <form> element. We'll do a deep dive on forms later in this unit, but for now, just know you can wrap the <input> element and the element you create for the magnifying glass inside a <form>.
+Use semantic HTML throughout the page. Take special care on that magnifying glass: are <img> elements meant to be interactive? How can you make a semantic image-like button? Do some Googling!
