@@ -6,4 +6,15 @@ const isDivisable = (divisee, divisor) => {
     }
 }
 
-console.log (isDivisable(13, 4), isDivisable(15,5))
+const testIsDivisable = () =>{
+    let divisee = 13
+    let divisor = 4
+    let expected = false
+    if (isDivisable(divisee, divisor) === expected){
+      console.log('SUCCESS: `isDivisable` is working');
+    } else {
+      console.log('FAILURE: `isDivisable` is not working');
+    }
+}
+
+testIsDivisable()

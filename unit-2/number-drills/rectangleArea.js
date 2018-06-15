@@ -2,4 +2,15 @@ const computeArea = (width, height) =>{
     return width * height
 }
 
-console.log (computeArea(Math.PI, Math.E))
+const testComputeArea =() => {
+    let width = 3;
+    let height = 4;
+    let expected = 12;
+    if (computeArea(width, height) === expected) {
+      console.log('SUCCESS: `computeArea` is working');
+    } else {
+      console.log('FAILURE: `computeArea` is not working');
+    }
+}
+
+testComputeArea()
