@@ -14,3 +14,15 @@ When will I spend time practicing coding and building projects?
 
 Am I prepared to deal with unexpected demands on my time?
 	Yup
+
+
+Questions for Session 1
+-------
+
+How do you like working remotely?
+
+What what your journey to becoming a developer?
+
+How about JQuery?
+
+Angular?
