@@ -26,3 +26,10 @@ What what your journey to becoming a developer?
 How about JQuery?
 
 Angular?
+
+CSS grids?
+
+Hacker news.
+
+
+A random change!

@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  main {
+    padding: 50px 20px;
+  }
+  
+  .traffic-light-box {
+    width: 100px;
+    border: 4px solid orange;
+    border-radius: 15%;
+    padding: 7px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  
+  .traffic-light {
+    margin: 0 auto;
+    height: 80px;
+    width: 80px;
+    border: 1px black solid;
+    border-radius: 50%;
+    margin-bottom: 5px;
+  }
+  
+  .red-light {
+    border-color: red;
+  }
+  
+  .yellow-light {
+    border-color: yellow;
+  }
+  
+  .green-light {
+    border-color: green;
+  }
+  
+  .red-on {
+    background-color: red;
+  }
+  
+  .yellow-on {
+    background-color: yellow;
+  }
+  
+  .green-on {
+    background-color: green;
+  }
+  
+  .controls {
+    text-align: center;
+  }

@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+  
+main {
+    padding: 50px 20px;
+}
+  
+.error-report {
+    color: red;
+}
