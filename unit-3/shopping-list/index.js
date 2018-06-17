@@ -47,6 +47,7 @@ const addItemListen = ()=>{
         event.preventDefault()
         let item = $(this).siblings('.js-shopping-list-entry').val()
         addItem(item)
+        $('.js-shopping-list-entry').val('')
     })
 }
 
