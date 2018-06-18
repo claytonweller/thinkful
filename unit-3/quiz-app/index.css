@@ -1,0 +1,35 @@
+body * {
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0px auto;
+    border: 1px black solid;
+    max-width: 800px;
+}
+
+.tv {
+    margin: 10px auto;
+    border: 1px black solid;
+    max-width: 95%;
+    max-height: auto;
+    width: 500px;
+    height: 300px;
+
+}
+
+.interface {
+    
+    padding: 10px;
+    border: 1px black solid;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.description {
+    padding: 10px;
+    border: 1px black solid;
+    width: 100%;
+}
+
