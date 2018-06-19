@@ -25,9 +25,10 @@ body * {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-flow: column;
 }
 
-.description {
+.description, .continue-container, .answer-container {
     padding: 10px;
     border: 1px black solid;
     width: 100%;
