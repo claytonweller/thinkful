@@ -2,20 +2,14 @@ body * {
     box-sizing: border-box;
 }
 
+body {
+    background: linear-gradient(180deg, rgb(0, 0, 0), rgb(62, 0, 0)) fixed;
+}
+
 .container {
     margin: 0px auto;
     border: 1px black solid;
     max-width: 800px;
-}
-
-.tv {
-    margin: 10px auto;
-    border: 1px black solid;
-    max-width: 95%;
-    max-height: auto;
-    width: 500px;
-    height: 300px;
-
 }
 
 .interface {
@@ -28,9 +22,9 @@ body * {
     flex-flow: column;
 }
 
-.description, .continue-container, .answer-container {
+.description, .answer-container {
     padding: 10px;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     width: 100%;
 }
 

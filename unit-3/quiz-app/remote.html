@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./remote.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="remote-container">
+    <div class="remote-top-container">    
+        <div class="remote-top">
+            <div class="remote-top-left remote-piece"></div>
+            <div  class="remote-light remote-piece"></div>
+            <div class="remote-top-right remote-piece"></div>
+        </div>      
+    </div>
+    <div class="remote-middle-container"> 
+        <div class="remote-middle remote-piece">
+            <div class="remote-left remote-piece"></div>
+            <div class="remote-button-container">
+                <ul class="all-answers"> 
+                    <li class="answer-container">
+                        <label><input type="radio" class="js-possible-answer" name="possible-answer" value=${answer} id=${answer}/>HERE IS A WHOLE BUCH OF TEXT LETS SEE WHAT HAPPENS WITH IT</label>
+                    </li>
+                    <li class="answer-container selected">
+                        <label><input type="radio" class="js-possible-answer" name="possible-answer" value=${answer} id=${answer}/>${answer}</label>
+                    </li>
+                    <li class="answer-container">
+                        <label><input type="radio" class="js-possible-answer" name="possible-answer" value=${answer} id=${answer}/>${answer}</label>
+                    </li>
+                    <li class="answer-container">
+                        <label><input type="radio" class="js-possible-answer" name="possible-answer" value=${answer} id=${answer}/>${answer}</label>
+                    </li>    
+                </ul>
+                <div class="continue-container">
+                    <button type="button" class="js-submit-button submit">Submit</button>
+                </div>
+            </div>
+            <div class="remote-right remote-piece"></div>
+        </div>
+    </div>
+    <div class="remote-bot-container">
+        <div class="remote-bot remote-piece">
+            <div class="remote-bot-left remote-piece"></div>
+            <div class="remote-bot-right remote-piece"></div>
+        </div>
+    </div>
+</div>
+    
+</body>
+</html>

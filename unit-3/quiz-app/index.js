@@ -176,51 +176,99 @@ const interpretYourChoice = (input)=>{
     }
 }
 
+const remoteTemplate = (answers, button)=> {
+    return `
+    <div class="remote-container">
+        <div class="remote-top-container">    
+            <div class="remote-top">
+                <div class="remote-top-left remote-piece"></div>
+                <div  class="remote-light remote-piece"></div>
+                <div class="remote-top-right remote-piece"></div>
+            </div>      
+        </div>
+        <div class="remote-middle-container"> 
+            <div class="remote-middle remote-piece">
+                <div class="remote-left remote-piece"></div>
+                <div class="remote-button-container">
+                    <ul class="all-answers"> 
+                       ${answers} 
+                    </ul>
+                    <div class="continue-container">
+                        ${button}
+                    </div>
+                </div>
+                <div class="remote-right remote-piece"></div>
+            </div>
+        </div>
+        <div class="remote-bot-container">
+            <div class="remote-bot remote-piece">
+                <div class="remote-bot-left remote-piece"></div>
+                <div class="remote-bot-right remote-piece"></div>
+            </div>
+        </div>
+    </div>
+`    
+}
+
+const tvTemplate = (info)=>{
+    return`
+        <div class="tv-container">
+            <div class="tv">
+                <div class="screen">
+                    ${info}
+                </div>
+                
+                <img class="tv-image"   src="./images/flatscreen.png" />
+            </div>
+            <div class="mantle">
+                <img src="./images/woodMantle.png" />
+            </div>
+        </div> 
+    `
+}
+
 const displayTemplates = {
     start: function(){
         return `
-            <div class="tv">
-                EVENTUALLY SOME IMAGE/CSS WILL LIVE HERE
-            </div> 
-            <div class="interface">
-                <button type="submit" class="js-continue-button continue">Lets Find a Series!</button>
-            </div>
+            ${tvTemplate(
+                `<h1>Let me help you find a</h1>
+                    <img class="logo" src="./images/Netflix-Logo.png" />
+                <h1> Series<h1>`
+            )}
+ 
+            ${remoteTemplate('',`<button type="submit" class="js-continue-button continue">Lets Find a Series!</button>`)}
             <div class="description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
             </div>
         `
     },
     question: function(questionObj){
-        return `        
-                <div class="tv">
-                    ${questionObj.question}<br> You're on question ${STORE.currentQuestion+1} of 10 <br> ${100*STORE.claytonMatches/(STORE.currentQuestion)}% match with me!               
-                </div> 
-                <div class="interface radio">
-                    <ul class="all-answers">
-                        ${createRadioAnswerElements(questionObj.answers)}                                               
-                    </ul>
-                    <div class="continue-container">
-                        <button type="button" class="js-submit-button submit">Submit</button>
-                    </div>
+        return ` 
+                ${tvTemplate(`
+                    <div class="tv">
+                        <p>${questionObj.question}<br> You're on question ${STORE.currentQuestion+1} of 10 <br> ${100*STORE.claytonMatches/(STORE.currentQuestion)}% match with me!</p>               
+                    </div> 
+                `)}       
+
+                ${remoteTemplate(
+                    createRadioAnswerElements(questionObj.answers),
+                    `<button type="button" class="js-submit-button submit">Submit</button>`
+                )}
+
+                <div class="description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
                 </div>
-            <div class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
-            </div>
-        `
+            `
     },
     genreSelection: function(questionObj){
-        return `        
-                <div class="tv">
-                    ${questionObj.question}<br> You're on question ${STORE.currentQuestion+1} of 10              
-                </div> 
-                <div class="interface radio">
-                    <ul class="all-answers">
-                        ${createCheckBoxAnswerElements(questionObj.genres)}                                               
-                    </ul>
-                    <div class="continue-container">
-                        <button type="submit" class="js-submit-button submit">Submit</button>
-                    </div>
-                </div>
+        return ` 
+            ${tvTemplate(`
+                <p>${questionObj.question}<br> You're on question ${STORE.currentQuestion+1} of 10</p>                  
+            `)}   
+            ${remoteTemplate(
+                createCheckBoxAnswerElements(questionObj.genres),
+                `<button type="button" class="js-submit-button submit">Submit</button>`
+            )}    
             <div class="description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
             </div>
@@ -229,16 +277,19 @@ const displayTemplates = {
     feedback: function(questionObj){
         let yourChoice = interpretYourChoice(STORE.responses[questionObj.key])
         let myChoice = questionObj.clayton
+        
         return `
-            <div class="tv">
-                '${questionObj.question}'
+            ${tvTemplate(`
+                <p>'${questionObj.question}'
                 <br>You chose '${yourChoice}'
                 <br> I chose '${myChoice}'
-                <br>${compareYourselfToClayton(yourChoice, myChoice)}
-            </div> 
-            <div class="interface">
-                <button type="submit" class="js-continue-button  continue">Continue</button>
-            </div>
+                <br>${compareYourselfToClayton(yourChoice, myChoice)} </p>
+            `)}   
+
+            ${remoteTemplate(
+                '',
+                '<button type="submit" class="js-continue-button  continue">Continue</button>'
+            )}
             <div class="description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
             </div>
@@ -246,13 +297,16 @@ const displayTemplates = {
     },
     results: function (){
         return `
-        <div class="tv">
-           We found ${STORE.filteredSeries.length} series that you might like.
-           <br> Here's my top recommendation for you: ${STORE.filteredSeries[0].title}
-        </div> 
-        <div class="interface">
-            <button type="submit" class="js-more-button more">Other Matches</button> <button type="submit" class="js-more-button more">Try the whole thing again!</button>
-        </div>
+        ${tvTemplate(`
+            <p> We found ${STORE.filteredSeries.length} series that you might like.
+            <br> Here's my top recommendation for you: ${STORE.filteredSeries[0].title} </p>               
+        `)}   
+
+        ${remoteTemplate(
+            '<button type="submit" class="js-more-button more">Other Matches</button>',
+            `<button type="submit" class="js-more-button more">Try the whole thing again!</button>`
+        )}
+
         <div class="description">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
         </div>
