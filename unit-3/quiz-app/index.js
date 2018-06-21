@@ -10,7 +10,7 @@ let STORE = {
     */
     currentDisplay:'start',
 
-    // This is where I'll store the information on the users responses
+    //This is where I'll store the information on the users responses
     responses:{
         genres:[],
         critics:'',
@@ -24,19 +24,6 @@ let STORE = {
         time:"",
     },
 
-    // responses:{
-    //     genres:['action', 'comedy'],
-    //     critics:'Agree',
-    //     bigNames:'Sure',
-    //     animated:"Sure",
-    //     foreign:'Sure',
-    //     continuous:"Sure",
-    //     seasons:'Sure',
-    //     trueStory:'Sure',
-    //     derivative:'Sure',
-    //     time:"Future",
-    // },
-
     //This tracks where we are in the app
     currentQuestion:0,
 
@@ -46,14 +33,11 @@ let STORE = {
     //This is used to store the final suggestion(s) for the user.
     filteredSeries:['testSeries'],
 
-    //This is stores what series is showing on the results page
-    guessIndex:0,
-
     //This is a flag to let the app know it's reached a conclusion
-    bestGuessFound:false,
+    bestGuessFound:false
 } 
 
-///////FORMAT, TEXT, AND HTML - This is all the data that populates the app
+///////CONSTANTS - This is all the data that populates the app
 
 const questionList = [
     {
@@ -113,42 +97,42 @@ const questionList = [
     {
         key:'critics',        
         question:'How do you respond to this statement: "I tend to like what other people like" ',
-        answers:['Strongly-Agree', 'Agree', 'Disagree', 'Strongly-Disagree'],
+        answers:['Strongly-Agree', 'Agree', 'Disagree', 'Strongly-`Disagree'],
         clayton:"Disagree"
     },
 
 ]
 
-const seriesList = [
-    {img:'House.jpg',title:'House of Cards',genres:['political', 'crime', 'drama'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
-    {img:'Orange.jpg',title:'Orange is the new Black',genres:['crime', 'drama', 'lgbtq', 'comedy'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
-    {img:'marco.jpg',title:'Marco Polo',genres:['political', 'drama', 'action'], criticScore:48, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Past'},
-    {img:'sense8.jpg',title:'Sense8',genres:['drama', 'scifi', 'lgbtq'], criticScore:64, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
-    {img:'Narcos.jpg',title:'Narcos',genres:['drama', 'political', 'crime'], criticScore:77, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:true, derivative:false, time:'Past'},
-    {img:'Stranger.jpg',title:'Stranger Things',genres:['action', 'drama', 'horror'], criticScore:76, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Past'},
-    {img:'the_crown_0.jpg',title:'The Crown',genres:['political', 'drama'], criticScore:81, bigNames:true, animated:false, foreign:true, continuous:true, seasons:true, trueStory:true, derivative:false, time:'Past'},
-    {img:'OA.jpg',title:'The OA',genres:['magical', 'drama'], criticScore:61, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Contemporary'},
-    {img:'unfortunate.jpg',title:'A Series of Unfortunate Events',genres:['comedy', 'magical','family'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Timeless'},
-    {img:'mindhunter.png',title:'Mindhunter',genres:['crime', 'drama'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Past'},
-    {img:'altered.jpg',title:'Altered Carbon',genres:['crime', 'action', 'scifi'], criticScore:64, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Future'},
-    {img:'Lost.jpg',title:'Lost in Space',genres:['family', 'action', 'scifi'], criticScore:58, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Future'},
-    {img:'Dare.jpg',title:'DareDevil',genres:['action', 'drama', 'super'], criticScore:75, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
-    {img:'jessica.jpg',title:'Jessica Jones',genres:['action', 'drama', 'crime', 'super'], criticScore:81, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
-    {img:'Luke.jpg',title:'Luke Cage',genres:['action', 'drama', 'super'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Contemporary'},
-    {img:'unbreakable.jpg',title:'Unbreakable Kimmy Schmidt',genres:['magical', 'comedy'], criticScore:78, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
-    {img:'master.jpg',title:'Master of None',genres:['drama', 'comedy'], criticScore:91, bigNames:true, animated:false, foreign:false, continuous:false, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
-    {img:'babdavid.jpg',title:'W/ Bob & David',genres:['comedy'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
-    {img:'3000.jpg',title:'Mystery Science Theater 3000',genres:['scifi', 'family', 'comedy'], criticScore:70, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:true, time:'Timeless'},
-    {img:'Glow.jpg',title:'Glow',genres:['drama', 'comedy'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:true, time:'Past'},
-    {img:'bojak.jpg',title:'Bojack Horseman',genres:['drama', 'comedy'], criticScore:59, bigNames:true, animated:true, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Timeless'},
-    {img:'bigmouth.jpg',title:'Big Mouth',genres:['magical', 'comedy'], criticScore:80, bigNames:true, animated:true, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
-    {img:'voltron.jpg',title:'Voltron: Legendary Defender',genres:['scifi', 'family', 'magical', 'action'], criticScore:75, bigNames:false, animated:true, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Future'},
-    {img:'3.jpg',title:'3%',genres:['drama', 'action', 'scifi'], criticScore:60, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Future'},
-    {img:'therain.jpg',title:"The Rain",genres:['drama', 'action', 'scifi'], criticScore:65, bigNames:false, animated:false, foreign:true, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Future'},
-    {img:'chefstable.jpg',title:"Chef's Table",genres:['documentary', 'art'], criticScore:85, bigNames:false, animated:false, foreign:true, continuous:false, seasons:true, trueStory:true, derivative:false, time:'Contemporary'},
-    {img:'evil.jpg',title:'Evil Genius',genres:['horror', 'crime', 'documentary'], criticScore:71, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Contemporary'},
-    {img:'queer.jpg',title:'Queer Eye',genres:['documentary', 'art', 'lgbtq'], criticScore:73, bigNames:false, animated:false, foreign:false, continuous:false, seasons:true, trueStory:true, derivative:false, time:'Contemporary'},
-    {img:'blackmirror.jpg',title:'Black Mirror',genres:['scifi', 'political', 'action', 'horror'], criticScore:97, bigNames:false, animated:false, foreign:true, continuous:false, seasons:true, trueStory:false, derivative:false, time:'Timeless'},
+seriesList = [
+    {title:'House of Cards',genres:['political', 'crime', 'drama'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
+    {title:'Orange is the new Black',genres:['crime', 'drama', 'lgbtq', 'comedy'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
+    {title:'Marco Polo',genres:['political', 'drama', 'action'], criticScore:48, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Past'},
+    {title:'Sense8',genres:['drama', 'scifi', 'lgbtq'], criticScore:64, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
+    {title:'Narcos',genres:['drama', 'political', 'crime'], criticScore:77, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:true, derivative:false, time:'Past'},
+    {title:'Stranger Things',genres:['action', 'drama', 'horror'], criticScore:76, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Past'},
+    {title:'The Crown',genres:['political', 'drama'], criticScore:81, bigNames:true, animated:false, foreign:true, continuous:true, seasons:true, trueStory:true, derivative:false, time:'Past'},
+    {title:'The OA',genres:['magical', 'drama'], criticScore:61, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Contemporary'},
+    {title:'A Series of Unfortunate Events',genres:['comedy', 'magical','family'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Timeless'},
+    {title:'Mindhunter',genres:['crime', 'drama'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Past'},
+    {title:'Altered Carbon',genres:['crime', 'action', 'scifi'], criticScore:64, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Future'},
+    {title:'Lost in Space',genres:['family', 'action', 'scifi'], criticScore:58, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Future'},
+    {title:'DareDevil',genres:['action', 'drama', 'super'], criticScore:75, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
+    {title:'Jessica Jones',genres:['action', 'drama', 'crime', 'super'], criticScore:81, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
+    {title:'Luke Cage',genres:['action', 'drama', 'super'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Contemporary'},
+    {title:'Unbreakable Kimmy Schmidt',genres:['magical', 'comedy'], criticScore:78, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
+    {title:'Master of None',genres:['drama', 'comedy'], criticScore:91, bigNames:true, animated:false, foreign:false, continuous:false, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
+    {title:'W/ Bob & David',genres:['comedy'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
+    {title:'Mystery Science Theater 3000',genres:['scifi', 'family', 'comedy'], criticScore:70, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:true, time:'Timeless'},
+    {title:'Glow',genres:['drama', 'comedy'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:true, time:'Past'},
+    {title:'Bojack Horseman',genres:['drama', 'comedy'], criticScore:59, bigNames:true, animated:true, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Timeless'},
+    {title:'Big Mouth',genres:['magical', 'comedy'], criticScore:80, bigNames:true, animated:true, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
+    {title:'Voltron: Legendary Defender',genres:['scifi', 'family', 'magical', 'action'], criticScore:75, bigNames:false, animated:true, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Future'},
+    {title:'3%',genres:['drama', 'action', 'scifi'], criticScore:60, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Future'},
+    {title:"The Rain",genres:['drama', 'action', 'scifi'], criticScore:65, bigNames:false, animated:false, foreign:true, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Future'},
+    {title:"Chef's Table",genres:['documentary', 'art'], criticScore:85, bigNames:false, animated:false, foreign:true, continuous:false, seasons:true, trueStory:true, derivative:false, time:'Contemporary'},
+    {title:'Evil Genius',genres:['horror', 'crime', 'documentary'], criticScore:71, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Contemporary'},
+    {title:'Queer Eye',genres:['documentary', 'art', 'lgbtq'], criticScore:73, bigNames:false, animated:false, foreign:false, continuous:false, seasons:true, trueStory:true, derivative:false, time:'Contemporary'},
+    {title:'Black Mirror',genres:['scifi', 'political', 'action', 'horror'], criticScore:97, bigNames:false, animated:false, foreign:true, continuous:false, seasons:true, trueStory:false, derivative:false, time:'Timeless'},
 ]
 
 const createRadioAnswerElements = (answerArray)=>{
@@ -172,28 +156,13 @@ const createCheckBoxAnswerElements = (genreArray)=>{
     return htmlString
 }
 
-function weShareAtLeast1Genre (yourArray, myArray) {
-    let thereIsAMatch = false;
-    console.log(yourArray, myArray)
-    if(Array.isArray(yourArray)){
-        yourArray.forEach(genre =>{
-            if(myArray.includes(genre)){
-                thereIsAMatch = true
-            }
-        })
-    }
-    return thereIsAMatch
-}
-
 const compareYourselfToClayton = (yourChoice, myChoice)=>{
+
     let responseText = ''
     if(yourChoice === myChoice){
         responseText = `We picked the same thing. COOL!`
         STORE.claytonMatches++
-    } else if(weShareAtLeast1Genre(yourChoice, myChoice)){
-        responseText = `We share at least 1 genre pick in common! NICE!`
-        STORE.claytonMatches++
-    }else {
+    } else {
         responseText = `We picked different things... And that's totally fine!`
     }
     return `${responseText} <br>We are currently ${100*STORE.claytonMatches/(STORE.currentQuestion+1)}% synced up.`
@@ -207,145 +176,87 @@ const interpretYourChoice = (input)=>{
     }
 }
 
-const remoteTemplate = (answers, button)=> {
-    return `
-    <div class="remote-container">
-        <div class="remote-top-container">    
-            <div class="remote-top">
-                <div class="remote-top-left remote-piece"></div>
-                <div  class="remote-light remote-piece"></div>
-                <div class="remote-top-right remote-piece"></div>
-            </div>      
-        </div>
-        <div class="remote-middle-container"> 
-            <div class="remote-middle remote-piece">
-                <div class="remote-left remote-piece"></div>
-                <div class="remote-button-container">
-                    <ul class="all-answers"> 
-                       ${answers} 
-                    </ul>
-                    <div class="continue-container">
-                        ${button}
-                    </div>
-                </div>
-                <div class="remote-right remote-piece"></div>
-            </div>
-        </div>
-        <div class="remote-bot-container">
-            <div class="remote-bot remote-piece">
-                <div class="remote-bot-left remote-piece"></div>
-                <div class="remote-bot-right remote-piece"></div>
-            </div>
-        </div>
-    </div>
-    `    
-}
-
-const tvTemplate = (info)=>{
-    return`
-        <div class="tv-container">
-            <div class="tv">
-                <div class="screen">
-                    ${info}
-                </div>
-                <img class="tv-image"   src="./images/flatscreen.png" />
-            </div>
-            <div class="mantle">
-                <img src="./images/woodMantle.png" />
-            </div>
-        </div> 
-    `
-}
-
 const displayTemplates = {
     start: function(){
         return `
-            ${tvTemplate(
-                `<h1>Let me help you find a</h1>
-                    <img class="logo" src="./images/Netflix-Logo.png" />
-                <h1> Series</h1>`
-            )}
-            <div class="description">
-                <p>Hi! I'm clayton Weller, and I've watched a BUNCH of Netflix series... like way too many... 29. And those are just the series produced by netflix themselves. They're great! But there are too many of them to suggest easily. So this app will do 2 things. <br><b>1. Help you find a netflix Series</b> I've watched all of the ones in the app and they're definitely enjoyable. <br><b>2. You can compare your answers to my own! </b> That way if you like the thing you saw you can know if I'm a person to ask about NetFlix series. </p>
+            <div class="tv">
+                EVENTUALLY SOME IMAGE/CSS WILL LIVE HERE
+            </div> 
+            <div class="interface">
+                <button type="submit" class="js-continue-button continue">Lets Find a Series!</button>
             </div>
- 
-            ${remoteTemplate('',`<button type="submit" class="js-continue-button continue">Lets Find a Series!</button>`)}
-
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
+            </div>
         `
     },
     question: function(questionObj){
-        return ` 
-                ${tvTemplate(`
-                        <h1 class="emphasized" >${questionObj.question}</h1>
-                        <p>You're on question ${STORE.currentQuestion+1} of 10 <br> ${100*STORE.claytonMatches/(STORE.currentQuestion)}% match with me!</p>               
-                `)}       
-
-                ${remoteTemplate(
-                    createRadioAnswerElements(questionObj.answers),
-
-                    `<button type="button" class="js-submit-button submit">Submit</button>`
-                )}
-            `
+        return `        
+                <div class="tv">
+                    ${questionObj.question}<br> You're on question ${STORE.currentQuestion+1} of 10 <br> ${100*STORE.claytonMatches/(STORE.currentQuestion)}% match with me!               
+                </div> 
+                <div class="interface radio">
+                    <ul class="all-answers">
+                        ${createRadioAnswerElements(questionObj.answers)}                                               
+                    </ul>
+                    <div class="continue-container">
+                        <button type="button" class="js-submit-button submit">Submit</button>
+                    </div>
+                </div>
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
+            </div>
+        `
     },
     genreSelection: function(questionObj){
-        return ` 
-            ${tvTemplate(`
-                <h1 class="emphasized">${questionObj.question}</h1>
-                <p>You're on question ${STORE.currentQuestion+1} of 10</p>                  
-            `)}   
-            ${remoteTemplate(
-                createCheckBoxAnswerElements(questionObj.genres),
-                `<button type="button" class="js-submit-button submit">Submit</button>`
-            )}    
+        return `        
+                <div class="tv">
+                    ${questionObj.question}<br> You're on question ${STORE.currentQuestion+1} of 10              
+                </div> 
+                <div class="interface radio">
+                    <ul class="all-answers">
+                        ${createCheckBoxAnswerElements(questionObj.genres)}                                               
+                    </ul>
+                    <div class="continue-container">
+                        <button type="submit" class="js-submit-button submit">Submit</button>
+                    </div>
+                </div>
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
+            </div>
         `
     },
     feedback: function(questionObj){
-
         let yourChoice = interpretYourChoice(STORE.responses[questionObj.key])
-
         let myChoice = questionObj.clayton
-        if (Array.isArray(yourChoice)){
-            yourChoice = yourChoice.map(item => ' '+ item)
-            myChoice = myChoice.map(item => ' '+item)
-        }
-        
         return `
-            ${tvTemplate(`
-                <h1 class="emphasized">'${questionObj.question}' </h1>
-                <p>You chose <b class="emphasized">'${yourChoice}'</b>
-                <br>I chose <b>'${myChoice}'</b>
-                <br>${compareYourselfToClayton(yourChoice, myChoice)} </p>
-            `)}   
-
-            ${remoteTemplate(
-                '',
-                '<button type="submit" class="js-continue-button  continue">Continue</button>'
-            )}
+            <div class="tv">
+                '${questionObj.question}'
+                <br>You chose '${yourChoice}'
+                <br> I chose '${myChoice}'
+                <br>${compareYourselfToClayton(yourChoice, myChoice)}
+            </div> 
+            <div class="interface">
+                <button type="submit" class="js-continue-button  continue">Continue</button>
+            </div>
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
+            </div>
         `
     },
     results: function (){
         return `
-            ${tvTemplate(`
-                <div class='result-container'>
-                    <div class="result-image">
-                            <img src="./images/${STORE.filteredSeries[STORE.guessIndex].img}" />
-                    </div>    
-                    <div class="result-text">
-                        <div><p> Here's my top recommendation for you:</p>
-                        <h3 class="emphasized"> <b>${STORE.filteredSeries[STORE.guessIndex].title}</b></h3> 
-                        </div>       
-                        <div><p> We also found ${STORE.filteredSeries.length - 1} other series that you might like.</p></div>
-                        <hr>
-                        <p>In the end you and I (Clayton Weller) matched with ${100 * STORE.claytonMatches/10}%
-                    </div>
-                </div>
-            `)}   
-
-            ${remoteTemplate(
-                '<button type="submit" class="js-more-button more">Other Matches</button>',
-                `<button type="submit" class="js-reset-button reset">Try the whole thing again!</button>`
-            )}
-        `
+        <div class="tv">
+           We found ${STORE.filteredSeries.length} series that you might like.
+           <br> Here's my top recommendation for you: ${STORE.filteredSeries[0].title}
+        </div> 
+        <div class="interface">
+            <button type="submit" class="js-more-button more">Other Matches</button> <button type="submit" class="js-more-button more">Try the whole thing again!</button>
+        </div>
+        <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
+        </div>
+    `
     }
 
 }
@@ -451,7 +362,10 @@ const findBestGuessSeries = () =>{
 
 /////////////INTERACTION - Everything below here is about clicking on stuff
 
-const determineNextContinueStep = ()=>{
+const continueClick = () =>{
+    //this will move from a transition page ('start' or 'feedback') to the next question page, or if we're at the final question it'll go to the 'results page'
+    console.log('continue click')
+    
     if(STORE.currentDisplay === 'start'){
         STORE.currentDisplay = 'genreSelection'
     } else if (STORE.currentQuestion === questionList.length-1){
@@ -461,24 +375,8 @@ const determineNextContinueStep = ()=>{
         STORE.currentDisplay = 'question' 
         STORE.currentQuestion++
     }
-}
-
-const currentStepIsComplete = ()=>{
-
-
-    if (STORE.currentDisplay === 'genreSelection' && STORE.responses.genres.length === 0){
-        return false
-    } else if (STORE.currentDisplay === 'question' && STORE.responses[questionList[STORE.currentQuestion].key] === ''){
-        return false
-    } else {
-        return true
-    }
-}
-
-const continueClick = () =>{
-    //this will move from a transition page ('start' or 'feedback') to the next question page, or if we're at the final question it'll go to the 'results page'
-        determineNextContinueStep()
-        renderQuizApp()    
+    
+    renderQuizApp()
 }
 
 const listenForContinueClick = ()=>{
@@ -497,31 +395,26 @@ const checkClick = (input) =>{
     
     if(!userGenres.includes(input.value)){
         userGenres.push(input.value)
-        $(input).parents('.genre-container').addClass('selected')
     }else {
         let index = userGenres.indexOf(input.value)
         userGenres.splice(index,1)
-        $(input).parents('.genre-container').removeClass('selected')
     }
-    console.log(input)
 }
 
 const listenForCheckClick = ()=>{
     $('#js-netflix-form').on('click', '.js-genre-option', function(event){
         // event.preventDefault()
         checkClick(this)
-        
     })
     console.log('listenForCheckClick')
+    
 }
 
 const radioClick = (input) =>{
     // will toggle selected radio on and all the others off, and update the
-    $(input).parents('.all-answers').children('.answer-container').removeClass('selected')
-    $(input).parents('.answer-container').addClass('selected')
+    
     STORE.responses[questionList[STORE.currentQuestion].key] = input.value
     console.log(STORE.responses[questionList[STORE.currentQuestion].key])
-
 }
 
 const listenForRadioClick = ()=>{
@@ -530,18 +423,14 @@ const listenForRadioClick = ()=>{
         // event.preventDefault()
         radioClick(this)
     })
+
 }
 
 const submitClick = ()=>{
     //will go from a question page to a transition page, increment the 'currentQuestion' then renders
-    console.log('submitClick', currentStepIsComplete())
-    
-    if(currentStepIsComplete()){
-        STORE.currentDisplay = 'feedback'
-        renderQuizApp()
-    } else {
-        console.log('not ready!')
-    }   
+    console.log('submitClick')
+    STORE.currentDisplay = 'feedback'
+    renderQuizApp()
 }
 
 const listenForSubmitClick = ()=>{
@@ -554,28 +443,22 @@ const listenForSubmitClick = ()=>{
 
 const moreClick = () =>{
     //on the 'results' page only. It will only exist if there are more than one match in the series list after filtering.
-    if(STORE.guessIndex < STORE.filteredSeries.length-1){
-        STORE.guessIndex++;
-    } else {
-        STORE.guessIndex = 0
-    }
-
-    renderQuizApp()
 }
 
 const listenForMoreClick = () =>{
-    $('#js-netflix-form').on('click', '.js-more-button', function(event){
-       event.preventDefault();
-       moreClick()
-    })
-    
     console.log('listenForMoreClick')
-    
+    moreClick()
+}
+
+const resetClick = () =>{
+    //resets the state and returns the user to 'start' display
+    //resetSTORE()
+    console.log('reset click')
 }
 
 const listenForResetClick = () =>{
     $('#js-netflix-form').on('click', '.js-reset-button', function(event){
-
+        resetClick()
     })
     console.log('listenForsResetClick')
 }
