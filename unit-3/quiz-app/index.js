@@ -10,7 +10,7 @@ let STORE = {
     */
     currentDisplay:'start',
 
-    //This is where I'll store the information on the users responses
+    // This is where I'll store the information on the users responses
     responses:{
         genres:[],
         critics:'',
@@ -23,6 +23,19 @@ let STORE = {
         derivative:'',
         time:"",
     },
+
+    // responses:{
+    //     genres:['action', 'comedy'],
+    //     critics:'Agree',
+    //     bigNames:'Sure',
+    //     animated:"Sure",
+    //     foreign:'Sure',
+    //     continuous:"Sure",
+    //     seasons:'Sure',
+    //     trueStory:'Sure',
+    //     derivative:'Sure',
+    //     time:"Future",
+    // },
 
     //This tracks where we are in the app
     currentQuestion:0,
@@ -40,7 +53,7 @@ let STORE = {
     bestGuessFound:false,
 } 
 
-///////CONSTANTS - This is all the data that populates the app
+///////FORMAT, TEXT, AND HTML - This is all the data that populates the app
 
 const questionList = [
     {
@@ -159,13 +172,28 @@ const createCheckBoxAnswerElements = (genreArray)=>{
     return htmlString
 }
 
-const compareYourselfToClayton = (yourChoice, myChoice)=>{
+function weShareAtLeast1Genre (yourArray, myArray) {
+    let thereIsAMatch = false;
+    console.log(yourArray, myArray)
+    if(Array.isArray(yourArray)){
+        yourArray.forEach(genre =>{
+            if(myArray.includes(genre)){
+                thereIsAMatch = true
+            }
+        })
+    }
+    return thereIsAMatch
+}
 
+const compareYourselfToClayton = (yourChoice, myChoice)=>{
     let responseText = ''
     if(yourChoice === myChoice){
         responseText = `We picked the same thing. COOL!`
         STORE.claytonMatches++
-    } else {
+    } else if(weShareAtLeast1Genre(yourChoice, myChoice)){
+        responseText = `We share at least 1 genre pick in common! NICE!`
+        STORE.claytonMatches++
+    }else {
         responseText = `We picked different things... And that's totally fine!`
     }
     return `${responseText} <br>We are currently ${100*STORE.claytonMatches/(STORE.currentQuestion+1)}% synced up.`
@@ -237,53 +265,54 @@ const displayTemplates = {
                     <img class="logo" src="./images/Netflix-Logo.png" />
                 <h1> Series</h1>`
             )}
+            <div class="description">
+                <p>Hi! I'm clayton Weller, and I've watched a BUNCH of Netflix series... like way too many... 29. And those are just the series produced by netflix themselves. They're great! But there are too many of them to suggest easily. So this app will do 2 things. <br><b>1. Help you find a netflix Series</b> I've watched all of the ones in the app and they're definitely enjoyable. <br><b>2. You can compare your answers to my own! </b> That way if you like the thing you saw you can know if I'm a person to ask about NetFlix series. </p>
+            </div>
  
             ${remoteTemplate('',`<button type="submit" class="js-continue-button continue">Lets Find a Series!</button>`)}
-            <div class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
-            </div>
+
         `
     },
     question: function(questionObj){
         return ` 
                 ${tvTemplate(`
-                        <h1>${questionObj.question}</h1>
+                        <h1 class="emphasized" >${questionObj.question}</h1>
                         <p>You're on question ${STORE.currentQuestion+1} of 10 <br> ${100*STORE.claytonMatches/(STORE.currentQuestion)}% match with me!</p>               
                 `)}       
 
                 ${remoteTemplate(
                     createRadioAnswerElements(questionObj.answers),
+
                     `<button type="button" class="js-submit-button submit">Submit</button>`
                 )}
-
-                <div class="description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
-                </div>
             `
     },
     genreSelection: function(questionObj){
         return ` 
             ${tvTemplate(`
-                <h1>${questionObj.question}</h1>
+                <h1 class="emphasized">${questionObj.question}</h1>
                 <p>You're on question ${STORE.currentQuestion+1} of 10</p>                  
             `)}   
             ${remoteTemplate(
                 createCheckBoxAnswerElements(questionObj.genres),
                 `<button type="button" class="js-submit-button submit">Submit</button>`
             )}    
-            <div class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
-            </div>
         `
     },
     feedback: function(questionObj){
+
         let yourChoice = interpretYourChoice(STORE.responses[questionObj.key])
+
         let myChoice = questionObj.clayton
+        if (Array.isArray(yourChoice)){
+            yourChoice = yourChoice.map(item => ' '+ item)
+            myChoice = myChoice.map(item => ' '+item)
+        }
         
         return `
             ${tvTemplate(`
-                <h1>'${questionObj.question}' </h1>
-                <p>You chose <b>'${yourChoice}'</b>
+                <h1 class="emphasized">'${questionObj.question}' </h1>
+                <p>You chose <b class="emphasized">'${yourChoice}'</b>
                 <br>I chose <b>'${myChoice}'</b>
                 <br>${compareYourselfToClayton(yourChoice, myChoice)} </p>
             `)}   
@@ -292,38 +321,31 @@ const displayTemplates = {
                 '',
                 '<button type="submit" class="js-continue-button  continue">Continue</button>'
             )}
-            <div class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
-            </div>
         `
     },
     results: function (){
         return `
-        ${tvTemplate(`
-            <div class='result-container'>
-                <div class="result-image">
-                        <img src="./images/${STORE.filteredSeries[STORE.guessIndex].img}" />
-                </div>    
-                <div class="reult-text">
-                    <div><p> Here's my top recommendation for you:</p>
-                    <h3> <b>${STORE.filteredSeries[STORE.guessIndex].title}</b></h3> 
-                    </div>       
-                    <div><p> We also found ${STORE.filteredSeries.length - 1} other series that you might like.</p></div>
-                    <hr>
-                    <p>In the end you and I (Clayton Weller) matched with ${100 * STORE.claytonMatches/10}%
+            ${tvTemplate(`
+                <div class='result-container'>
+                    <div class="result-image">
+                            <img src="./images/${STORE.filteredSeries[STORE.guessIndex].img}" />
+                    </div>    
+                    <div class="result-text">
+                        <div><p> Here's my top recommendation for you:</p>
+                        <h3 class="emphasized"> <b>${STORE.filteredSeries[STORE.guessIndex].title}</b></h3> 
+                        </div>       
+                        <div><p> We also found ${STORE.filteredSeries.length - 1} other series that you might like.</p></div>
+                        <hr>
+                        <p>In the end you and I (Clayton Weller) matched with ${100 * STORE.claytonMatches/10}%
+                    </div>
                 </div>
-            </div>
-        `)}   
+            `)}   
 
-        ${remoteTemplate(
-            '<button type="submit" class="js-more-button more">Other Matches</button>',
-            `<button type="submit" class="js-reset-button reset">Try the whole thing again!</button>`
-        )}
-
-        <div class="description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa deserunt, tenetur eum velit aliquid sit consectetur commodi debitis atque at nulla quam aut dolor architecto molestiae ut adipisci assumenda?
-        </div>
-    `
+            ${remoteTemplate(
+                '<button type="submit" class="js-more-button more">Other Matches</button>',
+                `<button type="submit" class="js-reset-button reset">Try the whole thing again!</button>`
+            )}
+        `
     }
 
 }
@@ -429,10 +451,7 @@ const findBestGuessSeries = () =>{
 
 /////////////INTERACTION - Everything below here is about clicking on stuff
 
-const continueClick = () =>{
-    //this will move from a transition page ('start' or 'feedback') to the next question page, or if we're at the final question it'll go to the 'results page'
-    console.log('continue click')
-    
+const determineNextContinueStep = ()=>{
     if(STORE.currentDisplay === 'start'){
         STORE.currentDisplay = 'genreSelection'
     } else if (STORE.currentQuestion === questionList.length-1){
@@ -442,13 +461,29 @@ const continueClick = () =>{
         STORE.currentDisplay = 'question' 
         STORE.currentQuestion++
     }
-    
-    renderQuizApp()
+}
+
+const currentStepIsComplete = ()=>{
+
+
+    if (STORE.currentDisplay === 'genreSelection' && STORE.responses.genres.length === 0){
+        return false
+    } else if (STORE.currentDisplay === 'question' && STORE.responses[questionList[STORE.currentQuestion].key] === ''){
+        return false
+    } else {
+        return true
+    }
+}
+
+const continueClick = () =>{
+    //this will move from a transition page ('start' or 'feedback') to the next question page, or if we're at the final question it'll go to the 'results page'
+        determineNextContinueStep()
+        renderQuizApp()    
 }
 
 const listenForContinueClick = ()=>{
     console.log('listenForContinueClick')
-    //listens for clicks on any of the continue buttons, which happen on 'start' and 'feedback'
+    //listens for clicks on any of the continue buttons
     $('#js-netflix-form').on('click', '.js-continue-button', function(event){
         event.preventDefault()
         continueClick();
@@ -478,7 +513,6 @@ const listenForCheckClick = ()=>{
         
     })
     console.log('listenForCheckClick')
-    
 }
 
 const radioClick = (input) =>{
@@ -496,14 +530,18 @@ const listenForRadioClick = ()=>{
         // event.preventDefault()
         radioClick(this)
     })
-
 }
 
 const submitClick = ()=>{
     //will go from a question page to a transition page, increment the 'currentQuestion' then renders
-    console.log('submitClick')
-    STORE.currentDisplay = 'feedback'
-    renderQuizApp()
+    console.log('submitClick', currentStepIsComplete())
+    
+    if(currentStepIsComplete()){
+        STORE.currentDisplay = 'feedback'
+        renderQuizApp()
+    } else {
+        console.log('not ready!')
+    }   
 }
 
 const listenForSubmitClick = ()=>{
@@ -536,7 +574,6 @@ const listenForMoreClick = () =>{
 }
 
 const listenForResetClick = () =>{
-    //this uses the normal HTML behavior of a submit button to reload the page
     $('#js-netflix-form').on('click', '.js-reset-button', function(event){
 
     })

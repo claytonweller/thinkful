@@ -30,6 +30,10 @@
     justify-content: center;
 }
 
+.screen p {
+    margin: 0px 25px;
+}
+
 .logo{
     max-width: 80%;
     max-height: 80%;
@@ -37,26 +41,37 @@
     /* margin: 0 auto; */
 }
 
-.screen * {
+.screen {
     color: white;
+
 }
 
 .screen h1 {
     max-width: 90%;
     font-size: 6vw;
+    text-align: center;
+}
+
+.emphasized {
+    color:#e50913;
 }
 
 .screen p {
     font-size: 3vw;
 }
 
-.result-image, .result-text {
+.result-image{
     margin: 5px;
+}
+
+.result-text{
+    margin-top: 20px
 }
 
 .result-container{
     display: flex;
     width: 90%;
+    /* align-items: center; */
 }
 
 .result-image img {
@@ -69,14 +84,14 @@
 }
 
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 500px) {
     .screen h1 {
         max-width: 90%;
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     .screen p {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     .result-image img {
