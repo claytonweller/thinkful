@@ -6,26 +6,22 @@ body {
     background: linear-gradient(180deg, rgb(0, 0, 0), rgb(62, 0, 0)) fixed;
 }
 
-/* .container {
-    margin: 0px auto;
-    border: 1px black solid;
-    max-width: 500px;
-    min-width: 300px;
-} */
+.container{
+    margin: 0px 0px;
+    max-width: 100%;
+}
 
-/* .interface {
-    
-    padding: 10px;
-    border: 1px black solid;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-} */
-
-.description, .answer-container {
+.description {
     padding: 10px;
     /* border: 1px black solid; */
     width: 100%;
+}
+
+@media only screen and (min-width: 640px) {
+    .container {
+        margin: 0px auto;
+        max-width: 640px;
+        min-width: 300px;
+    }
 }
 

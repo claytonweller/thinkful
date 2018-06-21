@@ -33,8 +33,11 @@ let STORE = {
     //This is used to store the final suggestion(s) for the user.
     filteredSeries:['testSeries'],
 
+    //This is stores what series is showing on the results page
+    guessIndex:0,
+
     //This is a flag to let the app know it's reached a conclusion
-    bestGuessFound:false
+    bestGuessFound:false,
 } 
 
 ///////CONSTANTS - This is all the data that populates the app
@@ -97,42 +100,42 @@ const questionList = [
     {
         key:'critics',        
         question:'How do you respond to this statement: "I tend to like what other people like" ',
-        answers:['Strongly-Agree', 'Agree', 'Disagree', 'Strongly-`Disagree'],
+        answers:['Strongly-Agree', 'Agree', 'Disagree', 'Strongly-Disagree'],
         clayton:"Disagree"
     },
 
 ]
 
-seriesList = [
-    {title:'House of Cards',genres:['political', 'crime', 'drama'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
-    {title:'Orange is the new Black',genres:['crime', 'drama', 'lgbtq', 'comedy'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
-    {title:'Marco Polo',genres:['political', 'drama', 'action'], criticScore:48, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Past'},
-    {title:'Sense8',genres:['drama', 'scifi', 'lgbtq'], criticScore:64, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
-    {title:'Narcos',genres:['drama', 'political', 'crime'], criticScore:77, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:true, derivative:false, time:'Past'},
-    {title:'Stranger Things',genres:['action', 'drama', 'horror'], criticScore:76, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Past'},
-    {title:'The Crown',genres:['political', 'drama'], criticScore:81, bigNames:true, animated:false, foreign:true, continuous:true, seasons:true, trueStory:true, derivative:false, time:'Past'},
-    {title:'The OA',genres:['magical', 'drama'], criticScore:61, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Contemporary'},
-    {title:'A Series of Unfortunate Events',genres:['comedy', 'magical','family'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Timeless'},
-    {title:'Mindhunter',genres:['crime', 'drama'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Past'},
-    {title:'Altered Carbon',genres:['crime', 'action', 'scifi'], criticScore:64, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Future'},
-    {title:'Lost in Space',genres:['family', 'action', 'scifi'], criticScore:58, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Future'},
-    {title:'DareDevil',genres:['action', 'drama', 'super'], criticScore:75, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
-    {title:'Jessica Jones',genres:['action', 'drama', 'crime', 'super'], criticScore:81, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
-    {title:'Luke Cage',genres:['action', 'drama', 'super'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Contemporary'},
-    {title:'Unbreakable Kimmy Schmidt',genres:['magical', 'comedy'], criticScore:78, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
-    {title:'Master of None',genres:['drama', 'comedy'], criticScore:91, bigNames:true, animated:false, foreign:false, continuous:false, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
-    {title:'W/ Bob & David',genres:['comedy'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
-    {title:'Mystery Science Theater 3000',genres:['scifi', 'family', 'comedy'], criticScore:70, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:true, time:'Timeless'},
-    {title:'Glow',genres:['drama', 'comedy'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:true, time:'Past'},
-    {title:'Bojack Horseman',genres:['drama', 'comedy'], criticScore:59, bigNames:true, animated:true, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Timeless'},
-    {title:'Big Mouth',genres:['magical', 'comedy'], criticScore:80, bigNames:true, animated:true, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
-    {title:'Voltron: Legendary Defender',genres:['scifi', 'family', 'magical', 'action'], criticScore:75, bigNames:false, animated:true, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Future'},
-    {title:'3%',genres:['drama', 'action', 'scifi'], criticScore:60, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Future'},
-    {title:"The Rain",genres:['drama', 'action', 'scifi'], criticScore:65, bigNames:false, animated:false, foreign:true, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Future'},
-    {title:"Chef's Table",genres:['documentary', 'art'], criticScore:85, bigNames:false, animated:false, foreign:true, continuous:false, seasons:true, trueStory:true, derivative:false, time:'Contemporary'},
-    {title:'Evil Genius',genres:['horror', 'crime', 'documentary'], criticScore:71, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Contemporary'},
-    {title:'Queer Eye',genres:['documentary', 'art', 'lgbtq'], criticScore:73, bigNames:false, animated:false, foreign:false, continuous:false, seasons:true, trueStory:true, derivative:false, time:'Contemporary'},
-    {title:'Black Mirror',genres:['scifi', 'political', 'action', 'horror'], criticScore:97, bigNames:false, animated:false, foreign:true, continuous:false, seasons:true, trueStory:false, derivative:false, time:'Timeless'},
+const seriesList = [
+    {img:'House.jpg',title:'House of Cards',genres:['political', 'crime', 'drama'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
+    {img:'Orange.jpg',title:'Orange is the new Black',genres:['crime', 'drama', 'lgbtq', 'comedy'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
+    {img:'marco.jpg',title:'Marco Polo',genres:['political', 'drama', 'action'], criticScore:48, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Past'},
+    {img:'sense8.jpg',title:'Sense8',genres:['drama', 'scifi', 'lgbtq'], criticScore:64, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
+    {img:'Narcos.jpg',title:'Narcos',genres:['drama', 'political', 'crime'], criticScore:77, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:true, derivative:false, time:'Past'},
+    {img:'Stranger.jpg',title:'Stranger Things',genres:['action', 'drama', 'horror'], criticScore:76, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Past'},
+    {img:'the_crown_0.jpg',title:'The Crown',genres:['political', 'drama'], criticScore:81, bigNames:true, animated:false, foreign:true, continuous:true, seasons:true, trueStory:true, derivative:false, time:'Past'},
+    {img:'OA.jpg',title:'The OA',genres:['magical', 'drama'], criticScore:61, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Contemporary'},
+    {img:'unfortunate.jpg',title:'A Series of Unfortunate Events',genres:['comedy', 'magical','family'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Timeless'},
+    {img:'mindhunter.jpg',title:'Mindhunter',genres:['crime', 'drama'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Past'},
+    {img:'altered.jpg',title:'Altered Carbon',genres:['crime', 'action', 'scifi'], criticScore:64, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Future'},
+    {img:'Lost.jpg',title:'Lost in Space',genres:['family', 'action', 'scifi'], criticScore:58, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Future'},
+    {img:'Dare.jpg',title:'DareDevil',genres:['action', 'drama', 'super'], criticScore:75, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
+    {img:'jessica.jpg',title:'Jessica Jones',genres:['action', 'drama', 'crime', 'super'], criticScore:81, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
+    {img:'Luke.jpg',title:'Luke Cage',genres:['action', 'drama', 'super'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Contemporary'},
+    {img:'unbreakable.jpg',title:'Unbreakable Kimmy Schmidt',genres:['magical', 'comedy'], criticScore:78, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
+    {img:'master.jpg',title:'Master of None',genres:['drama', 'comedy'], criticScore:91, bigNames:true, animated:false, foreign:false, continuous:false, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
+    {img:'babdavid.jpg',title:'W/ Bob & David',genres:['comedy'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
+    {img:'3000.jpg',title:'Mystery Science Theater 3000',genres:['scifi', 'family', 'comedy'], criticScore:70, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:true, time:'Timeless'},
+    {img:'Glow.jpg',title:'Glow',genres:['drama', 'comedy'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:true, time:'Past'},
+    {img:'bojak.jpg',title:'Bojack Horseman',genres:['drama', 'comedy'], criticScore:59, bigNames:true, animated:true, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Timeless'},
+    {img:'bigmouth.jpg',title:'Big Mouth',genres:['magical', 'comedy'], criticScore:80, bigNames:true, animated:true, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
+    {img:'voltron.jpg',title:'Voltron: Legendary Defender',genres:['scifi', 'family', 'magical', 'action'], criticScore:75, bigNames:false, animated:true, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Future'},
+    {img:'3.jpg',title:'3%',genres:['drama', 'action', 'scifi'], criticScore:60, bigNames:false, animated:false, foreign:true, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Future'},
+    {img:'therain.jpg',title:"The Rain",genres:['drama', 'action', 'scifi'], criticScore:65, bigNames:false, animated:false, foreign:true, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Future'},
+    {img:'chefstable.jpg',title:"Chef's Table",genres:['documentary', 'art'], criticScore:85, bigNames:false, animated:false, foreign:true, continuous:false, seasons:true, trueStory:true, derivative:false, time:'Contemporary'},
+    {img:'evil.jpg',title:'Evil Genius',genres:['horror', 'crime', 'documentary'], criticScore:71, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Contemporary'},
+    {img:'queer.jpg',title:'Queer Eye',genres:['documentary', 'art', 'lgbtq'], criticScore:73, bigNames:false, animated:false, foreign:false, continuous:false, seasons:true, trueStory:true, derivative:false, time:'Contemporary'},
+    {img:'blackmirror.jpg',title:'Black Mirror',genres:['scifi', 'political', 'action', 'horror'], criticScore:97, bigNames:false, animated:false, foreign:true, continuous:false, seasons:true, trueStory:false, derivative:false, time:'Timeless'},
 ]
 
 const createRadioAnswerElements = (answerArray)=>{
@@ -207,7 +210,7 @@ const remoteTemplate = (answers, button)=> {
             </div>
         </div>
     </div>
-`    
+    `    
 }
 
 const tvTemplate = (info)=>{
@@ -217,7 +220,6 @@ const tvTemplate = (info)=>{
                 <div class="screen">
                     ${info}
                 </div>
-                
                 <img class="tv-image"   src="./images/flatscreen.png" />
             </div>
             <div class="mantle">
@@ -233,7 +235,7 @@ const displayTemplates = {
             ${tvTemplate(
                 `<h1>Let me help you find a</h1>
                     <img class="logo" src="./images/Netflix-Logo.png" />
-                <h1> Series<h1>`
+                <h1> Series</h1>`
             )}
  
             ${remoteTemplate('',`<button type="submit" class="js-continue-button continue">Lets Find a Series!</button>`)}
@@ -245,9 +247,8 @@ const displayTemplates = {
     question: function(questionObj){
         return ` 
                 ${tvTemplate(`
-                    <div class="tv">
-                        <p>${questionObj.question}<br> You're on question ${STORE.currentQuestion+1} of 10 <br> ${100*STORE.claytonMatches/(STORE.currentQuestion)}% match with me!</p>               
-                    </div> 
+                        <h1>${questionObj.question}</h1>
+                        <p>You're on question ${STORE.currentQuestion+1} of 10 <br> ${100*STORE.claytonMatches/(STORE.currentQuestion)}% match with me!</p>               
                 `)}       
 
                 ${remoteTemplate(
@@ -263,7 +264,8 @@ const displayTemplates = {
     genreSelection: function(questionObj){
         return ` 
             ${tvTemplate(`
-                <p>${questionObj.question}<br> You're on question ${STORE.currentQuestion+1} of 10</p>                  
+                <h1>${questionObj.question}</h1>
+                <p>You're on question ${STORE.currentQuestion+1} of 10</p>                  
             `)}   
             ${remoteTemplate(
                 createCheckBoxAnswerElements(questionObj.genres),
@@ -280,9 +282,9 @@ const displayTemplates = {
         
         return `
             ${tvTemplate(`
-                <p>'${questionObj.question}'
-                <br>You chose '${yourChoice}'
-                <br> I chose '${myChoice}'
+                <h1>'${questionObj.question}' </h1>
+                <p>You chose <b>'${yourChoice}'</b>
+                <br>I chose <b>'${myChoice}'</b>
                 <br>${compareYourselfToClayton(yourChoice, myChoice)} </p>
             `)}   
 
@@ -298,13 +300,24 @@ const displayTemplates = {
     results: function (){
         return `
         ${tvTemplate(`
-            <p> We found ${STORE.filteredSeries.length} series that you might like.
-            <br> Here's my top recommendation for you: ${STORE.filteredSeries[0].title} </p>               
+            <div class='result-container'>
+                <div class="result-image">
+                        <img src="./images/${STORE.filteredSeries[STORE.guessIndex].img}" />
+                </div>    
+                <div class="reult-text">
+                    <div><p> Here's my top recommendation for you:</p>
+                    <h3> <b>${STORE.filteredSeries[STORE.guessIndex].title}</b></h3> 
+                    </div>       
+                    <div><p> We also found ${STORE.filteredSeries.length - 1} other series that you might like.</p></div>
+                    <hr>
+                    <p>In the end you and I (Clayton Weller) matched with ${100 * STORE.claytonMatches/10}%
+                </div>
+            </div>
         `)}   
 
         ${remoteTemplate(
             '<button type="submit" class="js-more-button more">Other Matches</button>',
-            `<button type="submit" class="js-more-button more">Try the whole thing again!</button>`
+            `<button type="submit" class="js-reset-button reset">Try the whole thing again!</button>`
         )}
 
         <div class="description">
@@ -435,7 +448,7 @@ const continueClick = () =>{
 
 const listenForContinueClick = ()=>{
     console.log('listenForContinueClick')
-    //listens for clicks on any of the continue buttons
+    //listens for clicks on any of the continue buttons, which happen on 'start' and 'feedback'
     $('#js-netflix-form').on('click', '.js-continue-button', function(event){
         event.preventDefault()
         continueClick();
@@ -449,16 +462,20 @@ const checkClick = (input) =>{
     
     if(!userGenres.includes(input.value)){
         userGenres.push(input.value)
+        $(input).parents('.genre-container').addClass('selected')
     }else {
         let index = userGenres.indexOf(input.value)
         userGenres.splice(index,1)
+        $(input).parents('.genre-container').removeClass('selected')
     }
+    console.log(input)
 }
 
 const listenForCheckClick = ()=>{
     $('#js-netflix-form').on('click', '.js-genre-option', function(event){
         // event.preventDefault()
         checkClick(this)
+        
     })
     console.log('listenForCheckClick')
     
@@ -466,9 +483,11 @@ const listenForCheckClick = ()=>{
 
 const radioClick = (input) =>{
     // will toggle selected radio on and all the others off, and update the
-    
+    $(input).parents('.all-answers').children('.answer-container').removeClass('selected')
+    $(input).parents('.answer-container').addClass('selected')
     STORE.responses[questionList[STORE.currentQuestion].key] = input.value
     console.log(STORE.responses[questionList[STORE.currentQuestion].key])
+
 }
 
 const listenForRadioClick = ()=>{
@@ -497,22 +516,29 @@ const listenForSubmitClick = ()=>{
 
 const moreClick = () =>{
     //on the 'results' page only. It will only exist if there are more than one match in the series list after filtering.
+    if(STORE.guessIndex < STORE.filteredSeries.length-1){
+        STORE.guessIndex++;
+    } else {
+        STORE.guessIndex = 0
+    }
+
+    renderQuizApp()
 }
 
 const listenForMoreClick = () =>{
+    $('#js-netflix-form').on('click', '.js-more-button', function(event){
+       event.preventDefault();
+       moreClick()
+    })
+    
     console.log('listenForMoreClick')
-    moreClick()
-}
-
-const resetClick = () =>{
-    //resets the state and returns the user to 'start' display
-    //resetSTORE()
-    console.log('reset click')
+    
 }
 
 const listenForResetClick = () =>{
+    //this uses the normal HTML behavior of a submit button to reload the page
     $('#js-netflix-form').on('click', '.js-reset-button', function(event){
-        resetClick()
+
     })
     console.log('listenForsResetClick')
 }

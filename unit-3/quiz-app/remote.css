@@ -10,6 +10,8 @@ div{
     max-width: 400px;
     font-size: 0;
     margin: 10px auto;
+    position: relative;
+    top: -30px;
 }
 
 .remote-piece{
@@ -110,14 +112,13 @@ div{
     padding: 5px;
     border-radius: 5px;
     background-color: #1a1818;
-    /* box-shadow: 10px 10px 0px -5px rgba(0,0,0,0.75); */
     border-bottom: solid black 4px;
     border-right: solid black 3px;
     color: rgb(196, 196, 196);
     transition-duration: 200ms;
 }
 
-.answer-container, .genre-container:active{
+.answer-container:active, .genre-container:active{
     transform: scale(.95)
 }
 
