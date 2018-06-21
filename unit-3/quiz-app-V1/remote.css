@@ -1,0 +1,159 @@
+body *{
+    box-sizing: border-box
+}
+
+div{
+    /* border: solid black 1px; */
+}
+
+.remote-container{
+    max-width: 400px;
+    font-size: 0;
+    margin: 10px auto;
+    position: relative;
+    top: -30px;
+}
+
+.remote-piece{
+    display:inline-block;
+    font-size: 20px;
+}
+
+.remote-top-container{
+    width: 100%;
+}
+
+.remote-top{
+    width:100%;
+    height:28px;
+    display: flex;
+    justify-content: space-between;
+    background: url(images/remote/top.png); 
+}
+
+.remote-top-right{
+    height:29px;
+    width: 9px;
+    background: url(images/remote/topright.png);
+}
+
+.remote-top-left{
+    height:29px;
+    width: 9px;
+    background: url(images/remote/topleft.png);
+}
+
+.remote-light{
+    background: url(images/remote/topLight.png); 
+    height:28px;
+    width:31px;
+}
+
+.remote-middle-container{
+    width:100%;
+    height: fit-content;
+    background-color: #7b6b5f;
+}
+
+.remote-middle{
+    display:flex;
+    justify-content: space-between;
+    height:100%;
+    /* padding-bottom: 30px; */
+}
+.remote-left{
+    width: 9px;
+    background: url(images/remote/left.png);
+}
+.remote-right{
+    width: 9px;
+    background: url(images/remote/right.png);
+}
+
+.remote-bot-container{
+    width: 100%;
+    height: 8px;
+}
+
+.remote-bot{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    background: url(images/remote/bottom.png);
+}
+
+.remote-bot-left{
+    background: url(images/remote/botleft.png);
+    width: 9px;
+    height: 8px;
+}
+
+.remote-bot-right{
+    background: url(images/remote/botright.png);
+    width: 9px;
+    height: 8px;
+}
+
+.remote-button-container{
+    width:90%;
+}
+
+.all-answers{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+.answer-container, .genre-container{
+    border: solid black 1px;
+    margin:10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #1a1818;
+    border-bottom: solid black 4px;
+    border-right: solid black 3px;
+    color: rgb(196, 196, 196);
+    transition-duration: 200ms;
+}
+
+.answer-container:active, .genre-container:active{
+    transform: scale(.95)
+}
+
+.selected{
+    transform: scale(1.05);
+    color:#e50913;   
+}
+
+button{
+    border: solid black 1px;
+    margin:10px;
+    border-radius: 5px;
+    font-size: 25px;
+    min-width: 200px;
+    min-height: 60px;
+    background-color: #e50913;
+    /* box-shadow: 10px 10px 0px -5px rgba(0,0,0,0.75); */
+    border-bottom: solid black 4px;
+    border-right: solid black 3px;
+    color: rgb(255, 255, 255);
+    transition-duration: 300ms;
+    outline:none;
+}
+
+button:active{
+    transform: scale(.95)
+}
+
+button::after{
+    content: ' >'
+}
+
+.continue-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+

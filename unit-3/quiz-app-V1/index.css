@@ -1,0 +1,36 @@
+body * {
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+
+body {
+    /* background: linear-gradient(180deg, rgb(0, 0, 0), rgb(62, 0, 0)) fixed; */
+    background: url(./images/wall.jpg) top center;
+    background-size: 250vh;
+    background-repeat: no-repeat;
+}
+
+.container{
+    margin: 0px 0px;
+    max-width: 100%;
+
+}
+
+.description {
+    padding: 5px;
+    border: 1px rgb(39, 39, 39) solid;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(223, 223, 223, 0.5));
+    width: 100%;
+    position: relative;
+    top:-30px;
+}
+
+@media only screen and (min-width: 640px) {
+    .container {
+        margin: 0px auto;
+        max-width: 500px;
+        min-width: 300px;
+        display:flex;
+    }
+}
+
