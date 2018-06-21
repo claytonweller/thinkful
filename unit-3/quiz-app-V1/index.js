@@ -24,19 +24,6 @@ let STORE = {
         time:"",
     },
 
-    // responses:{
-    //     genres:['action', 'comedy'],
-    //     critics:'Agree',
-    //     bigNames:'Sure',
-    //     animated:"Sure",
-    //     foreign:'Sure',
-    //     continuous:"Sure",
-    //     seasons:'Sure',
-    //     trueStory:'Sure',
-    //     derivative:'Sure',
-    //     time:"Future",
-    // },
-
     //This tracks where we are in the app
     currentQuestion:0,
 
@@ -266,7 +253,7 @@ const displayTemplates = {
                 <h1> Series</h1>`
             )}
             <div class="description">
-                <p>Hi! I'm clayton Weller, and I've watched a BUNCH of Netflix series... like way too many... 29. And those are just the series produced by netflix themselves. They're great! But there are too many of them to suggest easily. So this app will do 2 things. <br><b>1. Help you find a netflix Series</b> I've watched all of the ones in the app and they're definitely enjoyable. <br><b>2. You can compare your answers to my own! </b> That way if you like the thing you saw you can know if I'm a person to ask about NetFlix series. </p>
+                <p>Hi! I'm Clayton Weller, and I've watched a BUNCH of Netflix series... like way too many... 29. And those are just the series produced by netflix themselves. They're great! But there are too many of them to suggest easily. So this app will do 2 things. <br><b>1. Help you find a netflix Series</b> I've watched all of the ones in the app and they're definitely enjoyable. <br><b>2. You can compare your answers to my own! </b> That way if you like the thing you saw you can know if I'm a person to ask about NetFlix series. </p>
             </div>
  
             ${remoteTemplate('',`<button type="submit" class="js-continue-button continue">Lets Find a Series!</button>`)}
