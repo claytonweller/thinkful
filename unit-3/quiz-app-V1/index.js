@@ -32,7 +32,7 @@ let STORE = {
     claytonMatches:0,
 
     //This is used to store the final suggestion(s) for the user.
-    filteredSeries:['testSeries'],
+    filteredSeries:[],
 
     //This is stores what series is showing on the results page
     guessIndex:0,
@@ -117,7 +117,7 @@ const seriesList = [
     {img:'the_crown_0.jpg',title:'The Crown',genres:['political', 'drama'], criticScore:81, bigNames:true, animated:false, foreign:true, continuous:true, seasons:true, trueStory:true, derivative:false, time:'Past'},
     {img:'OA.jpg',title:'The OA',genres:['magical', 'drama'], criticScore:61, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Contemporary'},
     {img:'unfortunate.jpg',title:'A Series of Unfortunate Events',genres:['comedy', 'magical','family'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Timeless'},
-    {img:'mindhunter.jpg',title:'Mindhunter',genres:['crime', 'drama'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Past'},
+    {img:'mindhunter.png',title:'Mindhunter',genres:['crime', 'drama'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:false, time:'Past'},
     {img:'altered.jpg',title:'Altered Carbon',genres:['crime', 'action', 'scifi'], criticScore:64, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:false, time:'Future'},
     {img:'Lost.jpg',title:'Lost in Space',genres:['family', 'action', 'scifi'], criticScore:58, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Future'},
     {img:'Dare.jpg',title:'DareDevil',genres:['action', 'drama', 'super'], criticScore:75, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:true, time:'Contemporary'},
@@ -213,7 +213,6 @@ const remoteTemplate = (answers, button)=> {
                         ${answers}             
                     </ul>
                     <div class="continue-container">
-
                         ${button}
                     </div>
                 </div>
@@ -398,25 +397,25 @@ const sortBasedUponCriticsResponses = (response)=>{
 }
 
 const definitleyFilter = (sortedResponses) =>{
-    if(STORE.bestGuessFound === false){
+    if(!STORE.bestGuessFound){
         sortedResponses.definitely.forEach(question => filterBasedUponAResponse(question, true))
     }
 }
 
 const noFilter = (sortedResponses) =>{
-    if(STORE.bestGuessFound === false){
+    if(!STORE.bestGuessFound){
         sortedResponses.no.forEach(question => filterBasedUponAResponse(question, false))
     }
 }
 
 const sureFilter = (sortedResponses) =>{
-    if(STORE.bestGuessFound === false){
+    if(!STORE.bestGuessFound){
         sortedResponses.sure.forEach(question => filterBasedUponAResponse(question, true))
     }
 }
 
 const timeFilter = (sortedResponses) =>{
-    if(STORE.bestGuessFound === false && sortedResponses.time != "Don't"){
+    if(!STORE.bestGuessFound && sortedResponses.time != "Don't"){
         filterBasedUponAResponse('time', sortedResponses.time)
     }
 }
@@ -544,11 +543,10 @@ const listenForSubmitClick = ()=>{
 
 const moreClick = () =>{
     //on the 'results' page only. It will only exist if there are more than one match in the series list after filtering.
-    if(STORE.guessIndex < STORE.filteredSeries.length-1){
-        STORE.guessIndex++;
-    } else {
-        STORE.guessIndex = 0
-    }
+
+    STORE.guessIndex++
+
+    STORE.guessIndex = STORE.guessIndex%STORE.filteredSeries.length
 
     renderQuizApp()
 }
