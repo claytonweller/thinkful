@@ -8,37 +8,25 @@ let STORE = {
         -After each question there will be 'feedback', where they'll compare to my answers.
         -Then after all the questions it will shift to 'results' where the results of the quiz will be. Including an image of the best guess series, as well as how similar they are to my answers.
     */
-    currentDisplay:'feedback',
+    currentDisplay:'start',
 
     // This is where I'll store the information on the users responses
-    // responses:{
-    //     genres:[],
-    //     critics:'',
-    //     bigNames:'',
-    //     animated:"",
-    //     foreign:'',
-    //     continuous:"",
-    //     seasons:'',
-    //     trueStory:'',
-    //     derivative:'',
-    //     time:"",
-    // },
-
     responses:{
-        genres:['horror', 'action', 'comedy', 'crime'],
-        critics:'Agree',
-        bigNames:'Sure',
-        animated:"Don't",
-        foreign:'Sure',
-        continuous:"Don't",
-        seasons:'Sure',
-        trueStory:'Sure',
-        derivative:'Sure',
-        time:"Don't",
+        genres:[],
+        critics:'',
+        bigNames:'',
+        animated:"",
+        foreign:'',
+        continuous:"",
+        seasons:'',
+        trueStory:'',
+        derivative:'',
+        time:"",
     },
 
+
     //This tracks where we are in the app
-    currentQuestion:9,
+    currentQuestion:0,
 
     //This counts how many of their responses match up with my own
     claytonMatches:0,
