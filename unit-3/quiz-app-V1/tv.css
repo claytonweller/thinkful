@@ -53,7 +53,7 @@
 }
 
 .emphasized {
-    color:#e50913;
+    color:#e61822;
 }
 
 .screen p {
@@ -91,7 +91,7 @@
     }
 
     .screen p {
-        font-size: 1em;
+        font-size: .95em;
     }
 
     .result-image img {

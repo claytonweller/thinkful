@@ -8,24 +8,37 @@ let STORE = {
         -After each question there will be 'feedback', where they'll compare to my answers.
         -Then after all the questions it will shift to 'results' where the results of the quiz will be. Including an image of the best guess series, as well as how similar they are to my answers.
     */
-    currentDisplay:'start',
+    currentDisplay:'feedback',
 
     // This is where I'll store the information on the users responses
+    // responses:{
+    //     genres:[],
+    //     critics:'',
+    //     bigNames:'',
+    //     animated:"",
+    //     foreign:'',
+    //     continuous:"",
+    //     seasons:'',
+    //     trueStory:'',
+    //     derivative:'',
+    //     time:"",
+    // },
+
     responses:{
-        genres:[],
-        critics:'',
-        bigNames:'',
-        animated:"",
-        foreign:'',
-        continuous:"",
-        seasons:'',
-        trueStory:'',
-        derivative:'',
-        time:"",
+        genres:['horror', 'action', 'comedy', 'crime'],
+        critics:'Agree',
+        bigNames:'Sure',
+        animated:"Don't",
+        foreign:'Sure',
+        continuous:"Don't",
+        seasons:'Sure',
+        trueStory:'Sure',
+        derivative:'Sure',
+        time:"Don't",
     },
 
     //This tracks where we are in the app
-    currentQuestion:0,
+    currentQuestion:9,
 
     //This counts how many of their responses match up with my own
     claytonMatches:0,
@@ -209,9 +222,10 @@ const remoteTemplate = (answers, button)=> {
                 <div class="remote-left remote-piece"></div>
                 <div class="remote-button-container">
                     <ul class="all-answers"> 
-                       ${answers} 
+                        ${answers}             
                     </ul>
                     <div class="continue-container">
+
                         ${button}
                     </div>
                 </div>
@@ -235,10 +249,10 @@ const tvTemplate = (info)=>{
                 <div class="screen">
                     ${info}
                 </div>
-                <img class="tv-image"   src="./images/flatscreen.png" />
+                <img class="tv-image"   src="./images/flatscreen.png"  alt="background image of a flatscreen tv"/>
             </div>
             <div class="mantle">
-                <img src="./images/woodMantle.png" />
+                <img src="./images/woodMantle.png" alt="baground image of a wood mantle. The TV is sitting on it" />
             </div>
         </div> 
     `
@@ -249,7 +263,7 @@ const displayTemplates = {
         return `
             ${tvTemplate(
                 `<h1>Let me help you find a</h1>
-                    <img class="logo" src="./images/Netflix-Logo.png" />
+                    <img class="logo" src="./images/Netflix-Logo.png" alt="The netflix logo is on the TV"/>
                 <h1> Series</h1>`
             )}
             <div class="description">
@@ -315,7 +329,7 @@ const displayTemplates = {
             ${tvTemplate(`
                 <div class='result-container'>
                     <div class="result-image">
-                            <img src="./images/${STORE.filteredSeries[STORE.guessIndex].img}" />
+                            <img src="./images/${STORE.filteredSeries[STORE.guessIndex].img}" alt="The poster for ${STORE.filteredSeries[STORE.guessIndex].title}" />
                     </div>    
                     <div class="result-text">
                         <div><p> Here's my top recommendation for you:</p>
@@ -329,8 +343,9 @@ const displayTemplates = {
             `)}   
 
             ${remoteTemplate(
-                '<button type="submit" class="js-more-button more">Other Matches</button>',
-                `<button type="submit" class="js-reset-button reset">Try the whole thing again!</button>`
+                '',
+                `<button type="submit" class="js-more-button more">Other Matches</button>
+                <button type="submit" class="js-reset-button reset">Try the whole thing again!</button>`
             )}
         `
     }
