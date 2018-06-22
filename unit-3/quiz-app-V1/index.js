@@ -46,7 +46,7 @@ let STORE = {
 const questionList = [
     {
         key:'genres',
-        question:'Check all of the genres you are intersted in:',
+        question:'Check all of the genres you are interested in:',
         genres:['political', 'crime', 'drama', 'lgbtq', 'comedy', 'action', 'scifi', 'horror', 'magical', 'family', 'documentary', 'super hero', 'art'],
         clayton:['drama', 'comedy', 'action', 'scifi', 'magical']
     }, 
