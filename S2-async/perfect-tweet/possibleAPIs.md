@@ -1,7 +1,9 @@
 # API urls for Perfect Tweet
 
 Twitter API -   https://developer.twitter.com/en/docs/tweets/search/overview
+
 News API - https://newsapi.org/
+
 GiPHy - https://developers.giphy.com/docs/
 
 wikipedia - 
