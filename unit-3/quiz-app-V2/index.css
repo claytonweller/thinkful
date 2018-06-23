@@ -46,7 +46,7 @@ li{
     margin:10px;
     padding: 5px;
     border-radius: 5px;
-    background-color: #801d1d;
+    background-color: #06a1b3;
     border-bottom: solid black 4px;
     border-right: solid black 3px;
     color: rgb(255, 255, 255);
@@ -63,7 +63,7 @@ button{
     font-size: 25px;
     min-width: 200px;
     min-height: 60px;
-    background-color: #0ba387;
+    background-color: #d13c1b;
     /* box-shadow: 10px 10px 0px -5px rgba(0,0,0,0.75); */
     border-bottom: solid black 4px;
     border-right: solid black 3px;
