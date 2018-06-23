@@ -1,8 +1,8 @@
-#The Perfect Tweet
-##Description
+# The Perfect Tweet
+## Description
     *Give us any topic, and we will create the perfect tweet... it definitely won't be a garble mess.*
 
-##Specs
+## Specs
     Must do - 
         - [] Landing page with description
         - [] User inputs a topic
