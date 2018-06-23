@@ -88,7 +88,7 @@ const questionList = [
     },
     {
         key:'derivative',        
-        question:'Do you want it to be based on some an earlier artistic work? (ie. book, movie, tv show)',
+        question:'Do you want it to be based on an earlier artistic work? (e.g., book, movie, TV show)',
         answers:['Definitely','Sure','Don\'t care' ,'No thanks'],
         clayton:"Don't Care"
     },
