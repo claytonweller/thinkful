@@ -26,12 +26,16 @@
                     </form>
                 </div>
                 <div class="description-container">
-                    <p>Oh man the perfect tweet is going to happen... it definiltey won't be a garbled mess...</p>
+                    <p>Give us any topic, and we will create the perfect tweet... it definitely won't be a garbled mess... probably.</p>
                 </div>
             </div>
 
             <!-- This is the tweet screen -->
             <div class="perfect-tweet-screen" hidden>
+                <div class="perfect-tweet-button-container">
+                    <button class="js-perfect-button" type="submit">Re-perfect</button>
+                    <button class="js-restart-button" type="submit">New Topic</button>
+                </div>
                 <div class="perfect-tweet-container">
                     <p>
                         Some truely amazing text that is probably going to be the next pulizer prize winning tweet. WOW #Blessed.
@@ -40,26 +44,30 @@
                 <div class="perfect-tweet-image-container">
                     A sweet image
                 </div>
-                <div class="perfect-tweet-button-container">
-                    <button type="submit">Re-perfect</button>
-                    <button type="submit">New Topic</button>
-                </div>
             </div>
 
             <!-- this is the info tab interface -->
             <div class="tabs-container" hidden>
 
-                <div class="infotab">Wikipedia</div>
-                <div class="infotab">Twitter</div>
-                <div class="infotab">NewsAPI</div>
-                <div class="infotab">Gify</div>
+                <div class="info-tab"> 
+                    <button id="wiki-button">Wikipedia</button> 
+                </div>
+                <div class="info-tab"> 
+                    <button id="twitter-button">Twitter</button> 
+                </div>
+                <div class="info-tab"> 
+                    <button id="news-button">NewsAPI</button> 
+                </div>
+                <div class="info-tab"> 
+                    <button id="giphy-button">Giphy</button> 
+                </div>
             </div>
 
             <!-- This is the info screen -->
-            <div class="info-container" hidden>
+            <div class="info-container" hidden> test
 
                 <!-- Wikipedia Info Screen -->
-                <div class="info-wikipedia" hidden>
+                <div class="info-wiki" hidden>
                     <article>
                         <div class="wiki-title">
                             <h1>The Topic selected</h1>
