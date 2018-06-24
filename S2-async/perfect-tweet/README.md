@@ -4,13 +4,14 @@
 
 ## Specs
 Must do - 
-- [x] Landing page with description
+- [ ] Landing page with description
 - [ ] User inputs a topic
 - [ ] Scrapes twitter, NewsAPI, Wikipedia, Giphy
 - [ ] Tries to create a perfect tweet
 - [ ] There is a button which 'Re-Perfects'
 - [ ] There are tabs where the data used is displayed
 - [ ] User can input another topic
+- [ ] Gotta look guuuuuud
 
 Cool features - 
 - [ ] Easy copy button
