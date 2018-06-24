@@ -1,6 +1,6 @@
 # The Perfect Tweet
 ## Description
-    *Give us any topic, and we will create the perfect tweet... it definitely won't be a garble mess.*
+    *Give us any topic, and we will create the perfect tweet... it definitely won't be a garbled mess.*
 
 ## Specs
 Must do - 
@@ -17,6 +17,7 @@ Cool features -
 - [ ] Easy copy button
 - [ ] Calculating waiting screen
 - [ ] It tweets to a dummy account. (could be automatic... or maybe it's on a button)
+    - [ ] Shows a feed from the dummy account
 - [ ] User then can tweet directly to their account
 - [ ] User can edit the tweet
     - [ ] Direct text edit
