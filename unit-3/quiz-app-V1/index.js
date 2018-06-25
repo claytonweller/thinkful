@@ -353,8 +353,9 @@ const switchToQuestion = () => {
     populateAnswers('question')
     $('#feedback').attr('hidden', true)
     $('#question').attr('hidden', false)
+    $('#question').find('legend').focus()
 }
-
+            
 const continueClick = () =>{
     if(STORE.currentDisplay === 'start'){
         switchToGenre()
