@@ -70,7 +70,7 @@ const questionList = [
     },
     {
         key:'continuous',
-        question:'Do you want the episodes to build on each other? (ie. All the stories of the episodes string together)',
+        question:'Do you want the episodes to build on each other?',
         answers:['Definitely','Sure','Don\'t care' ,'No thanks'],
         clayton:"Sure"
     },
@@ -88,7 +88,7 @@ const questionList = [
     },
     {
         key:'derivative',        
-        question:'Do you want it to be based on an earlier artistic work? (e.g., book, movie, TV show)',
+        question:'Do you want it to be based on an earlier artistic work?',
         answers:['Definitely','Sure','Don\'t care' ,'No thanks'],
         clayton:"Don't Care"
     },
@@ -100,7 +100,7 @@ const questionList = [
     },
     {
         key:'critics',        
-        question:'How do you respond to this statement: "I tend to like what other people like" ',
+        question:'How do you respond to this: "I tend to like what other people like" ',
         answers:['Strongly-Agree', 'Agree', 'Disagree', 'Strongly-Disagree'],
         clayton:"Disagree"
     },
