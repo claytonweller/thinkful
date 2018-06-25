@@ -125,7 +125,7 @@ const seriesList = [
     {img:'Luke.jpg',title:'Luke Cage',genres:['action', 'drama', 'super'], criticScore:79, bigNames:false, animated:false, foreign:false, continuous:true, seasons:false, trueStory:false, derivative:true, time:'Contemporary'},
     {img:'unbreakable.jpg',title:'Unbreakable Kimmy Schmidt',genres:['magical', 'comedy'], criticScore:78, bigNames:false, animated:false, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
     {img:'master.jpg',title:'Master of None',genres:['drama', 'comedy'], criticScore:91, bigNames:true, animated:false, foreign:false, continuous:false, seasons:true, trueStory:false, derivative:false, time:'Contemporary'},
-    {img:'babdavid.jpg',title:'W/ Bob & David',genres:['comedy'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
+    {img:'bobdavid.jpg',title:'W/ Bob & David',genres:['comedy'], criticScore:76, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:false, time:'Timeless'},
     {img:'3000.jpg',title:'Mystery Science Theater 3000',genres:['scifi', 'family', 'comedy'], criticScore:70, bigNames:true, animated:false, foreign:false, continuous:false, seasons:false, trueStory:false, derivative:true, time:'Timeless'},
     {img:'Glow.jpg',title:'Glow',genres:['drama', 'comedy'], criticScore:81, bigNames:true, animated:false, foreign:false, continuous:true, seasons:false, trueStory:true, derivative:true, time:'Past'},
     {img:'bojak.jpg',title:'Bojack Horseman',genres:['drama', 'comedy'], criticScore:59, bigNames:true, animated:true, foreign:false, continuous:true, seasons:true, trueStory:false, derivative:false, time:'Timeless'},
@@ -142,9 +142,10 @@ const seriesList = [
 const createRadioAnswerElements = (answerArray)=>{
     let htmlString = ''
     answerArray.forEach(answer => {
-        htmlString = htmlString+`<li class="answer-container">
-                                    <label><input type="radio" class="js-possible-answer" name="possible-answer" value=${answer} id=${answer}/>${answer}</label>
-                                </li>`
+        htmlString = htmlString +
+            `<li class="answer-container">
+                <label><input type="radio" class="js-possible-answer" name="possible-answer" value=${answer} id=${answer}/>${answer}</label>
+            </li>`
     });
     return htmlString
 }
@@ -152,10 +153,11 @@ const createRadioAnswerElements = (answerArray)=>{
 const createCheckBoxAnswerElements = (genreArray)=>{
     let htmlString = ''
     genreArray.forEach(genre=>{
-        htmlString = htmlString+`<li class="genre-container">
-                                    <label><input class="js-genre-option" type="checkbox" name="possible-answer" value=${genre} id=${genre}/>
-                                    ${genre}</label>
-                                </li>`
+        htmlString = htmlString + 
+            `<li class="genre-container">
+                <label><input class="js-genre-option" type="checkbox" name="possible-answer" value=${genre} id=${genre}/>
+                ${genre}</label>
+            </li>`
     })
     return htmlString
 }
@@ -195,149 +197,6 @@ const interpretYourChoice = (input)=>{
     }
 }
 
-const remoteTemplate = (answers, button)=> {
-    return `
-    <div class="remote-container">
-        <div class="remote-top-container">    
-            <div class="remote-top">
-                <div class="remote-top-left remote-piece"></div>
-                <div  class="remote-light remote-piece"></div>
-                <div class="remote-top-right remote-piece"></div>
-            </div>      
-        </div>
-        <div class="remote-middle-container"> 
-            <div class="remote-middle remote-piece">
-                <div class="remote-left remote-piece"></div>
-                <div class="remote-button-container">
-                    <ul class="all-answers"> 
-                        ${answers}             
-                    </ul>
-                    <div class="continue-container">
-                        ${button}
-                    </div>
-                </div>
-                <div class="remote-right remote-piece"></div>
-            </div>
-        </div>
-        <div class="remote-bot-container">
-            <div class="remote-bot remote-piece">
-                <div class="remote-bot-left remote-piece"></div>
-                <div class="remote-bot-right remote-piece"></div>
-            </div>
-        </div>
-    </div>
-    `    
-}
-
-const tvTemplate = (info)=>{
-    return`
-        <div class="tv-container">
-            <div class="tv">
-                <div class="screen">
-                    ${info}
-                </div>
-                <img class="tv-image"   src="./images/flatscreen.png"  alt="background image of a flatscreen tv"/>
-            </div>
-            <div class="mantle">
-                <img src="./images/woodMantle.png" alt="baground image of a wood mantle. The TV is sitting on it" />
-            </div>
-        </div> 
-    `
-}
-
-const displayTemplates = {
-    start: function(){
-        return `
-            ${tvTemplate(
-                `<h1>Let me help you find a</h1>
-                    <img class="logo" src="./images/Netflix-Logo.png" alt="The netflix logo is on the TV"/>
-                <h1> Series</h1>`
-            )}
-            <div class="description">
-                <p>Hi! I'm Clayton Weller, and I've watched a BUNCH of Netflix series... like way too many... 29. And those are just the series produced by netflix themselves. They're great! But there are too many of them to suggest easily. So this app will do 2 things. <br><b>1. Help you find a netflix Series</b> I've watched all of the ones in the app and they're definitely enjoyable. <br><b>2. You can compare your answers to my own! </b> That way if you like the thing you saw you can know if I'm a person to ask about NetFlix series. </p>
-            </div>
- 
-            ${remoteTemplate('',`<button type="submit" class="js-continue-button continue">Lets Find a Series!</button>`)}
-
-        `
-    },
-    question: function(questionObj){
-        return ` 
-                ${tvTemplate(`
-                        <h1 class="emphasized" >${questionObj.question}</h1>
-                        <p>You're on question ${STORE.currentQuestion+1} of 10 <br> ${100*STORE.claytonMatches/(STORE.currentQuestion)}% match with me!</p>               
-                `)}       
-
-                ${remoteTemplate(
-                    createRadioAnswerElements(questionObj.answers),
-
-                    `<button type="button" class="js-submit-button submit">Submit</button>`
-                )}
-            `
-    },
-    genreSelection: function(questionObj){
-        return ` 
-            ${tvTemplate(`
-                <h1 class="emphasized">${questionObj.question}</h1>
-                <p>You're on question ${STORE.currentQuestion+1} of 10</p>                  
-            `)}   
-            ${remoteTemplate(
-                createCheckBoxAnswerElements(questionObj.genres),
-                `<button type="button" class="js-submit-button submit">Submit</button>`
-            )}    
-        `
-    },
-    feedback: function(questionObj){
-
-        let yourChoice = interpretYourChoice(STORE.responses[questionObj.key])
-
-        let myChoice = questionObj.clayton
-        if (Array.isArray(yourChoice)){
-            yourChoice = yourChoice.map(item => ' '+ item)
-            myChoice = myChoice.map(item => ' '+item)
-        }
-        
-        return `
-            ${tvTemplate(`
-                <h1 class="emphasized">'${questionObj.question}' </h1>
-                <p>You chose <b class="emphasized">'${yourChoice}'</b>
-                <br>I chose <b>'${myChoice}'</b>
-                <br>${compareYourselfToClayton(yourChoice, myChoice)} </p>
-            `)}   
-
-            ${remoteTemplate(
-                '',
-                '<button type="submit" class="js-continue-button  continue">Continue</button>'
-            )}
-        `
-    },
-    results: function (){
-        return `
-            ${tvTemplate(`
-                <div class='result-container'>
-                    <div class="result-image">
-                            <img src="./images/${STORE.filteredSeries[STORE.guessIndex].img}" alt="The poster for ${STORE.filteredSeries[STORE.guessIndex].title}" />
-                    </div>    
-                    <div class="result-text">
-                        <div><p> Here's my top recommendation for you:</p>
-                        <h3 class="emphasized"> <b>${STORE.filteredSeries[STORE.guessIndex].title}</b></h3> 
-                        </div>       
-                        <div><p> We also found ${STORE.filteredSeries.length - 1} other series that you might like.</p></div>
-                        <hr>
-                        <p>In the end you and I (Clayton Weller) matched with ${100 * STORE.claytonMatches/10}%
-                    </div>
-                </div>
-            `)}   
-
-            ${remoteTemplate(
-                '',
-                `<button type="submit" class="js-more-button more">Other Matches</button>
-                <button type="submit" class="js-reset-button reset">Try the whole thing again!</button>`
-            )}
-        `
-    }
-
-}
 
 ////LOGIC - This Everything below is focused on taking the input from the user and giving a response.
 
@@ -440,44 +299,78 @@ const findBestGuessSeries = () =>{
 
 /////////////INTERACTION - Everything below here is about clicking on stuff
 
-const determineNextContinueStep = ()=>{
-    if(STORE.currentDisplay === 'start'){
-        STORE.currentDisplay = 'genreSelection'
-    } else if (STORE.currentQuestion === questionList.length-1){
-        findBestGuessSeries()
-        STORE.currentDisplay = 'results'
-    } else {
-        STORE.currentDisplay = 'question' 
-        STORE.currentQuestion++
-    }
+const populateGenres = (screen)=>{
+    let genreChoices = createCheckBoxAnswerElements(questionList[STORE.currentQuestion].genres)
+    $(`#${screen}`).find('.all-answers').html(genreChoices)
 }
 
-const currentStepIsComplete = ()=>{
+const populateAnswers = (screen) => {
+    let answers = createRadioAnswerElements(questionList[STORE.currentQuestion].answers)
+    $(`#${screen}`).find('.all-answers').html(answers)
+}
 
+const populateTVQuestion = (screen)=>{
+    console.log(screen)
+    $(`#${screen}`).find('h1').html(questionList[STORE.currentQuestion].question)
+    $(`#${screen}`).find('p').html(`You're on question ${STORE.currentQuestion+1} of 10`)
+}
 
-    if (STORE.currentDisplay === 'genreSelection' && STORE.responses.genres.length === 0){
-        return false
-    } else if (STORE.currentDisplay === 'question' && STORE.responses[questionList[STORE.currentQuestion].key] === ''){
-        return false
-    } else {
-        return true
-    }
+const populateResults = () => {
+    $('#results').find('.result-image').html(
+        `<img src="./images/${STORE.filteredSeries[STORE.guessIndex].img}" alt="The poster for ${STORE.filteredSeries[STORE.guessIndex].title}" />`
+    )
+    $('.result-text').html(`
+        <div><p> Here's my top recommendation for you:</p>
+            <h3 class="emphasized"> <b>${STORE.filteredSeries[STORE.guessIndex].title}</b></h3> 
+        </div>       
+        <div><p> We also found ${STORE.filteredSeries.length - 1} other series that you might like.</p></div>
+        <hr>
+        <p>In the end you and I (Clayton Weller) matched with ${100 * STORE.claytonMatches/10}%
+    `)
+}
+
+const switchToGenre = () => {
+    STORE.currentDisplay = 'genreSelection'
+    populateGenres('genreSelection')
+    populateTVQuestion('genreSelection')
+    $('#start').attr('hidden', true)
+    $('#genreSelection').attr('hidden', false)
+}
+
+const switchToResults = () => {
+    findBestGuessSeries()
+    STORE.currentDisplay = 'results'
+    populateResults()
+    $('#feedback').attr('hidden', true)
+    $('#results').attr('hidden', false)
+}
+
+const switchToQuestion = () => {
+    STORE.currentDisplay = 'question' 
+    STORE.currentQuestion++
+    populateTVQuestion('question')
+    populateAnswers('question')
+    $('#feedback').attr('hidden', true)
+    $('#question').attr('hidden', false)
 }
 
 const continueClick = () =>{
-    //this will move from a transition page ('start' or 'feedback') to the next question page, or if we're at the final question it'll go to the 'results page'
-        determineNextContinueStep()
-        renderQuizApp()    
+    if(STORE.currentDisplay === 'start'){
+        switchToGenre()
+    } else if (STORE.currentQuestion === questionList.length-1){
+        switchToResults()
+    } else {
+        switchToQuestion()
+    }
 }
 
 const listenForContinueClick = ()=>{
     console.log('listenForContinueClick')
     //listens for clicks on any of the continue buttons
-    $('#js-netflix-form').on('click', '.js-continue-button', function(event){
+    $('.js-app').on('click', '.js-continue-button', function(event){
         event.preventDefault()
         continueClick();
-    })
-    
+    }) 
 }
 
 const checkClick = (input) =>{
@@ -496,10 +389,9 @@ const checkClick = (input) =>{
 }
 
 const listenForCheckClick = ()=>{
-    $('#js-netflix-form').on('click', '.js-genre-option', function(event){
+    $('.js-app').on('click', '.js-genre-option', function(event){
         // event.preventDefault()
         checkClick(this)
-        
     })
     console.log('listenForCheckClick')
 }
@@ -509,25 +401,57 @@ const radioClick = (input) =>{
     $(input).parents('.all-answers').children('.answer-container').removeClass('selected')
     $(input).parents('.answer-container').addClass('selected')
     STORE.responses[questionList[STORE.currentQuestion].key] = input.value
-    console.log(STORE.responses[questionList[STORE.currentQuestion].key])
-
 }
 
 const listenForRadioClick = ()=>{
     console.log('listenForRadioClick')
-    $('#js-netflix-form').on('click', '.js-possible-answer', function(event){
+    $('.js-app').on('click', '.js-possible-answer', function(event){
         // event.preventDefault()
         radioClick(this)
     })
 }
 
+const determineYourChoice = (questionObj) => {
+    let yourChoice = interpretYourChoice(STORE.responses[questionObj.key])
+    let myChoice = questionObj.clayton
+    if (Array.isArray(yourChoice)){
+        yourChoice = yourChoice.map(item => ' '+ item)
+        myChoice = myChoice.map(item => ' '+item)
+    }
+    return {yourChoice, myChoice}
+}
+
+const populateFeedback = () =>{
+    let questionObj = questionList[STORE.currentQuestion]
+    console.log(questionObj.question)
+    let choices = determineYourChoice(questionObj)
+    $('#feedback').find('h1').html(questionObj.question)
+    $('#feedback').find('p').html(`
+        <p>You chose <b class="emphasized">'${choices.yourChoice}'</b>
+        <br>I chose <b>'${choices.myChoice}'</b>
+        <br>${compareYourselfToClayton(choices.yourChoice, choices.myChoice)} </p>
+    `                                
+    )
+}
+
+const currentStepIsComplete = ()=>{
+    if (STORE.currentDisplay === 'genreSelection' && STORE.responses.genres.length === 0){
+        return false
+    } else if (STORE.currentDisplay === 'question' && STORE.responses[questionList[STORE.currentQuestion].key] === ''){
+        return false
+    } else {
+        return true
+    }
+}
+
 const submitClick = ()=>{
     //will go from a question page to a transition page, increment the 'currentQuestion' then renders
-    console.log('submitClick', currentStepIsComplete())
-    
+    console.log('submitClick')
     if(currentStepIsComplete()){
         STORE.currentDisplay = 'feedback'
-        renderQuizApp()
+        populateFeedback()
+        $('#genreSelection, #question').attr('hidden', true)
+        $('#feedback').attr('hidden', false)   
     } else {
         console.log('not ready!')
     }   
@@ -535,7 +459,7 @@ const submitClick = ()=>{
 
 const listenForSubmitClick = ()=>{
     console.log('listenForSubmitClick')
-    $('#js-netflix-form').on('click', '.js-submit-button', function(event){
+    $('.js-app').on('click', '.js-submit-button', function(event){
         event.preventDefault()
         submitClick()
     })
@@ -543,43 +467,34 @@ const listenForSubmitClick = ()=>{
 
 const moreClick = () =>{
     //on the 'results' page only. It will only exist if there are more than one match in the series list after filtering.
-
     STORE.guessIndex++
-
     STORE.guessIndex = STORE.guessIndex%STORE.filteredSeries.length
-
-    renderQuizApp()
+    populateResults()
 }
 
 const listenForMoreClick = () =>{
-    $('#js-netflix-form').on('click', '.js-more-button', function(event){
+    $('.js-app').on('click', '.js-more-button', function(event){
        event.preventDefault();
        moreClick()
     })
-    
     console.log('listenForMoreClick')
-    
 }
 
 const listenForResetClick = () =>{
-    $('#js-netflix-form').on('click', '.js-reset-button', function(event){
-
+    $('.js-app').on('click', '.js-reset-button', function(event){
     })
     console.log('listenForsResetClick')
 }
-
 
 ///////////ACTIVATION - rendering to the DOM and listening for actions
 
 const renderQuizApp = ()=>{
     console.log('render')
     //takes the store and renders the app based upon the information there
-    $('#js-netflix-form').html(displayTemplates[STORE.currentDisplay](questionList[STORE.currentQuestion]))
+    $('.js-app').html(displayTemplates[STORE.currentDisplay](questionList[STORE.currentQuestion]))
 }
 
-
 function handleQuizApp() {
-    renderQuizApp()
     listenForContinueClick()
     listenForCheckClick()
     listenForRadioClick()
@@ -587,6 +502,5 @@ function handleQuizApp() {
     listenForMoreClick()
     listenForResetClick()
 }
-
   
 $(handleQuizApp);
