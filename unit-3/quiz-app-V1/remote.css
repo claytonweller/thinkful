@@ -2,10 +2,6 @@ body *{
     box-sizing: border-box
 }
 
-div{
-    /* border: solid black 1px; */
-}
-
 .remote-container{
     max-width: 400px;
     font-size: 0;
@@ -147,7 +143,7 @@ button{
 legend{
     color:white;
     font-weight: bold;
-    font-size: 1.05em
+    font-size: 1.05em;
 }
 
 button:active{
