@@ -140,7 +140,14 @@ button{
     border-right: solid black 3px;
     color: rgb(255, 255, 255);
     transition-duration: 300ms;
-    outline:none;
+    outline-color: #ffffff;
+    outline-width: 3px
+}
+
+legend{
+    color:white;
+    font-weight: bold;
+    font-size: 1.05em
 }
 
 button:active{

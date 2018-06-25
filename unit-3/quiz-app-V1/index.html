@@ -16,12 +16,12 @@
         <div class="container js-app" aria-live="assertive">
 
                 <!-- Start section -->
-                <section role="region" id="start" >
+                <section role="region" id="start">
                     <div class="tv-container">
                         <div class="tv">
                             <div class="screen">
                                 <h1>Let me help you find a</h1>
-                                <img class="logo" src="./images/Netflix-Logo.png" alt="The netflix logo is on the TV"/>
+                                <img class="logo" src="./images/Netflix-Logo.png" alt="Netflix"/>
                                 <h1> Series</h1>
                             </div>
                             <img class="tv-image"   src="./images/flatscreen.png"  alt="background image of a flatscreen tv"/>
@@ -55,7 +55,7 @@
                                 <div class="remote-right remote-piece"></div>
                             </div>
                         </div>
-                        <form id="start-form" class="remote-bot-container">
+                        <form id="start-form" fieldset="" class="remote-bot-container">
                             <div class="remote-bot remote-piece">
                                 <div class="remote-bot-left remote-piece"></div>
                                 <div class="remote-bot-right remote-piece"></div>
@@ -95,10 +95,12 @@
                             <div class="remote-middle remote-piece">
                                 <div class="remote-left remote-piece"></div>
                                 <form id="genre-form" class="remote-button-container">
-                                    <ul class="all-answers"> 
-                                        <!-- ${answers} -->
-                                        answers
-                                    </ul>
+                                    <fieldset > 
+                                        <legend> Genres</legend>
+                                        <div class="all-answers">
+                                            Genres
+                                        </div>
+                                    </fieldset>
                                     <div class="continue-container">
                                         <!-- ${button} -->
                                         <button type="button" class="js-submit-button submit">Submit</button>
@@ -146,10 +148,13 @@
                             <div class="remote-middle remote-piece">
                                 <div class="remote-left remote-piece"></div>
                                 <form id="question-form" class="remote-button-container">
-                                    <ul class="all-answers"> 
-                                        <!-- ${answers} -->
-                                        answers
-                                    </ul>
+                                    <fieldset>
+                                        <legend> Answers </legend>
+                                        <div class="all-answers"> 
+                                            <!-- ${answers} -->
+                                        </div>
+                                    </fieldset>
+                                    
                                     <div class="continue-container">
                                         <!-- ${button} -->
                                         <button type="button" class="js-submit-button submit">Submit</button>

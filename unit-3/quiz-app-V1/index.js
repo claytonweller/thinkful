@@ -143,9 +143,9 @@ const createRadioAnswerElements = (answerArray)=>{
     let htmlString = ''
     answerArray.forEach(answer => {
         htmlString = htmlString +
-            `<li class="answer-container">
+            `<div class="answer-container">
                 <label><input type="radio" class="js-possible-answer" name="possible-answer" value=${answer} id=${answer}/>${answer}</label>
-            </li>`
+            </div>`
     });
     return htmlString
 }
@@ -154,10 +154,10 @@ const createCheckBoxAnswerElements = (genreArray)=>{
     let htmlString = ''
     genreArray.forEach(genre=>{
         htmlString = htmlString + 
-            `<li class="genre-container">
+            `<div class="genre-container">
                 <label><input class="js-genre-option" type="checkbox" name="possible-answer" value=${genre} id=${genre}/>
                 ${genre}</label>
-            </li>`
+            </div>`
     })
     return htmlString
 }
@@ -186,7 +186,7 @@ const compareYourselfToClayton = (yourChoice, myChoice)=>{
     }else {
         responseText = `We picked different things... And that's totally fine!`
     }
-    return `${responseText} <br>We are currently ${100*STORE.claytonMatches/(STORE.currentQuestion+1)}% synced up.`
+    return `${responseText} <br>We are ${100*STORE.claytonMatches/(STORE.currentQuestion+1)}% synced up.`
 }
 
 const interpretYourChoice = (input)=>{
@@ -307,6 +307,7 @@ const populateGenres = (screen)=>{
 const populateAnswers = (screen) => {
     let answers = createRadioAnswerElements(questionList[STORE.currentQuestion].answers)
     $(`#${screen}`).find('.all-answers').html(answers)
+    $(`#${screen}`).find('legend').html(questionList[STORE.currentQuestion].key)
 }
 
 const populateTVQuestion = (screen)=>{
@@ -320,12 +321,12 @@ const populateResults = () => {
         `<img src="./images/${STORE.filteredSeries[STORE.guessIndex].img}" alt="The poster for ${STORE.filteredSeries[STORE.guessIndex].title}" />`
     )
     $('.result-text').html(`
-        <div><p> Here's my top recommendation for you:</p>
+        <div><p> Top reccomendation:</p>
             <h3 class="emphasized"> <b>${STORE.filteredSeries[STORE.guessIndex].title}</b></h3> 
         </div>       
-        <div><p> We also found ${STORE.filteredSeries.length - 1} other series that you might like.</p></div>
+        <div><p> We also found ${STORE.filteredSeries.length - 1} others</p></div>
         <hr>
-        <p>In the end you and I (Clayton Weller) matched with ${100 * STORE.claytonMatches/10}%
+        <p>You and I matched with ${100 * STORE.claytonMatches/10}%
     `)
 }
 
@@ -480,19 +481,41 @@ const listenForMoreClick = () =>{
     console.log('listenForMoreClick')
 }
 
+const resetResponses = () =>{
+    STORE.responses = {
+        genres:[],
+        critics:'',
+        bigNames:'',
+        animated:"",
+        foreign:'',
+        continuous:"",
+        seasons:'',
+        trueStory:'',
+        derivative:'',
+        time:"",
+    }
+}
+
+const resetClick = ()=>{
+    
+    $('.js-app').on('click', '.js-reset-button', function(event){
+        STORE.currentDisplay = 'start'
+        $('#results').attr('hidden', true)
+        $('#start').attr('hidden', false)
+        STORE.currentQuestion = 0
+        resetResponses()
+    })
+}
+
 const listenForResetClick = () =>{
     $('.js-app').on('click', '.js-reset-button', function(event){
+        event.preventDefault();
+        resetClick()
     })
-    console.log('listenForsResetClick')
+    console.log('listenForResetClick')
 }
 
 ///////////ACTIVATION - rendering to the DOM and listening for actions
-
-const renderQuizApp = ()=>{
-    console.log('render')
-    //takes the store and renders the app based upon the information there
-    $('.js-app').html(displayTemplates[STORE.currentDisplay](questionList[STORE.currentQuestion]))
-}
 
 function handleQuizApp() {
     listenForContinueClick()
