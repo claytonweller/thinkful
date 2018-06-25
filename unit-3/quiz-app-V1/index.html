@@ -13,14 +13,268 @@
 
 <body>
    <main role="main">
-        <div class="container">
-            <form id="js-netflix-form" action="./index.html" aria-live="assertive">
-                <!-- The entire app renders in here
-                    There is a Display area labeled 'TV'
-                    {{{On the start page there is some descriptive text labled 'description'}}}
-                    There is an interaction aread labeled 'Remote'
-                -->
-            </form>
+        <div class="container js-app" aria-live="assertive">
+
+                <!-- Start section -->
+                <section role="region" id="start" >
+                    <div class="tv-container">
+                        <div class="tv">
+                            <div class="screen">
+                                <h1>Let me help you find a</h1>
+                                <img class="logo" src="./images/Netflix-Logo.png" alt="The netflix logo is on the TV"/>
+                                <h1> Series</h1>
+                            </div>
+                            <img class="tv-image"   src="./images/flatscreen.png"  alt="background image of a flatscreen tv"/>
+                        </div>
+                        <div class="mantle">
+                            <img src="./images/woodMantle.png" alt="baground image of a wood mantle. The TV is sitting on it" />
+                        </div>
+                    </div> 
+
+                    <div class="description">
+                        <p>Hi! I'm Clayton Weller, and I've watched a BUNCH of Netflix series... like way too many... 29. And those are just the series produced by netflix themselves. They're great! But there are too many of them to suggest easily. So this app will do 2 things. <br><b>1. Help you find a netflix Series</b> I've watched all of the ones in the app and they're definitely enjoyable. <br><b>2. You can compare your answers to my own! </b> That way if you like the thing you saw you can know if I'm a person to ask about NetFlix series. </p>
+                    </div>
+                    
+                    <!-- Here is the Remote Template -->
+                    <div class="remote-container">
+                        <div class="remote-top-container">    
+                            <div class="remote-top">
+                                <div class="remote-top-left remote-piece"></div>
+                                <div  class="remote-light remote-piece"></div>
+                                <div class="remote-top-right remote-piece"></div>
+                            </div>      
+                        </div>
+                        <div class="remote-middle-container"> 
+                            <div class="remote-middle remote-piece">
+                                <div class="remote-left remote-piece"></div>
+                                <div class="remote-button-container">
+                                    <div class="continue-container">
+                                        <button type="submit" class="js-continue-button continue">Lets Find a Series!</button>
+                                    </div>
+                                </div>
+                                <div class="remote-right remote-piece"></div>
+                            </div>
+                        </div>
+                        <form id="start-form" class="remote-bot-container">
+                            <div class="remote-bot remote-piece">
+                                <div class="remote-bot-left remote-piece"></div>
+                                <div class="remote-bot-right remote-piece"></div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- This is the genre display -->
+                <!-- Here is the TV template -->
+
+                <section role="region" id="genreSelection" hidden>
+                    <div class="tv-container">
+                        <div class="tv">
+                            <div class="screen">
+                                <!-- ${info} -->
+                                <h1 class="emphasized">Which Genres are you most interested in?</h1>
+                                <p></p> 
+                            </div>
+                            <img class="tv-image"   src="./images/flatscreen.png"  alt="background image of a flatscreen tv"/>
+                        </div>
+                        <div class="mantle">
+                            <img src="./images/woodMantle.png" alt="baground image of a wood mantle. The TV is sitting on it" />
+                        </div>
+                    </div> 
+                    
+                    <!-- Here is the Remote Template -->
+                    <div class="remote-container">
+                        <div class="remote-top-container">    
+                            <div class="remote-top">
+                                <div class="remote-top-left remote-piece"></div>
+                                <div  class="remote-light remote-piece"></div>
+                                <div class="remote-top-right remote-piece"></div>
+                            </div>      
+                        </div>
+                        <div class="remote-middle-container"> 
+                            <div class="remote-middle remote-piece">
+                                <div class="remote-left remote-piece"></div>
+                                <form id="genre-form" class="remote-button-container">
+                                    <ul class="all-answers"> 
+                                        <!-- ${answers} -->
+                                        answers
+                                    </ul>
+                                    <div class="continue-container">
+                                        <!-- ${button} -->
+                                        <button type="button" class="js-submit-button submit">Submit</button>
+                                    </div>
+                                </form>
+                                <div class="remote-right remote-piece"></div>
+                            </div>
+                        </div>
+                        <div class="remote-bot-container">
+                            <div class="remote-bot remote-piece">
+                                <div class="remote-bot-left remote-piece"></div>
+                                <div class="remote-bot-right remote-piece"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <!-- Here is a typical question -->
+
+                <section role="region" id="question" hidden>
+                    <div class="tv-container">
+                        <div class="tv">
+                            <div class="screen">
+                                <!-- ${info} -->
+                                <h1 class="emphasized" >Current Question</h1>
+                                <p>You're on question x of 10 <br> ##% match with me!</p>
+                            </div>
+                            <img class="tv-image"   src="./images/flatscreen.png"  alt="background image of a flatscreen tv"/>
+                        </div>
+                        <div class="mantle">
+                            <img src="./images/woodMantle.png" alt="baground image of a wood mantle. The TV is sitting on it" />
+                        </div>
+                    </div> 
+                    
+                    <!-- Here is the Remote Template -->
+                    <div class="remote-container">
+                        <div class="remote-top-container">    
+                            <div class="remote-top">
+                                <div class="remote-top-left remote-piece"></div>
+                                <div  class="remote-light remote-piece"></div>
+                                <div class="remote-top-right remote-piece"></div>
+                            </div>      
+                        </div>
+                        <div class="remote-middle-container"> 
+                            <div class="remote-middle remote-piece">
+                                <div class="remote-left remote-piece"></div>
+                                <form id="question-form" class="remote-button-container">
+                                    <ul class="all-answers"> 
+                                        <!-- ${answers} -->
+                                        answers
+                                    </ul>
+                                    <div class="continue-container">
+                                        <!-- ${button} -->
+                                        <button type="button" class="js-submit-button submit">Submit</button>
+                                    </div>
+                                </form>
+                                <div class="remote-right remote-piece"></div>
+                            </div>
+                        </div>
+                        <div class="remote-bot-container">
+                            <div class="remote-bot remote-piece">
+                                <div class="remote-bot-left remote-piece"></div>
+                                <div class="remote-bot-right remote-piece"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Feedback Screen  -->
+                <!-- Here is the TV template -->
+
+                <section role="region" id="feedback" hidden>
+                    <div class="tv-container">
+                        <div class="tv">
+                            <div class="screen">
+                                <!-- ${info} -->
+                                <h1 class="emphasized js-question">Previous Question</h1>
+                                <p>You chose <b class="emphasized">'Your Choice'</b>
+                                <br>I chose <b>'My Choice'</b>
+                                <br>Here's a comparison </p>
+                            </div>
+                            <img class="tv-image"   src="./images/flatscreen.png"  alt="background image of a flatscreen tv"/>
+                        </div>
+                        <div class="mantle">
+                            <img src="./images/woodMantle.png" alt="baground image of a wood mantle. The TV is sitting on it" />
+                        </div>
+                    </div> 
+                    
+                    <!-- Here is the Remote Template -->
+                    <div class="remote-container">
+                        <div class="remote-top-container">    
+                            <div class="remote-top">
+                                <div class="remote-top-left remote-piece"></div>
+                                <div  class="remote-light remote-piece"></div>
+                                <div class="remote-top-right remote-piece"></div>
+                            </div>      
+                        </div>
+                        <div class="remote-middle-container"> 
+                            <div class="remote-middle remote-piece">
+                                <div class="remote-left remote-piece"></div>
+                                <div class="remote-button-container">
+                                    <form id="feedback-form" class="continue-container">
+                                        <button type="submit" class="js-continue-button  continue">Continue</button>
+                                    </form>
+                                </div>
+                                <div class="remote-right remote-piece"></div>
+                            </div>
+                        </div>
+                        <div class="remote-bot-container">
+                            <div class="remote-bot remote-piece">
+                                <div class="remote-bot-left remote-piece"></div>
+                                <div class="remote-bot-right remote-piece"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <!-- Results Screen  -->
+                <!-- Here is the TV template -->
+
+                <section role="region" id="results" hidden>
+                    <div class="tv-container">
+                        <div class="tv">
+                            <div class="screen">
+                                <!-- ${info} -->
+                                <div class='result-container'>
+                                    <div class="result-image">
+                                        Image Goes here
+                                    </div>    
+                                    <div class="result-text">
+                                        <div><p> Here's my top recommendation for you:</p>
+                                        <h3 class="emphasized"> <b>TOP RECOMMENDATION</b></h3> 
+                                        </div>       
+                                        <div><p> We also found # other series that you might like.</p></div>
+                                        <hr>
+                                        <p>In the end you and I (Clayton Weller) matched with ##%
+                                    </div>
+                                </div>
+                            </div>
+                            <img class="tv-image"   src="./images/flatscreen.png"  alt="background image of a flatscreen tv"/>
+                        </div>
+                        <div class="mantle">
+                            <img src="./images/woodMantle.png" alt="baground image of a wood mantle. The TV is sitting on it" />
+                        </div>
+                    </div> 
+                    
+                    <!-- Here is the Remote Template -->
+                    <div class="remote-container">
+                        <div class="remote-top-container">    
+                            <div class="remote-top">
+                                <div class="remote-top-left remote-piece"></div>
+                                <div  class="remote-light remote-piece"></div>
+                                <div class="remote-top-right remote-piece"></div>
+                            </div>      
+                        </div>
+                        <div class="remote-middle-container"> 
+                            <div class="remote-middle remote-piece">
+                                <div class="remote-left remote-piece"></div>
+                                <div class="remote-button-container">
+                                    <form id="results-form" class="continue-container">
+                                        <!-- ${button} -->
+                                        <button type="submit" class="js-more-button more">Other Matches</button>
+                                        <button type="submit" class="js-reset-button reset">Try the whole thing again!</button>
+                                    </form>
+                                </div>
+                                <div class="remote-right remote-piece"></div>
+                            </div>
+                        </div>
+                        <div class="remote-bot-container">
+                            <div class="remote-bot remote-piece">
+                                <div class="remote-bot-left remote-piece"></div>
+                                <div class="remote-bot-right remote-piece"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
         </div>
    </main>
 
