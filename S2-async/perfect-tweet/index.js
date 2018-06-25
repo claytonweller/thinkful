@@ -1,3 +1,11 @@
+//wikipedia call
+
+//twitter call
+
+//newsAPI call
+
+//giphy call
+
 STORE = {
     topic:'',
     currentScreen:'start',
@@ -40,6 +48,7 @@ const restartButtonClick = ()=>{
     console.log('restart click')
     STORE.topic = ''
     switchToStartScreen()
+    hideInfoDisplay()
 }
 
 const listenForRestartButtonClick = ()=>{
@@ -61,24 +70,33 @@ const listenForPerfectButtonClick = () => {
 }
 
 const chooseInfoDisplay = (infoButton) =>{
-    console.log($(infoButton).attr('id'))
     let display = $(infoButton).attr('id')
     display = display.split('-')
     return display[0]
-
 }
 
 const showInfoDisplay = () => {
     $('.info-container').attr('hidden', false)
+    STORE.infoHidden = false
+
 }
 
-const infoButtonClick = (infoButton) => {
-    console.log(infoButton, 'clicked')
+const hideInfoDisplay = () => {
+    STORE.infoHidden = true
+    STORE.infoDisplay = ''
+    $('.info-container').attr('hidden', true)
+}
+
+const infoButtonClick = (infoButton) => {   
+    console.log($(infoButton).attr('id'), 'clicked')
     if(STORE.infoHidden){
-        STORE.infoHidden = false
         showInfoDisplay()   
+    } else if (!STORE.infoHidden && STORE.infoDisplay === chooseInfoDisplay(infoButton) ){
+        hideInfoDisplay() 
     }
     STORE.infoDisplay = chooseInfoDisplay(infoButton)
+    $('.js-info').attr('hidden', true)
+    $(`.info-${STORE.infoDisplay}`).attr('hidden', false)
     
 }
 
