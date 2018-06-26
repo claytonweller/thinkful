@@ -1,83 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Clayton's Netflix Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-  <link rel="stylesheet" href="index.css">
   <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
-   <main role="main">
-        
-        <div class="container" aria-live="assertive">
-            <div class="interface-box">
-            <!-- This is when the app starts -->
-            
-                <div class="starting">
-                    <h1> Here comes a frustrating quiz! </h1>
-                    <div class="button-holder">
-                        <button type="submit">Let's do it!</button>
-                    </div>
-                </div>
-
-                <!-- This is when a question is being asked -->
-
-                <div class="asking" hidden>
-                    <form action="#">
-                        <div class="question">
-                            <h1>
-                                <!-- question goes here -->
-                            </h1>
-                            <p>
-                                <!-- Question ____ of _____ -->
-                            </p>
-                        </div>
-                        <ul class="js-answers answers">
-                            <!-- answers go here -->
-                        </ul>
-                        <div class="button-holder">
-                            <button type="submit">Am I Right?</button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- This is when the app responds to a question -->
-                
-                <div class="feedbacking" hidden>
-                    <h1>
-                        <!-- what they selected     -->
-                    </h1>
-                    <h2>
-                        <!-- Whether they are right -->
-                    </h2>
-                    <h3>
-                        <!-- total correct and what question they're on -->
-                    </h2>
-                    <div class="button-holder">
-                        <button type="submit">
-                            <!-- The text changes if they've answered the final question -->
-                        </button>
-                    </div>
-                </div>
-            
-                <!-- this is where we giv the final score -->
-
-                <div class="judging" hidden>
-                    <h1>
-                        <!-- total correct -->
-                    </h1>
-                    <div class="button-holder">
-                        <button type="submit">Start over</button>
-                    </div>
-                </div>
-            </div>
+  <main role="main">
+    <div class="container" aria-live="assertive">
+      <div class="interface-box">
+        <!-- This is when the app starts -->
+        <div class="starting">
+          <h1> Here comes a frustrating quiz! </h1>
+          <div class="button-holder">
+            <button id="start">Let's do it!</button>
+          </div>
         </div>
-    </main>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="index.js"></script>
+        <!-- / This is when the app starts -->
+        <!-- This is when a question is being asked -->
+        <div class="asking" hidden>
+          <form id="asking-form" action="#">
+            <div class="question">
+              <h1>
+                <!-- question goes here -->
+              </h1>
+              <p>
+                <!-- Question ____ of _____ -->
+              </p>
+            </div>
+            <ul class="js-answers answers">
+              <!-- answers go here -->
+            </ul>
+            <div class="button-holder">
+              <button type="submit">Am I Right?</button>
+            </div>
+          </form>
+        </div>
+        <!-- This is when the app responds to a question -->
+        <div class="feedbacking" hidden>
+          <h1>
+            <!-- what they selected     -->
+          </h1>
+          <h2>
+            <!-- Whether they are right -->
+          </h2>
+          <h3>
+            <!-- total correct and what question they're on -->
+          </h2>
+          <div class="button-holder">
+            <button id="feedbacking-button">
+              <!-- The text changes if they've answered the final question -->
+            </button>
+          </div>
+        </div>
+        <!-- This is when the app responds to a question -->
+        <!-- this is where we giv the final score -->
+        <div class="judging" hidden>
+          <h1  TODO>
+            <!-- total correct -->
+          </h1>
+          <div class="button-holder">
+            <button id="restart" >Start over</button>
+          </div>
+        </div>
+        <!-- this is where we giv the final score -->
+      </div>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
