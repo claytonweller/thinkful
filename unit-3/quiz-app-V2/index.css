@@ -40,7 +40,7 @@ ul{
 
 }
 
-li{
+label{
     list-style-type: none;
     border: solid black 1px;
     margin:10px;

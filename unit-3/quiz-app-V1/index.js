@@ -142,10 +142,8 @@ const seriesList = [
 const createRadioAnswerElements = (answerArray)=>{
     let htmlString = ''
     answerArray.forEach(answer => {
-        htmlString = htmlString +
-            `<div class="answer-container">
-                <label><input type="radio" class="js-possible-answer" name="possible-answer" value=${answer} id=${answer}/>${answer}</label>
-            </div>`
+        htmlString = htmlString + `<label class="answer-container"><input type="radio" class="js-possible-answer" name="possible-answer" value=${answer} id=${answer}/>${answer}</label>`
+
     });
     return htmlString
 }
@@ -154,10 +152,9 @@ const createCheckBoxAnswerElements = (genreArray)=>{
     let htmlString = ''
     genreArray.forEach(genre=>{
         htmlString = htmlString + 
-            `<div class="genre-container">
-                <label><input class="js-genre-option" type="checkbox" name="possible-answer" value=${genre} id=${genre}/>
-                ${genre}</label>
-            </div>`
+            `<label class="genre-container"><input class="js-genre-option" type="checkbox" name="possible-answer" value=${genre} id=${genre}/>
+                ${genre}
+            </label>`
     })
     return htmlString
 }
