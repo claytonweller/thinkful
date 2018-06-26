@@ -50,5 +50,4 @@ function getEverythingFromSearch(search) {
 const getNewsFromSearch = search =>{
     getEverythingFromSearch(search)
     getGoodNewsFromSearch(search)
-    console.log(STATE)
 }

@@ -16,9 +16,55 @@ const createGifBlocks = () =>{
 }
 
 const populateGiphy = () => {
-    console.log('populating giphy')
     $('.giphy-header').find('h1').html('Gifs related to: '+STATE.topic)
     $('.giphy-gifs').html(createGifBlocks())
+}
+
+const createSingleNewsArticle = (obj) =>{
+    return `
+        <article class="news-article">
+            <header class="news-headline">
+                <a href="${obj.url}"><h2>${obj.headline}</h2></a> 
+                <h3>${obj.source} - by ${obj.author}</h3>
+            </header>
+            <div class="news-text">
+                <p>${obj.excerpt}</p>
+            </div>
+        </article>
+    `
+}
+
+const createAllNewsArticles = () => {
+    let articleHtml = `<h1>News about: ${STATE.topic}</h1>`
+    STATE.info.news.good.forEach(item =>{
+        articleHtml = articleHtml + createSingleNewsArticle(item)
+    })
+    STATE.info.news.everything.forEach(item =>{
+        articleHtml = articleHtml + createSingleNewsArticle(item)
+    })
+    return articleHtml
+}
+
+const populateNews = () => {
+    $('.info-news').html(createAllNewsArticles())
+    
+    //headline
+    //excerpt
+    //author
+    //source
+    //url
+}
+
+const populateInfo = () =>{
+    populateWiki()
+    populateGiphy()
+    populateNews()
+}
+
+const makeAPIcalls = (topic) =>{
+    getWikiFromSearch(topic)
+    getGiphyFromSearch(topic)
+    getNewsFromSearch(topic)
 }
 
 const switchToPerfectTweetScreen = ()=>{
@@ -28,18 +74,14 @@ const switchToPerfectTweetScreen = ()=>{
     $('.tabs-container').attr('hidden', false)
 }
 
-const makeAPIcalls = () =>{
-    getWikiFromSearch(STATE.topic)
-    getGiphyFromSearch(STATE.topic)
-}
-
 const searchButtonClick = (element) =>{
     console.log('search button click')
     let topicField = $('.start-screen').find('input')
-    STATE.topic = $(topicField).val()
+    let topic = $(topicField).val()
+    STATE.topic = topic
     $(topicField).val('')
     switchToPerfectTweetScreen()
-    makeAPIcalls()
+    makeAPIcalls(topic)
     console.log(STATE)
 }
 
@@ -91,11 +133,8 @@ const chooseInfoDisplay = (infoButton) =>{
 
 const showInfoDisplay = () => {
     $('.info-container').attr('hidden', false)
-    populateWiki()
-    populateGiphy()
-
+    populateInfo()
     STATE.infoHidden = false
-
 }
 
 const hideInfoDisplay = () => {
