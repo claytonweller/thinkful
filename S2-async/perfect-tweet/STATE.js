@@ -1,4 +1,4 @@
-STORE = {
+STATE = {
     topic:'',
     currentScreen:'start',
     infoHidden:true,
@@ -9,6 +9,9 @@ STORE = {
             extract:'',
         },
         giphy:[{url:'', alt:''}],
-        news:[{url:'', headline:'', author:'', excerpt:'', source:''}]
+        news:{
+            good:[{url:'', headline:'', author:'', excerpt:'', source:''}],
+            everything:[{url:'', headline:'', author:'', excerpt:'', source:''}]
+        },
     }
 }

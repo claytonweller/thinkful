@@ -1,12 +1,12 @@
 const populateWiki = () => {
     console.log('populating wiki')
-    $('.wiki-title').find('h1').html(STORE.info.wiki.title)
-    $('.wiki-text').find('p').html(STORE.info.wiki.extract)
+    $('.wiki-title').find('h1').html(STATE.info.wiki.title)
+    $('.wiki-text').find('p').html(STATE.info.wiki.extract)
 }
 
 const createGifBlocks = () =>{
     let html = ''
-    STORE.info.giphy.forEach(obj =>{
+    STATE.info.giphy.forEach(obj =>{
         html = html+
             `<div class="gif-block">
                 <img src="${obj.url}" alt="${obj.alt}" />
@@ -17,30 +17,30 @@ const createGifBlocks = () =>{
 
 const populateGiphy = () => {
     console.log('populating giphy')
-    $('.giphy-header').find('h1').html('Gifs related to: '+STORE.topic)
+    $('.giphy-header').find('h1').html('Gifs related to: '+STATE.topic)
     $('.giphy-gifs').html(createGifBlocks())
 }
 
 const switchToPerfectTweetScreen = ()=>{
-    STORE.currentScreen = 'perfect-tweet'
+    STATE.currentScreen = 'perfect-tweet'
     $('.start-screen').attr('hidden', true)
     $('.perfect-tweet-screen').attr('hidden', false)
     $('.tabs-container').attr('hidden', false)
 }
 
 const makeAPIcalls = () =>{
-    getWikiFromSearch(STORE.topic)
-    getGiphyFromSearch(STORE.topic)
+    getWikiFromSearch(STATE.topic)
+    getGiphyFromSearch(STATE.topic)
 }
 
 const searchButtonClick = (element) =>{
     console.log('search button click')
     let topicField = $('.start-screen').find('input')
-    STORE.topic = $(topicField).val()
+    STATE.topic = $(topicField).val()
     $(topicField).val('')
     switchToPerfectTweetScreen()
     makeAPIcalls()
-    console.log(STORE)
+    console.log(STATE)
 }
 
 const listenForSearchButtonClick = ()=>{
@@ -52,7 +52,7 @@ const listenForSearchButtonClick = ()=>{
 }
 
 const switchToStartScreen = ()=>{
-    STORE.currentScreen = 'start'
+    STATE.currentScreen = 'start'
     $('.start-screen').attr('hidden', false)
     $('.perfect-tweet-screen').attr('hidden', true)
     $('.tabs-container').attr('hidden', true)
@@ -60,7 +60,7 @@ const switchToStartScreen = ()=>{
 
 const restartButtonClick = ()=>{
     console.log('restart click')
-    STORE.topic = ''
+    STATE.topic = ''
     switchToStartScreen()
     hideInfoDisplay()
 }
@@ -94,26 +94,26 @@ const showInfoDisplay = () => {
     populateWiki()
     populateGiphy()
 
-    STORE.infoHidden = false
+    STATE.infoHidden = false
 
 }
 
 const hideInfoDisplay = () => {
-    STORE.infoHidden = true
-    STORE.infoDisplay = ''
+    STATE.infoHidden = true
+    STATE.infoDisplay = ''
     $('.info-container').attr('hidden', true)
 }
 
 const infoButtonClick = (infoButton) => {   
     console.log($(infoButton).attr('id'), 'clicked')
-    if(STORE.infoHidden){
+    if(STATE.infoHidden){
         showInfoDisplay()   
-    } else if (!STORE.infoHidden && STORE.infoDisplay === chooseInfoDisplay(infoButton) ){
+    } else if (!STATE.infoHidden && STATE.infoDisplay === chooseInfoDisplay(infoButton) ){
         hideInfoDisplay() 
     }
-    STORE.infoDisplay = chooseInfoDisplay(infoButton)
+    STATE.infoDisplay = chooseInfoDisplay(infoButton)
     $('.js-info').attr('hidden', true)
-    $(`.info-${STORE.infoDisplay}`).attr('hidden', false)
+    $(`.info-${STATE.infoDisplay}`).attr('hidden', false)
     
 }
 

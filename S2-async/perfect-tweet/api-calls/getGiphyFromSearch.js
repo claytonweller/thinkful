@@ -8,7 +8,7 @@ const createGiphyObject = (results) =>{
             alt:item.title,
         }
     })
-    STORE.info.giphy = output 
+    STATE.info.giphy = output 
 }
 
 function getGiphyFromSearch(search) {

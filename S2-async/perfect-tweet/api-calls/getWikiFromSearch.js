@@ -8,9 +8,9 @@ const createWikiObject = (results) =>{
     return {title, extract}
 }
 
-const storeWikiObject = (results) =>{
+const STATEWikiObject = (results) =>{
     let wikiObj = createWikiObject(results)
-    STORE.info.wiki = wikiObj
+    STATE.info.wiki = wikiObj
 }
 
 function getWikiFromTitle(title) {
@@ -21,7 +21,7 @@ function getWikiFromTitle(title) {
         titles:title,
         format:'json',
     }
-    $.getJSON(WIKI_SEARCH_URL, query, storeWikiObject);
+    $.getJSON(WIKI_SEARCH_URL, query, STATEWikiObject);
 }
 
 const searchForTitles = (result) =>{

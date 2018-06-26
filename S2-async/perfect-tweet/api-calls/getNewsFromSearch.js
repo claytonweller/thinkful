@@ -2,19 +2,26 @@ const EVERYTHING_SEARCH_URL = 'https://newsapi.org/v2/everything'
 const GOOD_SEARCH_URL = 'https://newsapi.org/v2/top-headlines'
 const NEWS_API_KEY = 'd57b057c68454414bd4d1d8aa9986a98'
 
-const createGoodNewsObject = (results) =>{
-    console.log(results)
-    console.log({
-        url:results.url, 
-        headline:results.title, 
-        author:results.author, 
-        excerpt:results.description,
-        source:results.source,
+const createNewsArray = (results) => {
+    return results.articles.map(result => {
+        return {
+            url:result.url, 
+            headline:result.title, 
+            author:result.author, 
+            excerpt:result.description,
+            source:result.source.name,
+        }
     })
 }
 
-const createEverythingNewsObject = (results) => {
-    console.log(results)
+const createGoodNewsArray = (results) =>{    
+    let newsArray = createNewsArray(results)
+    STATE.info.news.good = newsArray
+}
+
+const createEverythingNewsArray = (results) => {
+    let newsArray = createNewsArray(results)
+    STATE.info.news.everything = newsArray
 }
 
 function getGoodNewsFromSearch(search) {
@@ -26,7 +33,7 @@ function getGoodNewsFromSearch(search) {
         sortBy:'popularity'
 
     }
-    $.getJSON(GOOD_SEARCH_URL, query, createGoodNewsObject);
+    $.getJSON(GOOD_SEARCH_URL, query, createGoodNewsArray);
 }
 
 function getEverythingFromSearch(search) {
@@ -37,8 +44,11 @@ function getEverythingFromSearch(search) {
         language:'en',
         sortBy:'popularity'
     }
-    $.getJSON(EVERYTHING_SEARCH_URL, query, createEverythingNewsObject);
+    $.getJSON(EVERYTHING_SEARCH_URL, query, createEverythingNewsArray);
 }
 
-getGoodNewsFromSearch('trump')
-getEverythingFromSearch('trump')
+const getNewsFromSearch = search =>{
+    getEverythingFromSearch(search)
+    getGoodNewsFromSearch(search)
+    console.log(STATE)
+}
