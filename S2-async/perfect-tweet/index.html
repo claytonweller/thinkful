@@ -129,7 +129,7 @@
                     <!-- this is for popular tweets -->
                     <div class="twitter-section twitter-popular">
                         <div class="twitter-header">
-                            <h2>Recent</h2>
+                            <h2>Popular</h2>
                         </div>
                         <div class="twitter-container">
                             <div class="twitter-tweet">
@@ -150,6 +150,7 @@
                 </div>
 
                 <!-- newsAPI info Screen -->
+                <!-- MUST ADD ATTRIBUTION LINK -->
                 <div class="info-news js-info" hidden>
                     <article>
                        <div class="news-article">
@@ -190,6 +191,7 @@
                 </div>
                 
                 <!-- Giphy info screen -->
+                <!-- REQUIRED TO PUT IN "POWERED BY GIPHY IN HERE" -->
                 <div class="info-giphy js-info" hidden>
                     <header>
                         <div class="giphy-header">
@@ -218,6 +220,12 @@
    </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="STORE.js" type="text/javascript"></script>
+    <script src="./api-calls/getWikiFromSearch.js" type="text/javascript"></script>
+    <script src="./api-calls/getTwitterFromSearch.js" type="text/javascript"></script>
+    <script src="./api-calls/getNewsFromSearch.js" type="text/javascript"></script>
+    <script src="./api-calls/getGiphyFromSearch.js" type="text/javascript"></script>
     <script type="text/javascript" src="index.js"></script>
+    
 </body>
 </html>

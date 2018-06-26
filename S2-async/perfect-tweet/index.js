@@ -1,16 +1,24 @@
-//wikipedia call
+const populateWiki = () => {
+    console.log('populating wiki')
+    $('.wiki-title').find('h1').html(STORE.info.wiki.title)
+    $('.wiki-text').find('p').html(STORE.info.wiki.extract)
+}
 
-//twitter call
+const createGifBlocks = () =>{
+    let html = ''
+    STORE.info.giphy.forEach(obj =>{
+        html = html+
+            `<div class="gif-block">
+                <img src="${obj.url}" alt="${obj.alt}" />
+            </div>`
+    })
+    return html
+}
 
-//newsAPI call
-
-//giphy call
-
-STORE = {
-    topic:'',
-    currentScreen:'start',
-    infoHidden:true,
-    infoDisplay:'wiki'
+const populateGiphy = () => {
+    console.log('populating giphy')
+    $('.giphy-header').find('h1').html('Gifs related to: '+STORE.topic)
+    $('.giphy-gifs').html(createGifBlocks())
 }
 
 const switchToPerfectTweetScreen = ()=>{
@@ -20,12 +28,18 @@ const switchToPerfectTweetScreen = ()=>{
     $('.tabs-container').attr('hidden', false)
 }
 
+const makeAPIcalls = () =>{
+    getWikiFromSearch(STORE.topic)
+    getGiphyFromSearch(STORE.topic)
+}
+
 const searchButtonClick = (element) =>{
     console.log('search button click')
     let topicField = $('.start-screen').find('input')
     STORE.topic = $(topicField).val()
     $(topicField).val('')
     switchToPerfectTweetScreen()
+    makeAPIcalls()
     console.log(STORE)
 }
 
@@ -51,7 +65,7 @@ const restartButtonClick = ()=>{
     hideInfoDisplay()
 }
 
-const listenForRestartButtonClick = ()=>{
+const listenForRestartButtonClick = () => {
     console.log('listening for restart')
     $('.js-restart-button').click(function(event) {
         restartButtonClick()
@@ -77,6 +91,9 @@ const chooseInfoDisplay = (infoButton) =>{
 
 const showInfoDisplay = () => {
     $('.info-container').attr('hidden', false)
+    populateWiki()
+    populateGiphy()
+
     STORE.infoHidden = false
 
 }

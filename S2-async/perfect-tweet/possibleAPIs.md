@@ -5,14 +5,17 @@ Twitter API -   https://developer.twitter.com/en/docs/tweets/search/overview
 News API - https://newsapi.org/
 
 GiPHy - https://developers.giphy.com/docs/
+    http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5
 
 wikipedia - 
-    https://en.wikipedia.org/w/api.php? (This returns the url link to 3 searched pages on wikipedia)
+    (This returns the url link to 3 searched pages on wikipedia)
+    https://en.wikipedia.org/w/api.php?
         action=opensearch
         &search=catan+board+game
         &limit=3
         &namespace=0
         &format=json
+        &origin=*
     https://en.wikipedia.org/w/api.php? (this returns the info from the specific title)
         action=query
         &prop=extracts
