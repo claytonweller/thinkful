@@ -480,27 +480,32 @@ const listenForMoreClick = () =>{
 }
 
 const resetResponses = () =>{
-    STORE.responses = {
-        genres:[],
-        critics:'',
-        bigNames:'',
-        animated:"",
-        foreign:'',
-        continuous:"",
-        seasons:'',
-        trueStory:'',
-        derivative:'',
-        time:"",
-    }
+    STORE = {
+      currentDisplay:'start',
+      responses:{
+          genres:[],
+          critics:'',
+          bigNames:'',
+          animated:"",
+          foreign:'',
+          continuous:"",
+          seasons:'',
+          trueStory:'',
+          derivative:'',
+          time:"",
+      },
+      currentQuestion:0,
+      claytonMatches:0,
+      filteredSeries:[],
+      guessIndex:0,
+      bestGuessFound:false,}
 }
 
 const resetClick = ()=>{
     
     $('.js-app').on('click', '.js-reset-button', function(event){
-        STORE.currentDisplay = 'start'
         $('#results').attr('hidden', true)
         $('#start').attr('hidden', false)
-        STORE.currentQuestion = 0
         resetResponses()
     })
 }

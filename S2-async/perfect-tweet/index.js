@@ -1,5 +1,4 @@
 const populateWiki = () => {
-    console.log('populating wiki')
     $('.wiki-title').find('h1').html(STATE.info.wiki.title)
     $('.wiki-text').find('p').html(STATE.info.wiki.extract)
 }
@@ -47,12 +46,6 @@ const createAllNewsArticles = () => {
 
 const populateNews = () => {
     $('.info-news').html(createAllNewsArticles())
-    
-    //headline
-    //excerpt
-    //author
-    //source
-    //url
 }
 
 const populateInfo = () =>{
@@ -74,10 +67,12 @@ const switchToPerfectTweetScreen = ()=>{
     $('.tabs-container').attr('hidden', false)
 }
 
-const searchButtonClick = (element) =>{
-    console.log('search button click')
+const searchButtonClick = () =>{
     let topicField = $('.start-screen').find('input')
     let topic = $(topicField).val()
+    if(topic === ''){
+      topic = 'NOTHING'
+    }
     STATE.topic = topic
     $(topicField).val('')
     switchToPerfectTweetScreen()
@@ -100,9 +95,21 @@ const switchToStartScreen = ()=>{
     $('.tabs-container').attr('hidden', true)
 }
 
+const resetInfo = () => {
+  STATE.info = {
+    wiki:{title:'',extract:''},
+    giphy:[],
+    news:{
+      good:[],
+      everything:[]
+    },
+  }
+}
+
 const restartButtonClick = ()=>{
     console.log('restart click')
     STATE.topic = ''
+    resetInfo()
     switchToStartScreen()
     hideInfoDisplay()
 }

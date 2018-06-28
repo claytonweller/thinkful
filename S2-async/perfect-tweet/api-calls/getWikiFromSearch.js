@@ -8,9 +8,27 @@ const createWikiObject = (results) =>{
     return {title, extract}
 }
 
-const STATEWikiObject = (results) =>{
-    let wikiObj = createWikiObject(results)
+const deadEndText = [
+  'most commonly refers to',
+  'may also refer to',
+  'may refer to',
+]
+
+const includesDeadEndText = (string)=>{
+  let thereIsADeadEnd = false
+  deadEndText.forEach(deadEnd =>{
+    if(string.includes(deadEnd) || string === ''){
+      thereIsADeadEnd = true
+    }
+  })
+  return thereIsADeadEnd
+}
+  
+const storeWikiObject = (results) =>{
+  let wikiObj = createWikiObject(results)
+  if(!includesDeadEndText(wikiObj.extract) && wikiObj.extract.length > STATE.info.wiki.extract.length){
     STATE.info.wiki = wikiObj
+  } 
 }
 
 function getWikiFromTitle(title) {
@@ -21,12 +39,14 @@ function getWikiFromTitle(title) {
         titles:title,
         format:'json',
     }
-    $.getJSON(WIKI_SEARCH_URL, query, STATEWikiObject);
+    $.getJSON(WIKI_SEARCH_URL, query, storeWikiObject);
 }
 
 const searchForTitles = (result) =>{
-    let title =result[1][0]
-    getWikiFromTitle(title)
+    result[1].forEach(title =>{
+      getWikiFromTitle(title)
+    })
+    
 }
 
 function getWikiFromSearch(searchTerm) {
