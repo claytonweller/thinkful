@@ -109,7 +109,7 @@ let randomBetween = (from, to) =>
 let getRandomFromArray = array => array[randomBetween(0, array.length - 1)];
 
 const createATweet = (topic, text) => {
-  let wordsArray = getWordsArray(removeBoringWords(text));
+  let wordsArray = removeBoringWords(getWordsArray(text));
   let commonSpecificWords = getCommonSpecificWords(wordsArray);
   let interestingWords = getInterestingWords(wordsArray);
   let numberOfSentences = randomBetween(1, 3);
