@@ -1,9 +1,9 @@
 body *{
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 div {
-    /* border: black 1px solid; */
+  border: black 1px solid;
 }
 
 p {

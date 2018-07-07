@@ -1,8 +1,6 @@
 STATE = {
   topic:'',
   currentScreen:'start',
-  infoHidden:true,
-  infoDisplay:'wiki',
   info:{
     wiki:{
       title:'',
@@ -13,5 +11,6 @@ STATE = {
       good:[],
       everything:[]
     },
+    twitter:[],
   }
 }
