@@ -1,19 +1,30 @@
-var request = require("request");
-var twitter_api = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
-var bearer_token = 'AAAAAAAAAAAAAAAAAAAAAEUl6wAAAAAAYctnbkuR1XL5CNjrPTBRON%2FmFfM%3D3kOOQjOZg0KpGNZyajj3dh7gPQFjj0gmYKdveohBz7TdTRlysZ'; 
+const request = require("request");
+const twitter_api = 'https://api.twitter.com/1.1/search/tweets.json';
+const bearer_token = 'AAAAAAAAAAAAAAAAAAAAAEUl6wAAAAAAYctnbkuR1XL5CNjrPTBRON%2FmFfM%3D3kOOQjOZg0KpGNZyajj3dh7gPQFjj0gmYKdveohBz7TdTRlysZ'; 
 
-var options = {
+const twitterCall = (topic) =>{
+  const options = {
     method: 'GET',
     url: twitter_api,
     qs: {
-        "screen_name": "claytonweller"
+        q: topic,
+        'result_type':'popular',
     },
     json: true,
     headers: {
         "Authorization": "Bearer " + bearer_token
     }
-};
+  };
+  return new Promise(function(resolve, reject) {
+    request.get(options, function(err, resp, body) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(body);
+      }
+    })
+  })
 
-request(options, function(error, response, body) {
-  console.dir(body);
-});
+} 
+
+module.exports = twitterCall;
