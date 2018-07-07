@@ -178,4 +178,14 @@ const handlePerfectTweetApp = () =>{
     listenForInfoButtonClick()
 }
 
+const wakeUpServer = () =>{
+  fetch(TWITTER_SEARCH_URL+'wakeUp/', {
+    method:'get',
+    mode:'cors',
+  })
+    // .then(res => res.json())
+    .then(text => console.log('Poking the bear -> ', text))
+}
+
 $(handlePerfectTweetApp)
+wakeUpServer()

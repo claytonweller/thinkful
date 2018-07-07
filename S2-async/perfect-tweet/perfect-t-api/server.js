@@ -7,14 +7,17 @@ const bodyParser =require('body-parser');
 const cors = require('cors');
 
 const app = express();
-
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/', async function(req, res){
-  let response = await twitterCall(req)
-  res.send(response);
+app.post('/', async function(req, res){
+  let response = await twitterCall(req.body.search)
+  res.json(response);
 });
+
+app.get('/wakeUp/', function (req, res){
+  res.send('RRRRRR')
+})
 
 const port = process.env.PORT || process.env.VCAP_APP_PORT || 3005;
 app.listen(port, function() {

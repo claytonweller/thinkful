@@ -7,12 +7,13 @@ const twitterCall = (topic) =>{
     method: 'GET',
     url: twitter_api,
     qs: {
-        q: topic,
-        'result_type':'popular',
+      q: topic,
+      'result_type':'popular',
+      'tweet_mode':'extended',
     },
     json: true,
     headers: {
-        "Authorization": "Bearer " + bearer_token
+      "Authorization": "Bearer " + bearer_token
     }
   };
   return new Promise(function(resolve, reject) {
