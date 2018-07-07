@@ -1,4 +1,4 @@
-const data = require("./testData.js");
+// const data = require("./testData.js");
 
 const boringWords = [
   "The",

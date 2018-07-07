@@ -19,5 +19,3 @@ function getGiphyFromSearch(search) {
     }
     $.getJSON(GIF_SEARCH_URL, query, createGiphyObject);
 }
-
-getGiphyFromSearch('happy')

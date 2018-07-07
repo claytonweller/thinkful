@@ -58,6 +58,7 @@ const makeAPIcalls = (topic) =>{
     getWikiFromSearch(topic)
     getGiphyFromSearch(topic)
     getNewsFromSearch(topic)
+    getTwitterFromSearch(topic)
 }
 
 const switchToPerfectTweetScreen = ()=>{
