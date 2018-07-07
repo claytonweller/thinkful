@@ -3,17 +3,110 @@ body *{
 }
 
 div {
-    border: black 1px solid;
+    /* border: black 1px solid; */
 }
 
-
+p {
+  font-family: 'Gothic A1', sans-serif;
+}
 
 .app-container{
-    width: 100%;
-    padding: 10px;
+  width: 100%;
+  /* padding: 10px; */
 }
 
 .tweet-name{
-    font-weight: bold;
-    color: red;
+  font-weight: bold;
+  color: red;
+}
+
+button {
+  border: #FFBE13 solid 2px;
+  background-color: #024555;
+  color:#FFB413;
+  font-family: gotham, sans-serif;
+}
+
+.start-above-the-fold{
+  background-color: #6BC0D4;
+  height: 100vh;
+}
+
+.logo-container img{
+  width: 100%;
+  margin: auto;
+}
+
+.logo-container{
+  width: 90%;
+  margin: auto;
+  padding-top: 40px;
+  margin-bottom: 40px; 
+}
+
+.form-container{
+  width: 85%;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#topic-form{
+  display:flex;
+  width: 100%;
+  justify-content: center;
+  height: 65px;
+}
+
+#topic-form input {
+  text-align: center;
+  color: #024555;
+}
+
+#topic-form input::placeholder {
+  text-align: center;
+  color: #389FB8;
+}
+
+#topic-form *{
+  height:100%;
+}
+
+#go-button {
+  font-size: 42px;
+}
+
+.description-container {
+  color:#024555;
+  padding: 5px 40px;
+}
+
+.description-container p {
+  font-family: gotham, sans-serif;
+  font-size: 18px;
+}
+
+.start-extra-info {
+  background-color:#118AA6;
+}
+
+.start-extra-info img {
+  width: 50%;
+  margin: auto;
+  position: relative;
+  top:50px;
+}
+
+.start-info-bar {
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
+
+.start-text-box {
+  background-color:white;
+  font-family: 'Gotich A1', sans-serif;
+  font-size: 24px;
+  padding: 30px 10px 0px 10px;
+  margin: 0px 10px;
 }

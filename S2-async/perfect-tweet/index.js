@@ -171,13 +171,6 @@ const listenForInfoButtonClick = () => {
     })
 }
 
-const handlePerfectTweetApp = () =>{
-    listenForPerfectButtonClick()
-    listenForSearchButtonClick()
-    listenForRestartButtonClick()
-    listenForInfoButtonClick()
-}
-
 const wakeUpServer = () =>{
   fetch(TWITTER_SEARCH_URL+'wakeUp/', {
     method:'get',
@@ -187,5 +180,12 @@ const wakeUpServer = () =>{
     .then(text => console.log('Poking the bear -> ', text))
 }
 
+const handlePerfectTweetApp = () =>{
+    listenForPerfectButtonClick()
+    listenForSearchButtonClick()
+    listenForRestartButtonClick()
+    listenForInfoButtonClick()
+    wakeUpServer()
+}
+
 $(handlePerfectTweetApp)
-wakeUpServer()

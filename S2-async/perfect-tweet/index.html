@@ -5,202 +5,272 @@
   <title>Perfect Tweet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
   <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
 </head>
 
 <body>
-   <main role="main">
-        <div class="app-container">
+  <main role="main">
+    <div class="app-container">
 
-            <!-- This is the start screen -->
-            <div class="start-screen" >
-                <div class="logo-container">
-                    <h1>Logo</h1>
-                </div>
-                <div class="form-container">
-                    <form action="#" id="topic-form">
-                        <label for="topic-text"> What should we tweet about? </label>
-                        <input type="text" placeholder="Cat's Maybe?" name="topic-text">
-                        <button type="submit">Make Perfect Tweet!</button>
-                    </form>
-                </div>
-                <div class="description-container">
-                    <p>Give us any topic, and we will create the perfect tweet... it definitely won't be a garbled mess... probably.</p>
-                </div>
+      <!-- This is the start screen -->
+      <div class="start-screen">
+
+        <!-- This is the above the Fold Section -->
+        <section class="start-above-the-fold">
+          <div class="logo-container">
+            <img src="./images/logos/LogoLarge.png" alt="Perfect Tweet...">
+          </div>
+          <div class="form-container">
+            <form action="#" id="topic-form">
+              <label>
+                  <input type="text" placeholder="Cat's Maybe?" name="topic-text">
+              </label>             
+              <button id="go-button" type="submit">Go!</button>
+            </form>
+          </div>
+          <div class="description-container">
+            <p>Give us any topic, and we will create the perfect tweet...
+              <br>It definitely won't be terrible...
+              <br>Probably...</p>
+          </div>
+        </section>
+        <!-- End of the above the fold section -->
+
+        <!-- This is where the extra app info on the start page will live -->
+        <section class="start-extra-info">
+          <div class="start-info-bar">
+            <img src="./images/apiLogos/wikiLogo.png" alt="wikipedia logo">
+            <div class="start-text-box">
+              <p>Wikipedia has all the wealth of knowledge of the internet. We will use machine learning** to scan EVERY INCH of it to make sure you sound as smart as possible. </p>
+            </div>
+          </div>
+          <div class="start-info-bar">
+            <img src="./images/apiLogos/twitterLogo.png" alt="twitter logo">
+            <div class="start-text-box">
+              <p>Wikipedia has all the wealth of knowledge of the internet. We will use machine learning** to scan EVERY INCH of it to make sure you sound as smart as possible. </p>
+            </div>
+          </div>
+          <div class="start-info-bar">
+            <img src="./images/apiLogos/giphyLogo.png" alt="giphy logo">
+            <div class="start-text-box">
+              <p>Wikipedia has all the wealth of knowledge of the internet. We will use machine learning** to scan EVERY INCH of it to make sure you sound as smart as possible. </p>
+            </div>
+          </div>
+          <div class="start-info-bar">
+            <img src="./images/apiLogos/newsLogo.png" alt="NewsAPI logo">
+            <div class="start-text-box">
+              <p>Wikipedia has all the wealth of knowledge of the internet. We will use machine learning** to scan EVERY INCH of it to make sure you sound as smart as possible. </p>
+            </div>
+          </div>
+
+        </section>
+
+
+      </div>
+
+
+
+      <!-- This is the tweet screen -->
+      <div class="perfect-tweet-screen" hidden>
+        <div class="perfect-tweet-button-container">
+          <button class="js-perfect-button" type="submit">Re-perfect</button>
+          <button class="js-restart-button" type="submit">New Topic</button>
+        </div>
+        <div class="perfect-tweet-container">
+          <p>
+            Some truely amazing text that is probably going to be the next pulizer prize winning tweet. WOW #Blessed.
+          </p>
+        </div>
+        <div class="perfect-tweet-image-container">
+          A sweet image
+        </div>
+      </div>
+
+      <!-- this is the info tab interface -->
+      <div class="tabs-container" hidden>
+
+        <div class="info-tab">
+          <button id="wiki-button">Wikipedia</button>
+        </div>
+        <div class="info-tab">
+          <button id="twitter-button">Twitter</button>
+        </div>
+        <div class="info-tab">
+          <button id="news-button">NewsAPI</button>
+        </div>
+        <div class="info-tab">
+          <button id="giphy-button">Giphy</button>
+        </div>
+      </div>
+
+      <!-- This is the info screen -->
+      <div class="info-container" hidden>
+
+        <!-- Wikipedia Info Screen -->
+        <div class="info-wiki js-info" hidden>
+          <article>
+            <div class="wiki-title">
+              <h1>The Topic selected</h1>
             </div>
 
-            <!-- This is the tweet screen -->
-            <div class="perfect-tweet-screen" hidden>
-                <div class="perfect-tweet-button-container">
-                    <button class="js-perfect-button" type="submit">Re-perfect</button>
-                    <button class="js-restart-button" type="submit">New Topic</button>
-                </div>
-                <div class="perfect-tweet-container">
-                    <p>
-                        Some truely amazing text that is probably going to be the next pulizer prize winning tweet. WOW #Blessed.
-                    </p>
-                </div>
-                <div class="perfect-tweet-image-container">
-                    A sweet image
-                </div>
+            <div class="wiki-text">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit labore dicta consequuntur doloremque. Recusandae,
+                molestiae modi a cumque repellat doloremque sequi error esse exercitationem reiciendis ut facilis perspiciatis
+                aspernatur! Ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus obcaecati dolor numquam? Ea
+                deserunt eius velit nesciunt laudantium minima quasi. Sapiente, eum amet. Dignissimos id ex voluptatibus
+                sint architecto Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt veritatis quia, nisi quod
+                rerum reprehenderit vel saepe nam quas doloremque, quibusdam quis. Eaque animi corporis necessitatibus reiciendis
+                tempore aut excepturi?</p>
             </div>
-
-            <!-- this is the info tab interface -->
-            <div class="tabs-container" hidden>
-
-                <div class="info-tab"> 
-                    <button id="wiki-button">Wikipedia</button> 
-                </div>
-                <div class="info-tab"> 
-                    <button id="twitter-button">Twitter</button> 
-                </div>
-                <div class="info-tab"> 
-                    <button id="news-button">NewsAPI</button> 
-                </div>
-                <div class="info-tab"> 
-                    <button id="giphy-button">Giphy</button> 
-                </div>
-            </div>
-
-            <!-- This is the info screen -->
-            <div class="info-container" hidden>
-
-                <!-- Wikipedia Info Screen -->
-                <div class="info-wiki js-info" hidden>
-                    <article>
-                        <div class="wiki-title">
-                            <h1>The Topic selected</h1>
-                        </div> 
-                    
-                        <div class="wiki-text">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit labore dicta consequuntur doloremque. Recusandae, molestiae modi a cumque repellat doloremque sequi error esse exercitationem reiciendis ut facilis perspiciatis aspernatur! Ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus obcaecati dolor numquam? Ea deserunt eius velit nesciunt laudantium minima quasi. Sapiente, eum amet. Dignissimos id ex voluptatibus sint architecto Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt veritatis quia, nisi quod rerum reprehenderit vel saepe nam quas doloremque, quibusdam quis. Eaque animi corporis necessitatibus reiciendis tempore aut excepturi?</p>
-                        </div>
-                    </article>
-                    
-                </div>
-                <!-- Twitter Info Screen -->
-                <div class="info-twitter js-info" hidden>
-                    <!-- This is for the most recent tweets related to the topic -->
-                    <div class="twitter-section twitter-recent">
-                        <div class="twitter-header">
-                            <h2>Recent</h2>
-                        </div>
-                        <div class="twitter-container">
-                            <div class="twitter-tweet">
-                                <span class="tweet-name">name</span>
-                                <span class="tweet-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem, est? Quibusdam expedita dicta quam explicabo ratione deleniti fugit possimus quo. Voluptate assumenda autem iusto reiciendis ipsam, delectus dolor quos ex!</span>
-                            </div>
-                            <div class="twitter-tweet">
-                                <span class="tweet-name">name</span>
-                                <span class="tweet-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti molestiae ex ad porro soluta. Nam, dolorem ad ratione laborum sint deserunt voluptatibus veritatis tenetur quae delectus vero perferendis dignissimos nesciunt.</span>
-                            </div>
-                            <div class="twitter-tweet">
-                                <span class="tweet-name">Name</span>
-                                <span class="tweet-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, exercitationem sed error magni vero recusandae, tempora ea, temporibus ipsam est autem quia veritatis eius debitis. Eaque laudantium minima hic iste.</span>
-                            </div>    
-                        </div>
-                    </div> 
-
-                    <!-- This is for popular twitter users who are related to the topic -->
-                    <div class="twitter-section twitter-users">
-                        <div class="twitter-header">
-                            <h2>Popular Users</h2>
-                        </div>
-                        <div class="twitter-container">
-                            <div class="twitter-user">
-                                <span class="user-name">name</span>
-                                <span class="user-followers">1000</span>
-                                <span class="user-tag">@NAME</span>
-                            </div>
-                            <div class="twitter-user">
-                                <span class="user-name">name</span>
-                                <span class="user-followers">1000</span>
-                                <span class="user-tag">@NAME</span>
-                            </div>
-                            <div class="twitter-user">
-                                <span class="user-name">name</span>
-                                <span class="user-followers">1000</span>
-                                <span class="user-tag">@NAME</span>
-                            </div>    
-                        </div>
-                    </div> 
-                    
-                    <!-- this is for popular tweets -->
-                    <div class="twitter-section twitter-popular">
-                        <div class="twitter-header">
-                            <h2>Popular</h2>
-                        </div>
-                        <div class="twitter-container">
-                            <div class="twitter-tweet">
-                                <span class="tweet-name">name</span>
-                                <span class="tweet-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem, est? Quibusdam expedita dicta quam explicabo ratione deleniti fugit possimus quo. Voluptate assumenda autem iusto reiciendis ipsam, delectus dolor quos ex!</span>
-                            </div>
-                            <div class="twitter-tweet">
-                                <span class="tweet-name">name</span>
-                                <span class="tweet-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti molestiae ex ad porro soluta. Nam, dolorem ad ratione laborum sint deserunt voluptatibus veritatis tenetur quae delectus vero perferendis dignissimos nesciunt.</span>
-                            </div>
-                            <div class="twitter-tweet">
-                                <span class="tweet-name">Name</span>
-                                <span class="tweet-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, exercitationem sed error magni vero recusandae, tempora ea, temporibus ipsam est autem quia veritatis eius debitis. Eaque laudantium minima hic iste.</span>
-                            </div>    
-                        </div>
-                    </div>                    
-                              
-                </div>
-
-                <!-- newsAPI info Screen -->
-                <!-- MUST ADD ATTRIBUTION NOTE --> 
-                <div class="info-news js-info" hidden>
-                    <h1 class="news-header">News About: TOPIC</h1>
-                    <article class="news-article">
-                        <header class="news-headline">
-                            <a href="URL"><h2>Headline</h2></a> 
-                            <h3>Source - by Author</h3>
-                        </header>
-                        <div class="news-text">
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam tenetur alias laudantium fugiat nemo sapiente quidem quaerat porro accusantium veritatis fugit expedita itaque ea, ipsam hic doloremque commodi impedit aut.</p>
-                        </div>
-                    </article>
-                </div>
-                
-                <!-- Giphy info screen -->
-                <!-- REQUIRED TO PUT IN "POWERED BY GIPHY IN HERE" -->
-                <div class="info-giphy js-info" hidden>
-                    <header>
-                        <div class="giphy-header">
-                            <h1>Gifs related to topic</h1>
-                        </div>
-                    </header>
-                    <div class="giphy-gifs">
-                        <div class="gif-block">
-                            GIF!
-                        </div>
-                        <div class="gif-block">
-                            GIF!
-                        </div>
-                        <div class="gif-block">
-                            GIF!
-                        </div>
-                        <div class="gif-block">
-                            GIF!
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+          </article>
 
         </div>
-   </main>
+        <!-- Twitter Info Screen -->
+        <div class="info-twitter js-info" hidden>
+          <!-- This is for the most recent tweets related to the topic -->
+          <div class="twitter-section twitter-recent">
+            <div class="twitter-header">
+              <h2>Recent</h2>
+            </div>
+            <div class="twitter-container">
+              <div class="twitter-tweet">
+                <span class="tweet-name">name</span>
+                <span class="tweet-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem, est? Quibusdam expedita dicta quam
+                  explicabo ratione deleniti fugit possimus quo. Voluptate assumenda autem iusto reiciendis ipsam, delectus
+                  dolor quos ex!</span>
+              </div>
+              <div class="twitter-tweet">
+                <span class="tweet-name">name</span>
+                <span class="tweet-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti molestiae ex ad porro soluta. Nam, dolorem
+                  ad ratione laborum sint deserunt voluptatibus veritatis tenetur quae delectus vero perferendis dignissimos
+                  nesciunt.
+                </span>
+              </div>
+              <div class="twitter-tweet">
+                <span class="tweet-name">Name</span>
+                <span class="tweet-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, exercitationem sed error magni vero
+                  recusandae, tempora ea, temporibus ipsam est autem quia veritatis eius debitis. Eaque laudantium minima
+                  hic iste.</span>
+              </div>
+            </div>
+          </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="STATE.js" type="text/javascript"></script>
-    <script src="./api-calls/getWikiFromSearch.js" type="text/javascript"></script>
-    <script src="./api-calls/getTwitterFromSearch.js" type="text/javascript"></script>
-    <script src="./api-calls/getNewsFromSearch.js" type="text/javascript"></script>
-    <script src="./api-calls/getGiphyFromSearch.js" type="text/javascript"></script>
-    <!-- <script src="./makeTweet.js" type="text/javascript"></script> -->
-    <script type="text/javascript" src="index.js"></script>
-    
+          <!-- This is for popular twitter users who are related to the topic -->
+          <div class="twitter-section twitter-users">
+            <div class="twitter-header">
+              <h2>Popular Users</h2>
+            </div>
+            <div class="twitter-container">
+              <div class="twitter-user">
+                <span class="user-name">name</span>
+                <span class="user-followers">1000</span>
+                <span class="user-tag">@NAME</span>
+              </div>
+              <div class="twitter-user">
+                <span class="user-name">name</span>
+                <span class="user-followers">1000</span>
+                <span class="user-tag">@NAME</span>
+              </div>
+              <div class="twitter-user">
+                <span class="user-name">name</span>
+                <span class="user-followers">1000</span>
+                <span class="user-tag">@NAME</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- this is for popular tweets -->
+          <div class="twitter-section twitter-popular">
+            <div class="twitter-header">
+              <h2>Popular</h2>
+            </div>
+            <div class="twitter-container">
+              <div class="twitter-tweet">
+                <span class="tweet-name">name</span>
+                <span class="tweet-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem, est? Quibusdam expedita dicta quam
+                  explicabo ratione deleniti fugit possimus quo. Voluptate assumenda autem iusto reiciendis ipsam, delectus
+                  dolor quos ex!</span>
+              </div>
+              <div class="twitter-tweet">
+                <span class="tweet-name">name</span>
+                <span class="tweet-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti molestiae ex ad porro soluta. Nam, dolorem
+                  ad ratione laborum sint deserunt voluptatibus veritatis tenetur quae delectus vero perferendis dignissimos
+                  nesciunt.
+                </span>
+              </div>
+              <div class="twitter-tweet">
+                <span class="tweet-name">Name</span>
+                <span class="tweet-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, exercitationem sed error magni vero
+                  recusandae, tempora ea, temporibus ipsam est autem quia veritatis eius debitis. Eaque laudantium minima
+                  hic iste.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- newsAPI info Screen -->
+        <!-- MUST ADD ATTRIBUTION NOTE -->
+        <div class="info-news js-info" hidden>
+          <h1 class="news-header">News About: TOPIC</h1>
+          <article class="news-article">
+            <header class="news-headline">
+              <a href="URL">
+                <h2>Headline</h2>
+              </a>
+              <h3>Source - by Author</h3>
+            </header>
+            <div class="news-text">
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam tenetur alias laudantium fugiat nemo sapiente
+                quidem quaerat porro accusantium veritatis fugit expedita itaque ea, ipsam hic doloremque commodi impedit
+                aut.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Giphy info screen -->
+        <!-- REQUIRED TO PUT IN "POWERED BY GIPHY IN HERE" -->
+        <div class="info-giphy js-info" hidden>
+          <header>
+            <div class="giphy-header">
+              <h1>Gifs related to topic</h1>
+            </div>
+          </header>
+          <div class="giphy-gifs">
+            <div class="gif-block">
+              GIF!
+            </div>
+            <div class="gif-block">
+              GIF!
+            </div>
+            <div class="gif-block">
+              GIF!
+            </div>
+            <div class="gif-block">
+              GIF!
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="STATE.js" type="text/javascript"></script>
+  <script src="./api-calls/getWikiFromSearch.js" type="text/javascript"></script>
+  <script src="./api-calls/getTwitterFromSearch.js" type="text/javascript"></script>
+  <script src="./api-calls/getNewsFromSearch.js" type="text/javascript"></script>
+  <script src="./api-calls/getGiphyFromSearch.js" type="text/javascript"></script>
+  <!-- <script src="./makeTweet.js" type="text/javascript"></script> -->
+  <script type="text/javascript" src="index.js"></script>
+
 </body>
+
 </html>

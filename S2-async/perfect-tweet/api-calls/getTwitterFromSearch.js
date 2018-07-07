@@ -10,7 +10,6 @@ const createTwitterObject = (results) =>{
       imageURL: item.user.profile_image_url,
     }
   })
-  // console.log('results', output)
   STATE.info.twitter = output 
 }
 
