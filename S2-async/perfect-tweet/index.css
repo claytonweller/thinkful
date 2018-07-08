@@ -334,8 +334,29 @@ button {
   font-family: gotham, sans-serif;
 }
 
+/* END Twitter section */
 
+/* BEGIN NewsAPI styles */
 
+.info-news {
+  background-color: #024555;
+  color: #FFDB7D;
+  padding: 10px;
+}
 
+.news-article{
+  background-color: white;
+  color: #024555;
+  padding: 10px;
+  margin: 10px;
+}
+
+.info-news a {
+  color: #118AA6
+}
+
+.info-news h1, .info-news h2 {
+  margin:1px;
+}
 
 

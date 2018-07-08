@@ -21,15 +21,15 @@ const populateGiphy = () => {
 
 const createSingleNewsArticle = (obj) => {
   return `
-        <article class="news-article">
-            <header class="news-headline">
-                <a href="${obj.url}"><h2>${obj.headline}</h2></a> 
-                <h3>${obj.source} - by ${obj.author}</h3>
-            </header>
-            <div class="news-text">
-                <p>${obj.excerpt}</p>
-            </div>
-        </article>
+    <article class="news-article">
+      <header class="news-headline">
+        <a href="${obj.url}"><h2>${obj.headline}</h2></a> 
+        <h3>${obj.source} - by ${obj.author}</h3>
+      </header>
+      <div class="news-text">
+        <p>${obj.excerpt}</p>
+      </div>
+    </article>
     `
 }
 

@@ -16,7 +16,7 @@
     <div class="app-container">
 
       <!-- This is the start screen -->
-      <div class="start-screen" hidden>
+      <div class="start-screen">
 
         <!-- This is the above the Fold Section -->
         <section class="start-above-the-fold">
@@ -75,7 +75,7 @@
       <!-- END start Screen -->
 
       <!-- This is the tweet screen -->
-      <div class="perfect-tweet-screen">
+      <div class="perfect-tweet-screen" hidden>
         <div class="top-bar">
           <img src="./images/logos/LogoWide.png" alt="perfect tweet">
           <button id="start-over-button">
@@ -95,9 +95,7 @@
           </div>
         </section>
         <div class="info-container">
-
           <!-- Giphy info screen -->
-          <!-- REQUIRED TO PUT IN "POWERED BY GIPHY IN HERE" -->
           <section class="info-giphy ">
             <img class="logo-left" src="./images/apiLogos/giphyLogo.png" alt="giphy logo">
             <div class="giphy-gifs">
@@ -208,8 +206,10 @@
 
           </div>
           <!-- newsAPI info Screen -->
-          <div class="info-news ">
-            <h1 class="news-header">News About: TOPIC</h1>
+          <div class="info-news">
+            <img class="logo-right" src="./images/apiLogos/newsLogo.png" alt="News">
+            <h2 class="news-header">News About - </h2>
+            <h1>Topic</h1>
             <article class="news-article">
               <header class="news-headline">
                 <a href="URL">
@@ -225,9 +225,6 @@
               </div>
             </article>
           </div>
-
-
-
         </div>
 
       </div>

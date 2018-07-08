@@ -26,4 +26,4 @@ Cool features -
 - [ ] Incorporate facebook
 - [ ] Build in some grammer stuff
 - [ ] MACHINE LEARNING?!?!?
-- [ ] Gif toggle
+- [ ] Gif toggle  
