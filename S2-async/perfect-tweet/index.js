@@ -8,8 +8,8 @@ const createGifBlocks = () => {
   STATE.info.giphy.forEach(obj => {
     html = html +
       `<div class="gif-block">
-                <img src="${obj.url}" alt="${obj.alt}" />
-            </div>`
+          <img src="${obj.url}" alt="${obj.alt}" />
+      </div>`
   })
   return html
 }
@@ -114,7 +114,7 @@ const restartButtonClick = () => {
 
 const listenForRestartButtonClick = () => {
   console.log('listening for restart')
-  $('.js-restart-button').click(function (event) {
+  $('#start-over-button').click(function (event) {
     restartButtonClick()
   })
 }
@@ -131,6 +131,8 @@ const wakeUpServer = () => {
 const handlePerfectTweetApp = () => {
   listenForSearchButtonClick()
   listenForRestartButtonClick()
+  // listenForTweetButtonClick()
+  //Need to make this!!
   wakeUpServer()
 }
 

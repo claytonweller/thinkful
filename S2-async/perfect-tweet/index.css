@@ -3,7 +3,7 @@ body *{
 }
 
 div {
-  border: black 1px solid;
+  /* border: black 1px solid; */
 }
 
 p {
@@ -15,17 +15,14 @@ p {
   /* padding: 10px; */
 }
 
-.tweet-name{
-  font-weight: bold;
-  color: red;
-}
-
 button {
   border: #FFBE13 solid 2px;
   background-color: #024555;
   color:#FFB413;
   font-family: gotham, sans-serif;
 }
+
+/* This is all the stuff that applies to the START page */
 
 .start-above-the-fold{
   background-color: #6BC0D4;
@@ -45,7 +42,7 @@ button {
 }
 
 .form-container{
-  width: 85%;
+  width: 90%;
   margin: auto;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -59,13 +56,16 @@ button {
 }
 
 #topic-form input {
-  text-align: center;
+  /* text-align: center; */
+  width: 100%;
   color: #024555;
+  padding-left: 10px;
 }
 
 #topic-form input::placeholder {
-  text-align: center;
-  color: #389FB8;
+  /* text-align: center; */
+  color: #6BC0D4;
+  
 }
 
 #topic-form *{
@@ -110,3 +110,115 @@ button {
   padding: 30px 10px 0px 10px;
   margin: 0px 10px;
 }
+
+/* END start screen stuff */
+
+/* Below is everything pertaining to the Perfect TWeet Page */
+
+.top-bar {
+  height: 50px;
+  background-color: #118AA6;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+
+}
+
+.top-bar img{
+  height: 95%;
+  padding-top: 5px;
+}
+
+.top-bar button {
+  width: 65px;
+  font-size: 30px;
+}
+
+.perfect-tweet-above-fold{
+  background-color: #6BC0D4;
+}
+
+.perfect-tweet-container{
+  width: 90%;
+  margin: auto;
+  padding: 10px 0px;
+}
+
+.perfect-tweet-container img {
+  width: 100%;
+  border: solid 1px #FFBE13
+}
+
+.perfect-tweet-text-box {
+  background-color: white;
+  position: relative;
+  top:-20px;
+  border: solid 1px #FFBE13
+}
+
+.perfect-tweet-text-box p {
+  color: #024555;
+  font-family: gotham;
+  font-size: 18px;
+  padding: 0px 10px;
+}
+
+#tweet-button{
+  width: 100%;
+  font-size: 30px;
+  padding: 10px 0px;
+  margin: -10px 0px 30px;
+}
+
+/* END above the fold Perfext Tweet */
+
+.info-container {
+  background-color: #118AA6;
+  margin-top:-30px;
+  padding:30px 10px;
+}
+
+.logo-left {
+  width: 15%;
+  position: absolute;
+  transform: translate(-15px, -30px)
+}
+
+.logo-right {
+  width: 15%;
+  position: absolute;
+  right: -0px;
+  transform: translate(0px, -30px)
+}
+
+/* This is the style for the GIPHY info */
+
+.info-giphy {
+  border: solid #FFB413 2px;
+  padding: 5px;
+}
+
+.giphy-gifs {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.gif-block {
+  width: 50%;
+  display: flex;
+  align-content: center;
+}
+
+.gif-block img{
+  align-self: center;
+  width: 100%;
+  padding: 5px;
+}
+
+.selected-gif{
+  background: #FFB413;
+}
+
+/* END Giphy info section */
+
+/* Wikipedia Info */
