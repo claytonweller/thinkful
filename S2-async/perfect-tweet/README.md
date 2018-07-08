@@ -4,12 +4,12 @@
 
 ## Specs
 Must do - 
-- [ x ] Landing page with description
-- [ x ] User inputs a topic
+- [x] Landing page with description
+- [x] User inputs a topic
 - [ ] Scrapes twitter, NewsAPI, Wikipedia, Giphy
 - [ ] Displays data used from APIs
 - [ ] Tries to create a perfect tweet
-- [ x ] User can input another topic
+- [x] User can input another topic
 - [ ] Gotta look guuuuuud
 
 Cool features - 
