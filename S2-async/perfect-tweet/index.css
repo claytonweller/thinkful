@@ -10,6 +10,10 @@ p {
   font-family: 'Gothic A1', sans-serif;
 }
 
+h1, h2, h3 {
+  font-family: gotham, sans-serif;
+}
+
 .app-container{
   width: 100%;
   /* padding: 10px; */
@@ -181,21 +185,22 @@ button {
 .logo-left {
   width: 15%;
   position: absolute;
-  transform: translate(-15px, -30px)
+  transform: translate(-10px, -30px)
 }
 
 .logo-right {
-  width: 15%;
+  width: 20%;
   position: absolute;
-  right: -0px;
+  right: 5px;
   transform: translate(0px, -30px)
 }
 
 /* This is the style for the GIPHY info */
 
 .info-giphy {
-  border: solid #FFB413 2px;
+  border: solid #FFDB7D 2px;
   padding: 5px;
+  margin-bottom: 40px;
 }
 
 .giphy-gifs {
@@ -222,3 +227,115 @@ button {
 /* END Giphy info section */
 
 /* Wikipedia Info */
+
+.info-wiki{
+  background-color: white;
+  padding: 1px 10px;
+  color: #024555;
+  margin-bottom: 50px;
+}
+
+.info-wiki h1, .info-wiki p{
+  padding:10px 0px;
+  margin: 0px;
+}
+
+/* END wiki style */
+
+/* Twitter API style */
+
+.info-twitter {
+  border: solid #FFDB7D 2px;
+  padding: 5px;
+  margin-bottom: 40px;
+}
+
+.twitter-users {
+  padding-top:15px;
+}
+
+.twitter-user {
+  margin:10px 0px;
+}
+
+.twitter-user-splash {
+  height: 80px;
+  display: flex;
+  width: 100%;
+}
+
+.twitter-user-grid {
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+  width: height;
+}
+
+.twitter-user-grid div {
+  position: relative;
+  height: 50%;
+  width: 50%;
+}
+
+.grid-upper-right {
+  background-color: #FFDB7D;
+}
+
+.grid-lower-right {
+  background-color: #024555;
+}
+
+.grid-lower-left {
+  background-color: white;
+}
+
+.twitter-user img{
+  border-radius: 50%;
+  height: 200%;
+  position: relative;
+  left:-100%;
+  top:-100%;
+}
+
+.twitter-user-info {
+  height:100%;
+  width: 100%;
+}
+
+.twitter-user-name, .twitter-user-followers {
+  height: 50%;
+  width: 100%;
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 30px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.twitter-user-name {
+  background-color: #FFDB7D;
+  color: #024555;
+}
+
+.twitter-user-followers {
+  background-color: #024555;
+  color: #FFB413;
+}
+
+.twitter-user-tweet {
+  background-color: white;
+}
+
+.twitter-user-tweet p {
+  margin:0px;
+  padding: 10px;
+  color: #118AA6;
+  font-family: gotham, sans-serif;
+}
+
+
+
+
+
+
