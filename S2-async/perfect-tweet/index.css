@@ -1,13 +1,24 @@
 body *{
-    box-sizing: border-box;
+  box-sizing: border-box;
+  outline-color: black;
+  outline-width: 3px
+  
+}
+
+body{
+  background-color: #118AA6;
 }
 
 div {
-    /* border: black 1px solid; */
+  /* border: black 1px solid; */
 }
 
 p {
   font-family: 'Gothic A1', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: gotham, sans-serif;
 }
 
 .app-container{
@@ -15,21 +26,33 @@ p {
   /* padding: 10px; */
 }
 
-.tweet-name{
-  font-weight: bold;
-  color: red;
-}
-
 button {
   border: #FFBE13 solid 2px;
   background-color: #024555;
   color:#FFB413;
   font-family: gotham, sans-serif;
+  transition-duration: 200ms; 
 }
+
+button:focus, button:hover{
+  border: #FFDB7D 2px solid;
+  background-color: #8A4400;
+  color: #FFDB7D;
+  cursor: pointer;
+  box-shadow: 3px 3px 2px rgba(0,0,0,.5);
+  transform: translate(-3px, -3px)
+
+}
+
+/* This is all the stuff that applies to the START page */
 
 .start-above-the-fold{
   background-color: #6BC0D4;
   height: 100vh;
+  min-height: 680px;
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
 }
 
 .logo-container img{
@@ -39,13 +62,13 @@ button {
 
 .logo-container{
   width: 90%;
-  margin: auto;
-  padding-top: 40px;
-  margin-bottom: 40px; 
+  align-self: center;
+  max-width: 600px;
+  margin: 20px 0px;
 }
 
 .form-container{
-  width: 85%;
+  width: 90%;
   margin: auto;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -58,14 +81,18 @@ button {
   height: 65px;
 }
 
+#topic-form label{
+  width: 65%
+}
+
 #topic-form input {
-  text-align: center;
+  width: 100%;
   color: #024555;
+  padding-left: 10px;
 }
 
 #topic-form input::placeholder {
-  text-align: center;
-  color: #389FB8;
+  color: #6BC0D4; 
 }
 
 #topic-form *{
@@ -79,6 +106,7 @@ button {
 .description-container {
   color:#024555;
   padding: 5px 40px;
+  width: 90%;
 }
 
 .description-container p {
@@ -110,3 +138,339 @@ button {
   padding: 30px 10px 0px 10px;
   margin: 0px 10px;
 }
+
+/* END start screen stuff */
+
+/* Below is everything pertaining to the Perfect TWeet Page */
+
+.top-bar {
+  height: 50px;
+  background-color: #118AA6;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+
+}
+
+.top-bar img{
+  max-width:80%;
+  height: 95%;
+  padding-top: 5px;
+  padding-right:10px;
+}
+
+.top-bar button {
+  width: 65px;
+  font-size: 30px;
+}
+
+.perfect-tweet-above-fold{
+  background-color: #6BC0D4;
+  display: flex;
+  flex-flow: column;
+}
+
+.perfect-tweet-container{
+  width: 90%;
+  margin: auto;
+  padding: 10px 0px;
+  display: flex;
+  flex-flow: column;
+}
+
+.perfect-tweet-container img {
+  width: 100%;
+  border: solid 1px #FFBE13
+}
+
+.perfect-tweet-text-box {
+  background-color: white;
+  position: relative;
+  top:-20px;
+  border: solid 1px #FFBE13
+}
+
+.perfect-tweet-text-box p {
+  color: #024555;
+  font-family: gotham;
+  font-size: 18px;
+  padding: 0px 10px;
+}
+
+#tweet-button{
+  width: 90%;
+  align-self: center;
+  font-size: 30px;
+  padding: 10px 0px;
+  margin: -10px 0px 30px;
+}
+
+/* END above the fold Perfext Tweet */
+
+.info-container {
+  background-color: #118AA6;
+  margin-top:-30px;
+  padding:30px 10px;
+  width: 100%;
+  margin: auto;
+  max-width: 800px;
+}
+
+.logo-left {
+  width: 60px;
+  position: absolute;
+  transform: translate(-10px, -30px)
+}
+
+.logo-right {
+  width: 60px;
+  position: relative;
+  float:right;
+  transform: translate(0px, -30px)
+}
+
+/* This is the style for the GIPHY info */
+
+.info-giphy {
+  border: solid #FFDB7D 2px;
+  padding: 5px;
+  margin-bottom: 40px;
+}
+
+.giphy-gifs {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.gif-block {
+  width: 50%;
+  display: flex;
+  align-content: center;
+}
+
+.gif-block img{
+  align-self: center;
+  width: 100%;
+  padding: 5px;
+}
+
+.selected-gif{
+  background: #FFB413;
+}
+
+/* END Giphy info section */
+
+/* Wikipedia Info */
+
+.info-wiki{
+  background-color: white;
+  padding: 1px 10px;
+  color: #024555;
+  margin-bottom: 50px;
+}
+
+.info-wiki h1, .info-wiki p{
+  padding:10px 0px;
+  margin: 0px;
+}
+
+/* END wiki style */
+
+/* Twitter API style */
+
+.info-twitter {
+  border: solid #FFDB7D 2px;
+  padding: 5px;
+  margin-bottom: 40px;
+}
+
+.twitter-users {
+  padding-top:15px;
+}
+
+.twitter-user {
+  margin:10px 0px;
+  display:flex;
+  flex-flow:column;
+}
+
+.twitter-user-splash {
+  height: 80px;
+  display: flex;
+  width: 100%;
+}
+
+.twitter-user-grid {
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+  width: height;
+}
+
+.twitter-user-grid div {
+  position: relative;
+  height: 50%;
+  width: 50%;
+}
+
+.grid-upper-right {
+  background-color: #FFDB7D;
+}
+
+.grid-lower-right {
+  background-color: #024555;
+}
+
+.grid-lower-left {
+  background-color: white;
+}
+
+.twitter-user img{
+  border-radius: 50%;
+  height: 200%;
+  position: relative;
+  left:-100%;
+  top:-100%;
+}
+
+.twitter-user-info {
+  height:100%;
+  width: 100%;
+}
+
+.twitter-user-name, .twitter-user-followers {
+  height: 50%;
+  width: 100%;
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0px 5px;
+}
+
+.twitter-user-name {
+  background-color: #FFDB7D;
+  color: #024555;
+}
+
+.twitter-user-followers {
+  background-color: #024555;
+  color: #FFDB7D;
+}
+  
+.twitter-user-tweet {
+  background-color: white;
+}
+
+.twitter-user-tweet p {
+  margin:0px;
+  padding: 10px;
+  color: #118AA6;
+  font-family: gotham, sans-serif;
+}
+
+/* END Twitter section */
+
+/* BEGIN NewsAPI styles */
+
+.info-news {
+  background-color: #024555;
+  color: #FFDB7D;
+  padding: 10px;
+}
+
+.info-news a {
+  color: #118AA6
+}
+
+.info-news h1, .info-news h2 {
+  margin:1px;
+}
+
+.info-news h1 {
+  margin-bottom: 10px;
+}
+
+.all-articles{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.news-article{
+  background-color: white;
+  color: #024555;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  position: relative;
+  border: #024555 solid 5px;
+}
+
+@media only screen and (min-width: 550px){
+
+  .start-above-the-fold{
+    flex-flow: row;
+  }
+
+  .form-and-description{
+    align-self: center;
+  }
+
+  /* STILL NEED TO REDO THE START PAGE */
+
+  .perfect-tweet-container{
+    flex-flow: row;
+  }
+  
+  .gif-block{
+    width: 25%;
+  }
+
+  .twitter-user{
+    flex-flow: row;
+    max-width: 800px;
+  }
+
+  .twitter-user-splash{
+    height: 90px;
+  }
+
+  .grid-lower-left{
+    background-color: #118AA6;
+  }
+
+  .all-articles{
+    flex-flow: row wrap;
+  }
+
+  .news-article{
+    width: 50%;
+  }
+
+  .perfect-tweet-container{
+    max-width: 900px;
+  }
+  
+  .perfect-tweet-container img {
+    align-self: center;
+    width: 100%;
+  }
+  
+  .perfect-tweet-text-box {
+    top:0px
+  }
+ 
+  #tweet-button{
+    margin:0px; 
+    /* position: absolute;  */
+    width: fit-content;
+    padding:10px;
+    
+  }
+}
+

@@ -1,191 +1,169 @@
+STATE = {
+  topic: "",
+  info: {
+    // remove info -> so it is one level;
+    wiki: {
+      title: "",
+      extract: ""
+    },
+    // giphy: [],
+    news: {
+      good: [],
+      everything: []
+    },
+    twitter: []
+  }
+};
+
+const done = () => {
+  if (STATE.wiki.title && STATE.news && STATE.twitter) {
+    perfectTweet();
+  }
+};
+
+const searchButtonClick = () => {
+  let topicField = $(".start-screen").find("input");
+  STATE.topic = $(topicField).val();
+  if (!STATE.topic) {
+    STATE.topic = "NOTHING";
+  }
+  $(topicField).val("");
+  switchToPerfectTweetScreen();
+  makeAPIcalls(STATE.topic);
+};
+
+const makeAPIcalls = topic => {
+  getGiphyFromSearch(topic);
+  getNewsFromSearch(topic);
+
+  getWikiFromSearch(topic); // TODO: refactor
+  getTwitterFromSearch(topic); // TODO: refactor
+};
+
+/*
+wait for perfect tweet
+scoll and compress nav?
+*/
+
 const populateWiki = () => {
-    $('.wiki-title').find('h1').html(STATE.info.wiki.title)
-    $('.wiki-text').find('p').html(STATE.info.wiki.extract)
-}
+  $(".wiki-title")
+    .find("h1")
+    .html(STATE.info.wiki.title);
+  $(".wiki-text")
+    .find("p")
+    .html(STATE.info.wiki.extract);
+};
 
-const createGifBlocks = () =>{
-    let html = ''
-    STATE.info.giphy.forEach(obj =>{
-        html = html+
-            `<div class="gif-block">
-                <img src="${obj.url}" alt="${obj.alt}" />
-            </div>`
-    })
-    return html
-}
+const createTwitterUser = obj => {
+  let scaledUrl = obj.imageURL.replace("_normal", "_200x200");
+  return `
+    <div class="twitter-user">
+      <div class="twitter-user-splash">
+        <div class="twitter-user-grid">
+          <div class="grid-upper-left"></div>
+          <div class="grid-upper-right"></div>
+          <div class="grid-lower-left"></div>
+          <div class="grid-lower-right">
+            <img src="${scaledUrl}" alt="profile picture of ${obj.user}">
+          </div>
+        </div>
+        <div class="twitter-user-info">
+          <div class="twitter-user-name">@${obj.user}</div>
+          <div class="twitter-user-followers">${obj.followers} followers</div>
+        </div>
+      </div>
+      <div class="twitter-user-tweet">
+        <p>${obj.text}</p>
+      </div>
+    </div>
+  `;
+};
 
-const populateGiphy = () => {
-    $('.giphy-header').find('h1').html('Gifs related to: '+STATE.topic)
-    $('.giphy-gifs').html(createGifBlocks())
-}
+const createAllTwitterUsers = () => {
+  let twitterHtml = "";
+  let userCount = 3;
+  if (STATE.info.twitter.length < 3) {
+    userCount = STATE.info.twitter.length;
+  }
+  for (let index = 0; index < userCount; index++) {
+    twitterHtml += createTwitterUser(STATE.info.twitter[index]);
+  }
 
-const createSingleNewsArticle = (obj) =>{
-    return `
-        <article class="news-article">
-            <header class="news-headline">
-                <a href="${obj.url}"><h2>${obj.headline}</h2></a> 
-                <h3>${obj.source} - by ${obj.author}</h3>
-            </header>
-            <div class="news-text">
-                <p>${obj.excerpt}</p>
-            </div>
-        </article>
-    `
-}
+  return twitterHtml;
+};
 
-const createAllNewsArticles = () => {
-    let articleHtml = `<h1>News about: ${STATE.topic}</h1>`
-    STATE.info.news.good.forEach(item =>{
-        articleHtml = articleHtml + createSingleNewsArticle(item)
-    })
-    STATE.info.news.everything.forEach(item =>{
-        articleHtml = articleHtml + createSingleNewsArticle(item)
-    })
-    return articleHtml
-}
+const populateTwitter = () => {
+  console.log("populateTwitter");
+  $(".twitter-users").html(createAllTwitterUsers());
+};
 
-const populateNews = () => {
-    $('.info-news').html(createAllNewsArticles())
-}
+const truncateLongSearchString = string => {
+  let smallTopicArray = string.split(" ");
+  if (smallTopicArray.length > 2) {
+    return smallTopicArray.sort((a, b) => b.length - a.length)[0];
+  } else {
+    return string;
+  }
+};
 
-const populateInfo = () =>{
-    populateWiki()
-    populateGiphy()
-    populateNews()
-}
+const switchToPerfectTweetScreen = () => {
+  $(".start-screen").attr("hidden", true);
+  $(".perfect-tweet-screen").attr("hidden", false);
+};
 
-const makeAPIcalls = (topic) =>{
-    getWikiFromSearch(topic)
-    getGiphyFromSearch(topic)
-    getNewsFromSearch(topic)
-    getTwitterFromSearch(topic)
-}
+const listenForSearchButtonClick = () => {
+  console.log("listenForSearchButtonClick");
+  $(".start-screen").on("click", "button", function(event) {
+    event.preventDefault();
+    searchButtonClick(this);
+  });
+};
 
-const switchToPerfectTweetScreen = ()=>{
-    STATE.currentScreen = 'perfect-tweet'
-    $('.start-screen').attr('hidden', true)
-    $('.perfect-tweet-screen').attr('hidden', false)
-    $('.tabs-container').attr('hidden', false)
-}
-
-const searchButtonClick = () =>{
-    let topicField = $('.start-screen').find('input')
-    let topic = $(topicField).val()
-    if(topic === ''){
-      topic = 'NOTHING'
-    }
-    STATE.topic = topic
-    $(topicField).val('')
-    switchToPerfectTweetScreen()
-    makeAPIcalls(topic)
-    console.log(STATE)
-}
-
-const listenForSearchButtonClick = ()=>{
-    console.log('listenForSearchButtonClick')
-    $('.start-screen').on('click', 'button', function(event){
-        event.preventDefault()
-        searchButtonClick(this)
-    })  
-}
-
-const switchToStartScreen = ()=>{
-    STATE.currentScreen = 'start'
-    $('.start-screen').attr('hidden', false)
-    $('.perfect-tweet-screen').attr('hidden', true)
-    $('.tabs-container').attr('hidden', true)
-}
+const switchToStartScreen = () => {
+  $(".start-screen").attr("hidden", false);
+  $(".perfect-tweet-screen").attr("hidden", true);
+};
 
 const resetInfo = () => {
   STATE.info = {
-    wiki:{title:'',extract:''},
-    giphy:[],
-    news:{
-      good:[],
-      everything:[]
-    },
-  }
-}
+    wiki: { title: "", extract: "" },
+    giphy: [],
+    news: {
+      good: [],
+      everything: []
+    }
+  };
+};
 
-const restartButtonClick = ()=>{
-    console.log('restart click')
-    STATE.topic = ''
-    resetInfo()
-    switchToStartScreen()
-    hideInfoDisplay()
-}
+const restartButtonClick = () => {
+  console.log("restart click");
+  STATE.topic = "";
+  resetInfo();
+  switchToStartScreen();
+};
 
 const listenForRestartButtonClick = () => {
-    console.log('listening for restart')
-    $('.js-restart-button').click(function(event) {
-        restartButtonClick()
-    })
-}
+  console.log("listening for restart");
+  $("#start-over-button").click(function(event) {
+    restartButtonClick();
+  });
+};
 
-const perfectButtonClick = () => {
-    console.log ('re-perfect click')
-}
-
-const listenForPerfectButtonClick = () => {
-    console.log('listening for re-perfect')
-    $('.js-perfect-button').click(function (event) {
-        perfectButtonClick()
-    })
-}
-
-const chooseInfoDisplay = (infoButton) =>{
-    let display = $(infoButton).attr('id')
-    display = display.split('-')
-    return display[0]
-}
-
-const showInfoDisplay = () => {
-    $('.info-container').attr('hidden', false)
-    populateInfo()
-    STATE.infoHidden = false
-}
-
-const hideInfoDisplay = () => {
-    STATE.infoHidden = true
-    STATE.infoDisplay = ''
-    $('.info-container').attr('hidden', true)
-}
-
-const infoButtonClick = (infoButton) => {   
-    console.log($(infoButton).attr('id'), 'clicked')
-    if(STATE.infoHidden){
-        showInfoDisplay()   
-    } else if (!STATE.infoHidden && STATE.infoDisplay === chooseInfoDisplay(infoButton) ){
-        hideInfoDisplay() 
-    }
-    STATE.infoDisplay = chooseInfoDisplay(infoButton)
-    $('.js-info').attr('hidden', true)
-    $(`.info-${STATE.infoDisplay}`).attr('hidden', false)
-    
-}
-
-const listenForInfoButtonClick = () => {
-    console.log('listening for info button click')
-    $('.info-tab').on('click', 'button', function () {
-        infoButtonClick(this)
-    })
-}
-
-const wakeUpServer = () =>{
-  fetch(TWITTER_SEARCH_URL+'wakeUp/', {
-    method:'get',
-    mode:'cors',
+const wakeUpServer = () => {
+  fetch(TWITTER_SEARCH_URL + "wakeUp/", {
+    method: "get",
+    mode: "cors"
   })
     // .then(res => res.json())
-    .then(text => console.log('Poking the bear -> ', text))
-}
+    .then(text => console.log("Poking the bear -> ", text));
+};
 
-const handlePerfectTweetApp = () =>{
-    listenForPerfectButtonClick()
-    listenForSearchButtonClick()
-    listenForRestartButtonClick()
-    listenForInfoButtonClick()
-    wakeUpServer()
-}
+const handlePerfectTweetApp = () => {
+  listenForSearchButtonClick();
+  listenForRestartButtonClick();
+  // listenForTweetButtonClick()
+  //Need to make this!!
+  wakeUpServer();
+};
 
-$(handlePerfectTweetApp)
+$(handlePerfectTweetApp);
