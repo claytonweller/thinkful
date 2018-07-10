@@ -1,6 +1,7 @@
 STATE = {
   topic: "",
   info: {
+    // remove info -> so it is one level;
     wiki: {
       title: "",
       extract: ""
@@ -11,6 +12,12 @@ STATE = {
       everything: []
     },
     twitter: []
+  }
+};
+
+const done = () => {
+  if (STATE.wiki.title && STATE.news && STATE.twitter) {
+    perfectTweet();
   }
 };
 
@@ -27,14 +34,16 @@ const searchButtonClick = () => {
 
 const makeAPIcalls = topic => {
   getGiphyFromSearch(topic);
-
-  getWikiFromSearch(topic);
-
   getNewsFromSearch(topic);
-  getTwitterFromSearch(topic);
+
+  getWikiFromSearch(topic); // TODO: refactor
+  getTwitterFromSearch(topic); // TODO: refactor
 };
 
-/////////////////
+/*
+wait for perfect tweet
+scoll and compress nav?
+*/
 
 const populateWiki = () => {
   $(".wiki-title")
@@ -43,36 +52,6 @@ const populateWiki = () => {
   $(".wiki-text")
     .find("p")
     .html(STATE.info.wiki.extract);
-};
-
-const createSingleNewsArticle = obj => {
-  return `
-    <article class="news-article">
-      <header class="news-headline">
-        <a href="${obj.url}"><h2>${obj.headline}</h2></a>
-        <h3>${obj.source} - by ${obj.author}</h3>
-      </header>
-      <div class="news-text">
-        <p>${obj.excerpt}</p>
-      </div>
-    </article>
-    `;
-};
-
-const createAllNewsArticles = () => {
-  let articleHtml = "";
-  STATE.info.news.good.forEach(item => {
-    articleHtml = articleHtml + createSingleNewsArticle(item);
-  });
-  STATE.info.news.everything.forEach(item => {
-    articleHtml = articleHtml + createSingleNewsArticle(item);
-  });
-  return articleHtml;
-};
-
-const populateNews = () => {
-  $(".all-articles").html(createAllNewsArticles());
-  $(".js-topic").html(STATE.topic);
 };
 
 const createTwitterUser = obj => {
@@ -116,13 +95,6 @@ const createAllTwitterUsers = () => {
 const populateTwitter = () => {
   console.log("populateTwitter");
   $(".twitter-users").html(createAllTwitterUsers());
-};
-
-const populateInfo = () => {
-  populateWiki();
-  populateGiphy();
-  populateNews();
-  populateTwitter();
 };
 
 const truncateLongSearchString = string => {

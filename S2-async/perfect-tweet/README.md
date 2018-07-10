@@ -1,9 +1,13 @@
 # The Perfect Tweet
+
 ## Description
-*Give us any topic, and we will create the perfect tweet... it definitely won't be terrible... probably...*
+
+_Give us any topic, and we will create the perfect tweet... it definitely won't be terrible... probably..._
 
 ## Specs
-Must do - 
+
+Must do -
+
 - [x] Landing page with description
 - [x] User inputs a topic
 - [ ] Scrapes twitter, NewsAPI, Wikipedia, Giphy
@@ -12,7 +16,8 @@ Must do -
 - [x] User can input another topic
 - [ ] Gotta look guuuuuud
 
-Cool features - 
+Cool features -
+
 - [ ] Make the gifs only play if they don't work
 - [ ] Easy copy button
 - [ ] Calculating waiting screen
@@ -22,8 +27,8 @@ Cool features -
 - [ ] User can edit the tweet
   - [ ] Direct text edit
   - [ ] Select Specific words to remove
-  - [ ] User can add other words to the 'perfect word list' 
+  - [ ] User can add other words to the 'perfect word list'
 - [ ] Incorporate facebook
 - [ ] Build in some grammer stuff
 - [ ] MACHINE LEARNING?!?!?
-- [ ] Gif toggle  
+- [ ] Gif toggle
