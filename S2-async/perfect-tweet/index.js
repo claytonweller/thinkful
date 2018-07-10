@@ -48,10 +48,55 @@ const populateNews = () => {
   $('.info-news').html(createAllNewsArticles())
 }
 
+const createTwitterUser = (obj) =>{
+  let trimmedUrl = obj.imageURL.replace('_normal', '')
+  return `
+    <div class="twitter-user">
+      <div class="twitter-user-splash">
+        <div class="twitter-user-grid">
+          <div class="grid-upper-left"></div>
+          <div class="grid-upper-right"></div>
+          <div class="grid-lower-left"></div>
+          <div class="grid-lower-right">
+            <img src="${trimmedUrl}" alt="profile picture of ${obj.user}">
+          </div>
+        </div>
+        <div class="twitter-user-info">
+          <div class="twitter-user-name">@${obj.user}</div>
+          <div class="twitter-user-followers">${obj.followers} followers</div>
+        </div>
+      </div>
+      <div class="twitter-user-tweet">
+        <p>${obj.text}</p>
+      </div>
+    </div>
+  `
+}
+
+const createAllTwitterUsers = () =>{
+  let twitterHtml='';
+  let userCount =3
+  if(STATE.info.twitter.length <3 ){
+    userCount = STATE.info.twitter.length
+  }
+  for (let index = 0; index < userCount; index++) {
+    twitterHtml += createTwitterUser(STATE.info.twitter[index]) 
+  }
+
+  return twitterHtml
+}
+
+
+const populateTwitter = () =>{
+  console.log('populateTwitter')
+  $('.twitter-users').html(createAllTwitterUsers())
+}
+
 const populateInfo = () => {
   populateWiki()
   populateGiphy()
   populateNews()
+  populateTwitter()
 }
 
 const makeAPIcalls = (topic) => {

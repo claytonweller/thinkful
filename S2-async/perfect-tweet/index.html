@@ -16,31 +16,33 @@
     <div class="app-container">
 
       <!-- This is the start screen -->
-      <div class="start-screen">
+      <div class="start-screen" hidden>
 
         <!-- This is the above the Fold Section -->
         <section class="start-above-the-fold">
           <div class="logo-container">
             <img src="./images/logos/LogoLarge.png" alt="Perfect Tweet...">
           </div>
-          <div class="form-container">
-            <form action="#" id="topic-form">
-              <label>
-                <input type="text" placeholder="Pick any topic..." name="topic-text">
-              </label>
-              <button id="go-button" type="submit">Go!</button>
-            </form>
-          </div>
-          <div class="description-container">
-            <p>Give us any topic, and we will create the perfect tweet...
-              <br>It definitely won't be terrible...
-              <br>Probably...</p>
+          <div class="form-and-description">
+            <div class="form-container">
+              <form action="#" id="topic-form">
+                <label>
+                  <input type="text" placeholder="Pick any topic..." name="topic-text">
+                </label>
+                <button id="go-button" type="submit">Go!</button>
+              </form>
+            </div>
+            <div class="description-container">
+              <p>Give us any topic, and we will create the perfect tweet...
+                <br>It definitely won't be terrible...
+                <br>Probably...</p>
+            </div>
           </div>
         </section>
         <!-- End of the above the fold section -->
 
         <!-- This is where the extra app info on the start page will live -->
-        <section class="start-extra-info">
+        <section class="start-extra-info" >
           <div class="start-info-bar">
             <img src="./images/apiLogos/wikiLogo.png" alt="wikipedia logo">
             <div class="start-text-box">
@@ -75,7 +77,7 @@
       <!-- END start Screen -->
 
       <!-- This is the tweet screen -->
-      <div class="perfect-tweet-screen" hidden>
+      <div class="perfect-tweet-screen" >
         <div class="top-bar">
           <img src="./images/logos/LogoWide.png" alt="perfect tweet">
           <button id="start-over-button">
@@ -115,7 +117,7 @@
           </section>
 
           <!-- Wikipedia Info Screen -->
-          <div class="info-wiki ">
+          <div class="info-wiki">
             <img class="logo-right" src="./images/apiLogos/wikiLogo.png" alt="Wikipedia">
             <article>
               <div class="wiki-title">
@@ -136,7 +138,6 @@
           <!-- Twitter Info Screen -->
           <div class="info-twitter">
             <img class="logo-left" src="./images/apiLogos/twitterLogo.png" alt="twitter">
-
             <div class="twitter-users">
               <div class="twitter-user">
                 <div class="twitter-user-splash">
@@ -202,9 +203,8 @@
                 </div>
               </div>
             </div>
-
-
           </div>
+
           <!-- newsAPI info Screen -->
           <div class="info-news">
             <img class="logo-right" src="./images/apiLogos/newsLogo.png" alt="News">

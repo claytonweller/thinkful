@@ -15,14 +15,22 @@ const createTwitterObject = (results) => {
 }
 
 function getTwitterFromSearch(search) {
+  let smallTopicArray = search.split(' ')
+  let smallTopic = function(array){
+    return array.sort((a, b) => b.length - a.length )[0]
+  }(smallTopicArray)
+  
   fetch(TWITTER_SEARCH_URL, {
     method: 'post',
     mode: 'cors',
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
-    body: JSON.stringify({ 'search': search })
+    body: JSON.stringify({ 'search': smallTopic })
   })
     .then(res => res.json())
-    .then(obj => createTwitterObject(obj))
+    .then(obj => {
+      createTwitterObject(obj)
+      populateTwitter()
+    })
 }

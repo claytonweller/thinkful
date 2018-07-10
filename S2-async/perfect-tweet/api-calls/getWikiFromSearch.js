@@ -48,13 +48,17 @@ const searchForTitles = (result) => {
   result[1].forEach(title => {
     getWikiFromTitle(title)
   })
-
 }
 
 function getWikiFromSearch(searchTerm) {
+  let smallTopicArray = searchTerm.split(' ')
+  let smallTopic = function(array){
+    return array.sort((a, b) => b.length - a.length )[0]
+  }(smallTopicArray)
+  
   const query = {
     action: 'opensearch',
-    search: searchTerm,
+    search: smallTopic,
     limit: 3,
     namespace: 0,
     format: 'json',
