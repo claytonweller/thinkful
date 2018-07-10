@@ -9,8 +9,9 @@ const twitterCall = (topic) =>{
     url: twitter_api, 
     qs: {
       q: topic,
-      // 'result_type':'popular',
+      'result_type':'popular',
       'tweet_mode':'extended',
+      lang:'en',
       count: 10,
     },
     json: true,

@@ -1,5 +1,12 @@
 body *{
   box-sizing: border-box;
+  outline-color: black;
+  outline-width: 3px
+  
+}
+
+body{
+  background-color: #118AA6;
 }
 
 div {
@@ -24,6 +31,17 @@ button {
   background-color: #024555;
   color:#FFB413;
   font-family: gotham, sans-serif;
+  transition-duration: 200ms; 
+}
+
+button:focus, button:hover{
+  border: #FFDB7D 2px solid;
+  background-color: #8A4400;
+  color: #FFDB7D;
+  cursor: pointer;
+  box-shadow: 3px 3px 2px rgba(0,0,0,.5);
+  transform: translate(-3px, -3px)
+
 }
 
 /* This is all the stuff that applies to the START page */
@@ -135,8 +153,10 @@ button {
 }
 
 .top-bar img{
+  max-width:80%;
   height: 95%;
   padding-top: 5px;
+  padding-right:10px;
 }
 
 .top-bar button {
@@ -146,12 +166,16 @@ button {
 
 .perfect-tweet-above-fold{
   background-color: #6BC0D4;
+  display: flex;
+  flex-flow: column;
 }
 
 .perfect-tweet-container{
   width: 90%;
   margin: auto;
   padding: 10px 0px;
+  display: flex;
+  flex-flow: column;
 }
 
 .perfect-tweet-container img {
@@ -174,7 +198,8 @@ button {
 }
 
 #tweet-button{
-  width: 100%;
+  width: 90%;
+  align-self: center;
   font-size: 30px;
   padding: 10px 0px;
   margin: -10px 0px 30px;
@@ -186,6 +211,9 @@ button {
   background-color: #118AA6;
   margin-top:-30px;
   padding:30px 10px;
+  width: 100%;
+  margin: auto;
+  max-width: 800px;
 }
 
 .logo-left {
@@ -196,8 +224,8 @@ button {
 
 .logo-right {
   width: 60px;
-  position: absolute;
-  right: 5px;
+  position: relative;
+  float:right;
   transform: translate(0px, -30px)
 }
 
@@ -262,6 +290,8 @@ button {
 
 .twitter-user {
   margin:10px 0px;
+  display:flex;
+  flex-flow:column;
 }
 
 .twitter-user-splash {
@@ -312,11 +342,14 @@ button {
   height: 50%;
   width: 100%;
   font-family: 'Gothic A1', sans-serif;
-  font-size: 30px;
+  font-size: 20px;
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
-  padding-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0px 5px;
 }
 
 .twitter-user-name {
@@ -326,9 +359,9 @@ button {
 
 .twitter-user-followers {
   background-color: #024555;
-  color: #FFB413;
+  color: #FFDB7D;
 }
-
+  
 .twitter-user-tweet {
   background-color: white;
 }
@@ -350,13 +383,6 @@ button {
   padding: 10px;
 }
 
-.news-article{
-  background-color: white;
-  color: #024555;
-  padding: 10px;
-  margin: 10px;
-}
-
 .info-news a {
   color: #118AA6
 }
@@ -365,7 +391,27 @@ button {
   margin:1px;
 }
 
-@media only screen and (min-width: 750px){
+.info-news h1 {
+  margin-bottom: 10px;
+}
+
+.all-articles{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.news-article{
+  background-color: white;
+  color: #024555;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  position: relative;
+  border: #024555 solid 5px;
+}
+
+@media only screen and (min-width: 550px){
 
   .start-above-the-fold{
     flex-flow: row;
@@ -377,7 +423,54 @@ button {
 
   /* STILL NEED TO REDO THE START PAGE */
 
-
+  .perfect-tweet-container{
+    flex-flow: row;
+  }
   
+  .gif-block{
+    width: 25%;
+  }
 
+  .twitter-user{
+    flex-flow: row;
+    max-width: 800px;
+  }
+
+  .twitter-user-splash{
+    height: 90px;
+  }
+
+  .grid-lower-left{
+    background-color: #118AA6;
+  }
+
+  .all-articles{
+    flex-flow: row wrap;
+  }
+
+  .news-article{
+    width: 50%;
+  }
+
+  .perfect-tweet-container{
+    max-width: 900px;
+  }
+  
+  .perfect-tweet-container img {
+    align-self: center;
+    width: 100%;
+  }
+  
+  .perfect-tweet-text-box {
+    top:0px
+  }
+ 
+  #tweet-button{
+    margin:0px; 
+    /* position: absolute;  */
+    width: fit-content;
+    padding:10px;
+    
+  }
 }
+

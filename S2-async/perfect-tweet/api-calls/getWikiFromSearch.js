@@ -51,14 +51,10 @@ const searchForTitles = (result) => {
 }
 
 function getWikiFromSearch(searchTerm) {
-  let smallTopicArray = searchTerm.split(' ')
-  let smallTopic = function(array){
-    return array.sort((a, b) => b.length - a.length )[0]
-  }(smallTopicArray)
   
   const query = {
     action: 'opensearch',
-    search: smallTopic,
+    search: truncateLongSearchString(searchTerm),
     limit: 3,
     namespace: 0,
     format: 'json',

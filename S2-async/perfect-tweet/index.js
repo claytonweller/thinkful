@@ -34,7 +34,8 @@ const createSingleNewsArticle = (obj) => {
 }
 
 const createAllNewsArticles = () => {
-  let articleHtml = `<h1>News about: ${STATE.topic}</h1>`
+
+  let articleHtml = '';
   STATE.info.news.good.forEach(item => {
     articleHtml = articleHtml + createSingleNewsArticle(item)
   })
@@ -45,11 +46,12 @@ const createAllNewsArticles = () => {
 }
 
 const populateNews = () => {
-  $('.info-news').html(createAllNewsArticles())
+  $('.all-articles').html(createAllNewsArticles())
+  $('.js-topic').html(STATE.topic)
 }
 
 const createTwitterUser = (obj) =>{
-  let trimmedUrl = obj.imageURL.replace('_normal', '')
+  let scaledUrl = obj.imageURL.replace('_normal', '_200x200')
   return `
     <div class="twitter-user">
       <div class="twitter-user-splash">
@@ -58,7 +60,7 @@ const createTwitterUser = (obj) =>{
           <div class="grid-upper-right"></div>
           <div class="grid-lower-left"></div>
           <div class="grid-lower-right">
-            <img src="${trimmedUrl}" alt="profile picture of ${obj.user}">
+            <img src="${scaledUrl}" alt="profile picture of ${obj.user}">
           </div>
         </div>
         <div class="twitter-user-info">
@@ -104,6 +106,15 @@ const makeAPIcalls = (topic) => {
   getGiphyFromSearch(topic)
   getNewsFromSearch(topic)
   getTwitterFromSearch(topic)
+}
+
+const truncateLongSearchString = (string)=>{
+  let smallTopicArray = string.split(' ')
+  if (smallTopicArray.length > 2){
+    return smallTopicArray.sort((a, b) => b.length - a.length )[0]
+  } else {
+    return string
+  }
 }
 
 const switchToPerfectTweetScreen = () => {

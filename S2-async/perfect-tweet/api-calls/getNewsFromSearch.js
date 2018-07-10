@@ -2,15 +2,6 @@ const EVERYTHING_SEARCH_URL = 'https://newsapi.org/v2/everything'
 const GOOD_SEARCH_URL = 'https://newsapi.org/v2/top-headlines'
 const NEWS_API_KEY = 'd57b057c68454414bd4d1d8aa9986a98'
 
-const truncateLongSearchString = (string)=>{
-  let smallTopicArray = string.split(' ')
-  if (smallTopicArray.length > 2){
-    return smallTopicArray.sort((a, b) => b.length - a.length )[0]
-  } else {
-    return string
-  }
-}
-
 const createNewsArray = (results) => {
   return results.articles.map(result => {
     return {
