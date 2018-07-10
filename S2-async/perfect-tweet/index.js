@@ -15,11 +15,18 @@ STATE = {
   }
 };
 
+<<<<<<< Updated upstream
 const done = () => {
   if (STATE.wiki.title && STATE.news && STATE.twitter) {
     perfectTweet();
   }
 };
+=======
+const populateGiphy = () => {
+  // $('.giphy-header').find('h1').html('Gifs related to: ' + STATE.topic)
+  $('.giphy-gifs').html(createGifBlocks())
+}
+>>>>>>> Stashed changes
 
 const searchButtonClick = () => {
   let topicField = $(".start-screen").find("input");

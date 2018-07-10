@@ -317,12 +317,12 @@ button:focus, button:hover{
   background-color: #FFDB7D;
 }
 
-.grid-lower-right {
-  background-color: #024555;
-}
-
 .grid-lower-left {
   background-color: white;
+}
+
+.grid-lower-right {
+  background-color: #024555;
 }
 
 .twitter-user img{
@@ -443,7 +443,7 @@ button:focus, button:hover{
   .grid-lower-left{
     background-color: #118AA6;
   }
-
+  
   .all-articles{
     flex-flow: row wrap;
   }
