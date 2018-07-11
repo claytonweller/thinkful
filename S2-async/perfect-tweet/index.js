@@ -1,32 +1,26 @@
 STATE = {
   topic: "",
-  info: {
-    // remove info -> so it is one level;
-    wiki: {
-      title: "",
-      extract: ""
-    },
-    // giphy: [],
-    news: {
-      good: [],
-      everything: []
-    },
-    twitter: []
-  }
+  wiki: {
+    title: "",
+    extract: ""
+  },
+  giphy: [], //may not need to keep this in the store
+  news: {
+    good: [],
+    everything: []
+  },
+  twitter: []
+  
 };
 
-<<<<<<< Updated upstream
-const done = () => {
-  if (STATE.wiki.title && STATE.news && STATE.twitter) {
-    perfectTweet();
+const allCallsDone = (source) => {
+  if (source, STATE.wiki.extract !== '' && typeof STATE.twitter[0] === 'object' && typeof STATE.news.everything[0] === 'object') {
+    console.log(STATE)
+    $('.perfect-tweet-text-box').find('p').html(createATweet(STATE))
+    $('.perfect-tweet-container').find('img').attr('src', STATE.giphy[0].images.original.url)
+    $('.perfect-tweet-container').find('img').attr('alt', STATE.giphy[0].title)
   }
 };
-=======
-const populateGiphy = () => {
-  // $('.giphy-header').find('h1').html('Gifs related to: ' + STATE.topic)
-  $('.giphy-gifs').html(createGifBlocks())
-}
->>>>>>> Stashed changes
 
 const searchButtonClick = () => {
   let topicField = $(".start-screen").find("input");
@@ -42,71 +36,15 @@ const searchButtonClick = () => {
 const makeAPIcalls = topic => {
   getGiphyFromSearch(topic);
   getNewsFromSearch(topic);
-
-  getWikiFromSearch(topic); // TODO: refactor
-  getTwitterFromSearch(topic); // TODO: refactor
+  getWikiFromSearch(topic);
+  getTwitterFromSearch(topic); 
 };
 
-/*
-wait for perfect tweet
-scoll and compress nav?
-*/
-
-const populateWiki = () => {
-  $(".wiki-title")
-    .find("h1")
-    .html(STATE.info.wiki.title);
-  $(".wiki-text")
-    .find("p")
-    .html(STATE.info.wiki.extract);
-};
-
-const createTwitterUser = obj => {
-  let scaledUrl = obj.imageURL.replace("_normal", "_200x200");
-  return `
-    <div class="twitter-user">
-      <div class="twitter-user-splash">
-        <div class="twitter-user-grid">
-          <div class="grid-upper-left"></div>
-          <div class="grid-upper-right"></div>
-          <div class="grid-lower-left"></div>
-          <div class="grid-lower-right">
-            <img src="${scaledUrl}" alt="profile picture of ${obj.user}">
-          </div>
-        </div>
-        <div class="twitter-user-info">
-          <div class="twitter-user-name">@${obj.user}</div>
-          <div class="twitter-user-followers">${obj.followers} followers</div>
-        </div>
-      </div>
-      <div class="twitter-user-tweet">
-        <p>${obj.text}</p>
-      </div>
-    </div>
-  `;
-};
-
-const createAllTwitterUsers = () => {
-  let twitterHtml = "";
-  let userCount = 3;
-  if (STATE.info.twitter.length < 3) {
-    userCount = STATE.info.twitter.length;
-  }
-  for (let index = 0; index < userCount; index++) {
-    twitterHtml += createTwitterUser(STATE.info.twitter[index]);
-  }
-
-  return twitterHtml;
-};
-
-const populateTwitter = () => {
-  console.log("populateTwitter");
-  $(".twitter-users").html(createAllTwitterUsers());
-};
+///This function is used by a couple of the API calls to make sure they work with ridiculously long strings
 
 const truncateLongSearchString = string => {
   let smallTopicArray = string.split(" ");
-  if (smallTopicArray.length > 2) {
+  if (smallTopicArray.length > 1) {
     return smallTopicArray.sort((a, b) => b.length - a.length)[0];
   } else {
     return string;
@@ -132,19 +70,29 @@ const switchToStartScreen = () => {
 };
 
 const resetInfo = () => {
-  STATE.info = {
-    wiki: { title: "", extract: "" },
-    giphy: [],
-    news: {
-      good: [],
-      everything: []
-    }
+  STATE = {
+  topic: "",
+  wiki: {
+    title: "",
+    extract: ""
+  },
+  // giphy: [], //may not need to keep this in the store
+  news: {
+    good: [],
+    everything: []
+  },
+  twitter: []
+  
   };
+  populateTwitter()
+  populateWiki()
+  // populateGiphy()
+  populateNews()
 };
 
+
 const restartButtonClick = () => {
-  console.log("restart click");
-  STATE.topic = "";
+  console.log("restart click"); 
   resetInfo();
   switchToStartScreen();
 };
@@ -156,7 +104,7 @@ const listenForRestartButtonClick = () => {
   });
 };
 
-const wakeUpServer = () => {
+const wakeUpHerokuServer = () => {
   fetch(TWITTER_SEARCH_URL + "wakeUp/", {
     method: "get",
     mode: "cors"
@@ -170,7 +118,7 @@ const handlePerfectTweetApp = () => {
   listenForRestartButtonClick();
   // listenForTweetButtonClick()
   //Need to make this!!
-  wakeUpServer();
+  wakeUpHerokuServer();
 };
 
 $(handlePerfectTweetApp);

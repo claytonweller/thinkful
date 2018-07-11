@@ -3,9 +3,7 @@
 const boringWords = [
   "The",
   "from",
-  "a",
   "an",
-  "s",
   "it",
   "he",
   "she",
@@ -20,14 +18,53 @@ const boringWords = [
   "that",
   "the",
   "to",
+  'non',
+  'upon',
   "when",
   "which",
   "with",
   "there",
   "they",
   "by",
-  "them"
+  "them",
+  'mw',
+  'co',
+  'whom',
+  'Blockquote',
+  'via',
+  'amp',
+  'https',
+  'Retweet',
+  'couldn',
+  'wouldn',
+  'shouldn',
+  'jews',
+  'jew',
+  'nigger',
+  'niggers',
+  'cunt',
+  'cunts' 
 ];
+
+const alwaysWords = [
+  'is',
+  'can',
+  'was',
+  'has',
+  'say',
+  'us',
+  'you',
+  'big',
+  'tweet',
+  'twitter',
+  'need',
+  'want',
+  'like',
+  'perfect',
+  'MACHINE LEARNING',
+  'I AM BECOMING SENTIENT!',
+]
+
 const goodStarts = [
   "OMG!",
   "News flash:",
@@ -46,8 +83,6 @@ const goodStarts = [
   "Don't even get me started..."
 ];
 
-const getWordsArray = string =>
-  string.split(/\W+/).map(word => word.toLowerCase());
 
 const getWordCounts = wordArray => {
   let wordCounts = {};
@@ -65,12 +100,19 @@ const getWordsUsedMoreThanOnce = wordCounts => {
   return Object.keys(wordCounts).filter(word => wordCounts[word] > 1);
 };
 
+const hasNumber = (myString) => {
+  return /\d/.test(myString);
+}
+
 const removeBoringWords = wordArray => {
   let interestingWords = wordArray;
   boringWords.forEach(boringWord => {
     interestingWords = interestingWords.filter(word => word != boringWord);
   });
-  return interestingWords;
+  interestingWords = interestingWords
+    .filter(word => word.length > 3)
+    .filter(word => !hasNumber(word))
+  return interestingWords
 };
 
 const getRandomIndex = array => Math.floor(Math.random() * array.length);
@@ -96,34 +138,50 @@ const createSentence = wordArray => {
 
 const getCommonSpecificWords = wordsArray => {
   let allWordCounts = getWordCounts(wordsArray);
-  return getWordsUsedMoreThanOnce(allWordCounts);
+  return getWordsUsedMoreThanOnce(allWordCounts).concat(alwaysWords);
 };
 
 const getInterestingWords = wordsArray => {
   return wordsArray.filter(word => word.length > 7);
 };
 
-let randomBetween = (from, to) =>
-  Math.floor(Math.random() * (to - from + 1)) + from;
+let randomBetween = (from, to) => Math.floor(Math.random() * (to - from + 1)) + from;
 
 let getRandomFromArray = array => array[randomBetween(0, array.length - 1)];
 
-const createATweet = (topic, text) => {
-  let wordsArray = removeBoringWords(getWordsArray(text));
+const createATweet = (info) => {
+  let wordsArray = removeBoringWords(getAllWords(info));
   let commonSpecificWords = getCommonSpecificWords(wordsArray);
   let interestingWords = getInterestingWords(wordsArray);
-  let numberOfSentences = randomBetween(1, 3);
-
+  let numberOfSentences = randomBetween(1, 4);
   let tweet = getRandomFromArray(goodStarts);
 
   for (let index = 0; index < numberOfSentences; index++) {
     tweet += " " + createSentence(commonSpecificWords);
   }
-  tweet += ` #${topic.replace(/\s+/g, "")}`;
+  tweet += ` #${info.topic.replace(/\s+/g, "")}`;
   tweet += ` #${createRandomString(1, interestingWords)}`;
   tweet += ` #${createRandomString(1, interestingWords)}`;
-
+  tweet += ` @${info.twitter[randomBetween(0, info.twitter.length-1)].user}`
   return tweet;
 };
 
-console.log(createATweet(data.topic, data.body));
+const getAllWords = info => {
+  let wikiWords = getWordsArray(info.wiki.extract)
+
+  let tweetWords = []
+  if(info.twitter.length > 0){
+    info.twitter.forEach( item =>{
+      tweetWords = tweetWords.concat(getWordsArray(item.text))
+    })
+  }
+
+  let newsWords = info.news.everything.reduce((prevWords, article)=>{
+    return getWordsArray(article.description).concat(prevWords)
+  })
+
+    
+  return [...wikiWords, ...newsWords, ...tweetWords]
+}
+
+const getWordsArray = string => string.split(/\W+/).map(word => word.toLowerCase());

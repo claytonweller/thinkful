@@ -13,22 +13,29 @@ const getNewsFromSearch = search => {
   getGoodNewsFromSearch(query);
 };
 
-// TODO: Arrow functions
-function getGoodNewsFromSearch(query) {
+const getGoodNewsFromSearch = (query) => {
   query.country = "us";
   $.getJSON(GOOD_SEARCH_URL, query, results => {
-    STATE.info.news.good = results.articles;
+    STATE.news.good = results.articles;
     populateNews();
   });
 }
 
-function getEverythingFromSearch(query) {
+const getEverythingFromSearch = (query) => {
   query.language = "en";
   $.getJSON(EVERYTHING_SEARCH_URL, query, results => {
-    STATE.info.news.everything = results.articles;
+    STATE.news.everything = results.articles;
     populateNews();
+    allCallsDone('News');
   });
 }
+
+const populateNews = () => {
+  var allNews = [...STATE.news.good, ...STATE.news.everything];
+  var renderedNews = allNews.map(item => createSingleNewsArticle(item));
+  $(".all-articles").html(renderedNews);
+  $(".js-topic").html(STATE.topic);
+};
 
 const createSingleNewsArticle = result => {
   return `
@@ -42,11 +49,4 @@ const createSingleNewsArticle = result => {
       </div>
     </article>
     `;
-};
-
-const populateNews = () => {
-  var allNews = [...STATE.info.news.good, ...STATE.info.news.everything];
-  var renderedNews = allNews.map(item => createSingleNewsArticle(item));
-  $(".all-articles").html(renderedNews);
-  $(".js-topic").html(STATE.topic);
 };

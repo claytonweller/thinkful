@@ -1,7 +1,7 @@
 const GIF_SEARCH_URL = "http://api.giphy.com/v1/gifs/search";
 const GIPHY_API_KEY = "lkdzgGGUC5PbHv3W33MJbdvhSMA1u4Qc";
 
-function getGiphyFromSearch(search) {
+getGiphyFromSearch = (search) => {
   const query = {
     q: search,
     api_key: GIPHY_API_KEY,
@@ -11,21 +11,13 @@ function getGiphyFromSearch(search) {
 }
 
 const populateGiphy = results => {
-  // STATE.info.giphy = results; If you need them;
-
-  // $(".giphy-header")
-  //   .find("h1")
-  //   .html("Gifs related to: " + STATE.topic);
+  STATE.giphy = results.data;
   let output = results.data.map(renderGiphyObject);
+  
   $(".giphy-gifs").html(output);
-  done();
-};
+}
 
 const renderGiphyObject = item => `
     <div class="gif-block">
         <img src="${item.images.original.url}" alt="${item.title}" />
     </div>`;
-
-// No state
-// Map once
-// One array

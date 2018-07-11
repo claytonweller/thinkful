@@ -10,15 +10,15 @@ Must do -
 
 - [x] Landing page with description
 - [x] User inputs a topic
-- [ ] Scrapes twitter, NewsAPI, Wikipedia, Giphy
-- [ ] Displays data used from APIs
-- [ ] Tries to create a perfect tweet
+- [x] Scrapes twitter, NewsAPI, Wikipedia, Giphy
+- [x] Displays data used from APIs
+- [x] Tries to create a perfect tweet
 - [x] User can input another topic
 - [ ] Gotta look guuuuuud
 
 Cool features -
 
-- [ ] Make the gifs only play if they don't work
+- [ ] Make the gifs only play if   they hovered or focused
 - [ ] Easy copy button
 - [ ] Calculating waiting screen
 - [ ] It tweets to a dummy account. (could be automatic... or maybe it's on a button)
