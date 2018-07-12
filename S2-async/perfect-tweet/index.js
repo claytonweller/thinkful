@@ -108,6 +108,7 @@ const resetInfo = () => {
   };
   $('.perfect-tweet-container').find('img').attr('src', './images/Loading.gif')
   $('.perfect-tweet-container').find('img').attr('alt', 'placeholder')
+  $('.perfect-tweet-text-box').find('p').html('<span class="pulsing">Creating Tweet...</span>')
   populateTwitter()
   populateWiki()
   // populateGiphy()
@@ -152,12 +153,19 @@ const listenForReperfectClick = ()=>{
   })
 }
 
+const listenForSquishClick = ()=>{
+  $('#squish-button').click(function(){
+    $('.perfect-tweet-screen').toggleClass('squished')
+    window.scrollTo(0,0)
+  })
+}
+
 const handlePerfectTweetApp = () => {
-  listenForSearchButtonClick();
-  listenForRestartButtonClick();
+  listenForSearchButtonClick()
+  listenForRestartButtonClick()
   listenForTweetButtonClick()
   listenForReperfectClick()
-  //Need to make this!!
+  listenForSquishClick()
   wakeUpHerokuServer();
 };
 

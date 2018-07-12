@@ -172,6 +172,7 @@ button:focus, button:hover{
 
 /* Below is everything pertaining to the Perfect TWeet Page */
 
+
 .top-bar {
   height: 50px;
   background-color: #118AA6;
@@ -189,8 +190,24 @@ button:focus, button:hover{
 }
 
 .top-bar button {
-  width: 65px;
+  width: fit-content;
   font-size: 30px;
+}
+
+.squished .top-bar {
+  display:none; 
+}
+.scroll-top {
+  width:100%;
+}
+
+.squished .scroll-top{
+  position: fixed;
+  z-index: 30;
+}
+
+.scroll-top *{
+  transition-duration: 200ms;
 }
 
 .perfect-tweet-above-fold{
@@ -199,17 +216,33 @@ button:focus, button:hover{
   flex-flow: column;
 }
 
+.squished .perfect-tweet-above-fold {
+  height : 90px;
+  padding: 0px 5px;
+}
+
 .perfect-tweet-container{
-  width: 90%;
-  margin: auto;
-  padding: 50px 0px;
+  padding: 10px 0px;
+  margin: 0px 5px;
   display: flex;
   flex-flow: column;
+  height: 100%;
+}
+
+.squished .perfect-tweet-container{
+  flex-flow: row;
+  padding: 5px 0px;
 }
 
 .perfect-tweet-container img {
   width: 100%;
   border: solid 1px #FFBE13
+}
+
+.squished .perfect-tweet-container img{
+  max-width: 30%;
+  align-self: flex-start;
+  max-height: 100%;
 }
 
 .perfect-tweet-text-box {
@@ -221,8 +254,37 @@ button:focus, button:hover{
 .perfect-tweet-text-box p {
   color: #024555;
   font-family: gotham;
-  font-size: 18px;
-  padding: 0px 10px;
+  padding: 0px 5px;
+  font-size: 18px; 
+}
+
+.squished .perfect-tweet-text-box p {
+  font-size: 14px;
+  margin: 0px;
+  padding: 5px 5px;
+  width: 100%;
+  overflow: hidden;
+  position: relative; 
+  line-height: 1.2em;
+  max-height: 5em; 
+}
+
+.squished .perfect-tweet-text-box p:before {
+  content: '...';
+  position: absolute;
+  color:#118AA6;
+  right: 3px;
+  bottom: 2px;
+  font-size: 20px;
+}
+.squished .perfect-tweet-text-box p:after {
+  content: '';
+  position: absolute;
+  width: 1.5em;
+  height: 1em;
+  right: 5px;
+  background: white;
+  transform: translate(0px, 1em)
 }
 
 .tweet-button-container {
@@ -231,12 +293,52 @@ button:focus, button:hover{
   margin-top:10px;
 }
 
+.squished .tweet-button-container{
+  display:none;
+}
+
 #tweet-button, #reperfect-button{
   width: 90%;
   align-self: center;
   font-size: 30px;
   padding: 10px 0px;
   /* margin:  0px 30px; */
+}
+
+.squish-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+#squish-button {
+  background-color: transparent;
+  z-index: 0;
+  border: none;
+  color: #024555;
+  position: relative;
+  width: 30%;
+  max-width: 200px;
+  height: 20px;
+  box-shadow: none;
+  transform: none;
+}
+
+#squish-button:hover, #squish-button:focus{
+  color: #8A4400;
+}
+
+#squish-button:before{
+  background-color:#6BC0D4; 
+  content:'';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+	z-index: -2;
+	transform: perspective(1px) rotateX(-1deg);
+  border-radius:0px 0px 5px 5px
+}
+
+.squished .squish-button-container{
+  
 }
 
 /* END above the fold Perfext Tweet */
@@ -269,6 +371,10 @@ button:focus, button:hover{
   border: solid #FFDB7D 2px;
   padding: 5px;
   margin-bottom: 40px;
+}
+
+.squished .info-giphy {
+  margin-top: 100px;
 }
 
 .giphy-gifs {
@@ -452,8 +558,19 @@ button:focus, button:hover{
 
   /* STILL NEED TO REDO THE START PAGE */
 
+  .squished .top-bar {
+    display: flex;
+  }
+
   .perfect-tweet-container{
+    margin: 30px 10px;
     flex-flow: row;
+  }
+
+ 
+
+  .squished .perfect-tweet-container{
+    margin: 5px 0px;
   }
   
   .gif-block{
@@ -483,11 +600,14 @@ button:focus, button:hover{
 
   .perfect-tweet-container{
     max-width: 900px;
-    flex-flow: row, wrap;
+  }
+
+  .squished .perfect-tweet-above-fold{
+    height: 120px;
   }
   
   .perfect-tweet-container img {
-    align-self: center;
+    align-self: flex-start;
     width: 30%;
     max-height: 300px;
     max-width: 250px;
@@ -496,7 +616,16 @@ button:focus, button:hover{
   .perfect-tweet-text-box {
     top:0px
   }
- 
+  .perfect-tweet-text-box p {
+    font-size: 16px;
+  }
+
+  .squished .tweet-button-container {
+    display: inline-block;
+    margin:0px;
+    padding:0px;
+  }
+
   #tweet-button, #reperfect-button{
     margin:0px; 
     /* position: absolute;  */
@@ -507,16 +636,38 @@ button:focus, button:hover{
     margin: 10px;
   }
 
+  .squished #tweet-button, .squished #reperfect-button {
+    margin:0px;
+    padding:0px, 5px;
+    height: 50%;
+    width: 100%;
+  }
+  
+  .squished .info-giphy {
+    margin-top: 200px;
+  }
+
 }
 
 
 @media only screen and (min-width: 700px){
+  
   .start-above-the-fold{
     flex-flow: row;
   }
 
   .form-and-description{
     align-self: center;
+  }
+
+  .perfect-tweet-container{
+    margin: 50px auto;
+    padding: 0px 10px;
+    align-self: center;
+  }
+
+  .perfect-tweet-text-box p{
+    font-size: 18px;
   }
 
   .logo-container{
