@@ -2,6 +2,8 @@
 
 Twitter API -   https://developer.twitter.com/en/docs/tweets/search/overview
 
+  Link to tweet in their account - https://twitter.com/intent/tweet?text=THEBIGDEAL
+
 News API - https://newsapi.org/
 
 GiPHy - https://developers.giphy.com/docs/

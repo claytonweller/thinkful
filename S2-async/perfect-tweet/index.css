@@ -48,7 +48,7 @@ button:focus, button:hover{
 
 .start-above-the-fold{
   background-color: #6BC0D4;
-  height: 100vh;
+  /* height: 100vh; */
   min-height: 680px;
   display:flex;
   flex-flow: column;
@@ -114,6 +114,35 @@ button:focus, button:hover{
   font-size: 18px;
 }
 
+@keyframes pulsate {
+  from {
+    font-size: 1em;
+    color:#024555;
+    letter-spacing: auto;
+    line-height: 1em;
+  }
+
+  to {
+    font-size: 1.1em;
+    color:#118AA6;
+    letter-spacing: -1.2px;
+    line-height: .85em;
+  }
+}
+
+.pulsing{
+  animation-duration: 1000ms;
+  animation-direction: alternate;
+  animation-name: pulsate;
+  animation-iteration-count: infinite;
+}
+
+.disclosure{
+  font-style: italic;
+  /* color: #FFB413; */
+  font-size: 12px;
+}
+
 .start-extra-info {
   background-color:#118AA6;
 }
@@ -173,7 +202,7 @@ button:focus, button:hover{
 .perfect-tweet-container{
   width: 90%;
   margin: auto;
-  padding: 10px 0px;
+  padding: 50px 0px;
   display: flex;
   flex-flow: column;
 }
@@ -186,7 +215,6 @@ button:focus, button:hover{
 .perfect-tweet-text-box {
   background-color: white;
   position: relative;
-  top:-20px;
   border: solid 1px #FFBE13
 }
 
@@ -197,12 +225,18 @@ button:focus, button:hover{
   padding: 0px 10px;
 }
 
-#tweet-button{
+.tweet-button-container {
+  display: flex;
+  flex-flow: column;
+  margin-top:10px;
+}
+
+#tweet-button, #reperfect-button{
   width: 90%;
   align-self: center;
   font-size: 30px;
   padding: 10px 0px;
-  margin: -10px 0px 30px;
+  /* margin:  0px 30px; */
 }
 
 /* END above the fold Perfext Tweet */
@@ -389,6 +423,7 @@ button:focus, button:hover{
 
 .info-news h1, .info-news h2 {
   margin:1px;
+  overflow: hidden;
 }
 
 .info-news h1 {
@@ -411,15 +446,9 @@ button:focus, button:hover{
   border: #024555 solid 5px;
 }
 
+
+
 @media only screen and (min-width: 550px){
-
-  .start-above-the-fold{
-    flex-flow: row;
-  }
-
-  .form-and-description{
-    align-self: center;
-  }
 
   /* STILL NEED TO REDO THE START PAGE */
 
@@ -454,23 +483,45 @@ button:focus, button:hover{
 
   .perfect-tweet-container{
     max-width: 900px;
+    flex-flow: row, wrap;
   }
   
   .perfect-tweet-container img {
     align-self: center;
-    width: 100%;
+    width: 30%;
+    max-height: 300px;
+    max-width: 250px;
   }
   
   .perfect-tweet-text-box {
     top:0px
   }
  
-  #tweet-button{
+  #tweet-button, #reperfect-button{
     margin:0px; 
     /* position: absolute;  */
     width: fit-content;
     padding:10px;
-    
+    height: width;
+    font-size: 14px;
+    margin: 10px;
   }
+
 }
 
+
+@media only screen and (min-width: 700px){
+  .start-above-the-fold{
+    flex-flow: row;
+  }
+
+  .form-and-description{
+    align-self: center;
+  }
+
+  .logo-container{
+    padding: 0px 3%;
+  }
+
+
+}

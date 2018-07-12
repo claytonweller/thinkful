@@ -16,7 +16,7 @@
     <div class="app-container">
 
       <!-- This is the start screen -->
-      <div class="start-screen" >
+      <div class="start-screen" hidden>
 
         <!-- This is the above the Fold Section -->
         <section class="start-above-the-fold">
@@ -33,9 +33,11 @@
               </form>
             </div>
             <div class="description-container">
-              <p>Give us any topic, and we will create the perfect tweet...
-                <br>It definitely won't be terrible...
-                <br>Probably...</p>
+              <p>Give us any topic, and using the power of <span class="pulsing">MACHINE LEARNING*</span> we will create the perfect tweet!
+                <br><span style="font-size: 0.8em">It definitely won't be terrible...</span>
+                <br><span style="font-size: 0.5em">Probably...</span>
+                <br></p>
+                <span class='disclosure'>* Absolutely no machine learning is used in this app</span>
             </div>
           </div>
         </section>
@@ -77,24 +79,28 @@
       <!-- END start Screen -->
 
       <!-- This is the tweet screen -->
-      <div class="perfect-tweet-screen" hidden>
+      <div class="perfect-tweet-screen" >
         <div class="top-bar">
-          <img src="./images/logos/LogoWide.png" alt="perfect tweet">
+          <img src="./images/logos/Logo.png" alt="perfect tweet">
           <button id="start-over-button">
             <</button>
         </div>
 
         <section class="perfect-tweet-above-fold">
           <div class="perfect-tweet-container">
-            <img src="https://media.giphy.com/media/xNBcChLQt7s9a/giphy.gif" alt="This is just a place holder">
+            <img src="./images/Loading.gif" alt="This is just a place holder">
             <div class="perfect-tweet-text-box">
               <p>This is the perfect tweet. It’s got some text. It definitely makes sense. It’s amazing. It uses exactly 240
                 characters, which is the longest we can possibly tweet. #Wow #exactly240characters #definitely #WorthIt @billgates
                 @therealslimshady
               </p>
             </div>
+            <div class="tweet-button-container">
+              <button id="tweet-button">Tweet It!</button>
+              <button id="reperfect-button">Redo</button>
+            </div>
           </div>
-          <button id="tweet-button">Tweet It!</button>
+
         </section>
         <div class="info-container">
           <!-- Giphy info screen -->

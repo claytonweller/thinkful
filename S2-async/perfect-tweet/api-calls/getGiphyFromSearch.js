@@ -12,6 +12,7 @@ getGiphyFromSearch = (search) => {
 
 const populateGiphy = results => {
   STATE.giphy = results.data;
+  console.log(STATE.giphy)
   let output = results.data.map(renderGiphyObject);
   
   $(".giphy-gifs").html(output);
