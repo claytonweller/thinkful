@@ -41,7 +41,6 @@ button:focus, button:hover{
   cursor: pointer;
   box-shadow: 3px 3px 2px rgba(0,0,0,.5);
   transform: translate(-3px, -3px)
-
 }
 
 /* This is all the stuff that applies to the START page */
@@ -192,6 +191,7 @@ button:focus, button:hover{
 .top-bar button {
   width: fit-content;
   font-size: 30px;
+  margin:5px;
 }
 
 .squished .top-bar {
@@ -239,6 +239,12 @@ button:focus, button:hover{
   border: solid 1px #FFBE13
 }
 
+.perfect-tweet-container img:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px 2px rgba(0,0,0,.5);
+  transform: translate(-3px, -3px)
+}
+
 .squished .perfect-tweet-container img{
   max-width: 30%;
   align-self: flex-start;
@@ -251,7 +257,13 @@ button:focus, button:hover{
   border: solid 1px #FFBE13
 }
 
-.perfect-tweet-text-box p {
+.perfect-tweet-text-box:hover, .perfect-tweet-text-box:focus{
+  cursor: pointer;
+  box-shadow: 3px 3px 2px rgba(0,0,0,.5);
+  transform: translate(-3px, -3px)
+}
+
+.perfect-tweet-text-box p{
   color: #024555;
   font-family: gotham;
   padding: 0px 5px;
@@ -269,7 +281,7 @@ button:focus, button:hover{
   max-height: 5em; 
 }
 
-.squished .perfect-tweet-text-box p:before {
+.squished .perfect-tweet-text-box p:before{
   content: '...';
   position: absolute;
   color:#118AA6;
@@ -374,7 +386,7 @@ button:focus, button:hover{
 }
 
 .squished .info-giphy {
-  margin-top: 100px;
+  margin-top: 450px;
 }
 
 .giphy-gifs {
@@ -386,6 +398,8 @@ button:focus, button:hover{
   width: 50%;
   display: flex;
   align-content: center;
+  background-color: transparent;
+  border:none;
 }
 
 .gif-block img{

@@ -19,6 +19,6 @@ const populateGiphy = results => {
 }
 
 const renderGiphyObject = item => `
-    <div class="gif-block">
+    <button class="gif-block">
         <img src="${item.images.original.url}" alt="${item.title}" />
-    </div>`;
+    </button>`;
