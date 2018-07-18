@@ -1,0 +1,6 @@
+Echo Endpoint
+  https://glitch.com/edit/#!/pear-enemy
+
+Mad Lib Generator
+  https://glitch.com/edit/#!/perpetual-bumper
+
