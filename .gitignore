@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/S3-Server/gatekeeper/node_modules
+node_modules/
 
 # testing
 /coverage
