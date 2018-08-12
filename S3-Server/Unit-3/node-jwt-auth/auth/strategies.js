@@ -13,7 +13,9 @@ const localStrategy = new LocalStrategy((username, password, callback) => {
   User.findOne({ username: username })
     .then(_user => {
       user = _user;
+      console.log(user)
       if (!user) {
+        
         // Return a rejected promise so we break out of the chain of .thens.
         // Any errors like this will be handled in the catch block.
         return Promise.reject({

@@ -10,10 +10,12 @@ const jsonParser = bodyParser.json();
 
 // Post to register a new user
 router.post('/', jsonParser, (req, res) => {
+  console.log(req.body)
   const requiredFields = ['username', 'password'];
   const missingField = requiredFields.find(field => !(field in req.body));
-
+  
   if (missingField) {
+    console.log('missingField')
     return res.status(422).json({
       code: 422,
       reason: 'ValidationError',
@@ -28,6 +30,7 @@ router.post('/', jsonParser, (req, res) => {
   );
 
   if (nonStringField) {
+    console.log('nonStringField')
     return res.status(422).json({
       code: 422,
       reason: 'ValidationError',
@@ -49,6 +52,7 @@ router.post('/', jsonParser, (req, res) => {
   );
 
   if (nonTrimmedField) {
+    console.log('nonTrimmedField')
     return res.status(422).json({
       code: 422,
       reason: 'ValidationError',
@@ -80,6 +84,7 @@ router.post('/', jsonParser, (req, res) => {
   );
 
   if (tooSmallField || tooLargeField) {
+    console.log('tooSmallField', 'tooLargeField')
     return res.status(422).json({
       code: 422,
       reason: 'ValidationError',
@@ -101,6 +106,7 @@ router.post('/', jsonParser, (req, res) => {
   return User.find({username})
     .count()
     .then(count => {
+      console.log(count)
       if (count > 0) {
         // There is an existing user with the same username
         return Promise.reject({

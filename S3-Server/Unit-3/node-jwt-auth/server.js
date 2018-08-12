@@ -4,7 +4,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
-
 // Here we use destructuring assignment with renaming so the two variables
 // called router (from ./users and ./auth) have different names
 // For example:
@@ -38,6 +37,7 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
+app.use(express.static('public'))
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
@@ -46,7 +46,8 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 // A protected endpoint which needs a valid JWT to access it
 app.get('/api/protected', jwtAuth, (req, res) => {
   return res.json({
-    data: 'rosebud'
+    data: 'rosebud',
+    user: req.user
   });
 });
 
