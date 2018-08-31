@@ -1,0 +1,3 @@
+- surprise: https://glitch.com/edit/#!/excellent-glue
+- calculator: https://glitch.com/edit/#!/confused-eyelash
+- twin peaks search: https://glitch.com/edit/#!/quill-edge
