@@ -4,13 +4,13 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: 0
+      inputValue: ""
     };
   }
 
   submitGuess(e) {
     e.preventDefault();
-    document.getElementById("number-input").value = "";
+    this.setState({ inputValue: "" });
     this.props.makeGuess(this.state.inputValue);
   }
 
@@ -20,15 +20,22 @@ export default class Form extends Component {
 
   render() {
     if (this.props.theyGotIt) {
-      return <button onClick={() => this.props.startOver()}>Try again</button>;
+      return (
+        <button
+          className="start-over-button"
+          onClick={() => this.props.startOver()}
+        >
+          Try again
+        </button>
+      );
     } else {
       return (
-        <form>
+        <form className="guess-form">
           <label>
             Make a guess!
             <br />
             <input
-              id="number-input"
+              value={this.state.inputValue}
               onChange={e => this.trackInputValue(e.target.value)}
               type="number"
               min={1}

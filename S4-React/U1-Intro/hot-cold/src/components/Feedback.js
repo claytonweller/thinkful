@@ -7,7 +7,12 @@ export default function Feedback({
 }) {
   const feedback = (currentGuess, lastGuess, theOneTrueNumber) => {
     if (currentGuess === theOneTrueNumber) {
-      return "You Got it";
+      return "You Got it!";
+    } else if (
+      (currentGuess !== 0) &
+      (Math.abs(currentGuess - theOneTrueNumber) < 3)
+    ) {
+      return "SUPER HOT!";
     } else if (
       Math.abs(currentGuess - theOneTrueNumber) <
       Math.abs(lastGuess - theOneTrueNumber)
